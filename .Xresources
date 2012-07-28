@@ -56,7 +56,6 @@ Xft.lcdfilter:  lcddefault
 !! black dark/light
 *color0:                S_base02
 *color8:                S_base03
-
 !! red dark/light
 *color1:                S_red
 *color9:                S_orange
@@ -88,13 +87,13 @@ Xft.lcdfilter:  lcddefault
 ! urxvt
 URxvt*buffered: true
 URxvt*cursorBlink: false
-URxvt.cursorUnderline: true
+URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-!URxvt*font: xft:Droid\ Sans\ Mono\ Slashed\ for\ Powerline:pixelsize=16
-!URxvt*boldFont: xft:Droid\ Sans\ Mono\ Slashed\ for\ Powerline:pixelsize=16
-URxvt*font: xft:Monaco\ for\ Powerline:pixelsize=14
-URxvt*italicFont: xft:Monaco\ for\ Powerline:italic:pixelsize=14:autohint=true
-URxvt*boldFont: xft:Monaco\ for\ Powerline:bold:pixelsize=14:autohint=true
+URxvt*font:                 xft:Menlo for Powerline:regular:size=10
+URxvt*imFont:               xft:Menlo for Powerline:regular:size=10
+URxvt*boldFont:             xft:Menlo for Powerline:bold:size=10
+URxvt*italicFont:           xft:Menlo for Powerline:italic:size=10
+URxvt*boldItalicFont:       xft:Menlo for Powerline:bold:italic:size=10
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
