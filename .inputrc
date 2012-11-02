@@ -1,0 +1,3 @@
+set editing-mode vi
+"\eOc": forward-word
+"\eOd": backward-word
