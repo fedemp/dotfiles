@@ -34,11 +34,12 @@ plugins=(git svn)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/drush
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
 export PAGER=most
 
 alias less="most"
 alias ls="ls -l --color=auto"
+alias git="hub"
 eval `dircolors ~/.dircolors`
 bindkey '[D' emacs-backward-word
 bindkey '[C' emacs-forward-word
