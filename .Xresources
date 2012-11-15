@@ -47,8 +47,8 @@ Xft.lcdfilter:  lcddefault
 
 *background:            S_base3
 !*background:            S_base03
-!*foreground:            S_base0
-*foreground:            S_base00
+*foreground:            S_base01
+!*foreground:            S_base00
 *cursorColor:           S_base1
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1

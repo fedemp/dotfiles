@@ -34,7 +34,7 @@ plugins=(git fasd zsh-vim-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/eclipse
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/:/opt/eclipse:$PATH
 export PAGER=most
 
 alias less="most"
@@ -42,7 +42,7 @@ alias ls="ls -ahl --color=auto"
 alias df='df -h'
 alias k9='kill -9'
 alias grep='grep --color'
-
+alias git="hub"
 eval `dircolors ~/.dircolors`
 bindkey '[D' emacs-backward-word
 bindkey '[C' emacs-forward-word
