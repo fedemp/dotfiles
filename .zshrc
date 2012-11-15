@@ -42,7 +42,6 @@ alias ls="ls -ahl --color=auto"
 alias df='df -h'
 alias k9='kill -9'
 alias grep='grep --color'
-alias git="hub"
 eval `dircolors ~/.dircolors`
 bindkey '[D' emacs-backward-word
 bindkey '[C' emacs-forward-word
