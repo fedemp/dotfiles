@@ -1,7 +1,8 @@
 RootMenu = "Pekwm" {
-	Entry = "Terminal" { Actions = "Exec $TERM &" }
-	Entry = "Run.." { Actions = "ShowCmdDialog" }
-	Submenu = "Desarrollo" {
+	Entry = "Terminal" { Actions = "Exec urxvt &" }
+	Entry = "Ejecutar" { Actions = "ShowCmdDialog" }
+	Separator {}
+  Submenu = "Desarrollo" {
 		Entry = "Meld" { Actions = "Exec meld &" }
 	}
 	Submenu = "Accesorios" {
@@ -137,7 +138,36 @@ RootMenu = "Pekwm" {
 		}
 		Entry = "Window.." { Actions = "ShowMenu GotoClient True" }
 	}
-  Entry = "Exit" { Actions = "Exit" }
+  SubMenu = "Sesión" {
+# http://lists.freebsd.org/pipermail/freebsd-ports/2011-March/066726.html
+# Then, in root create file called (for exemple)
+# 'org.freedesktop.consolekit.pkla' in
+# /usr/local/etc/polkit-1/localauthority/50-local.d/ directory:
+# 
+# % cat /usr/local/etc/polkit-1/localauthority/50-local.d/org.freedesktop.consolekit.pkla
+# [Restart]
+# Identity=unix-group:users
+# Action=org.freedesktop.consolekit.system.restart
+# ResultAny=yes
+# ResultInactive=yes
+# ResultActive=yes
+# 
+# [Shutdown]
+# Identity=unix-group:users
+# Action=org.freedesktop.consolekit.system.stop
+# ResultAny=yes
+# ResultInactive=yes
+# ResultActive=yes
+# 
+# You should replace 'users' by your main group (mine called users), or
+# by Identity=unix-user: your_user
+
+    Entry = "Apagar" { Actions = "exec ~/.pekwm/scripts/dbus-halt" }
+    Entry = "Hibernar" { Actions = "exec ~/.pekwm/scripts/dbus-hibernate" }
+    Entry = "Reiniciar" { Actions = "exec ~/.pekwm/scripts/dbus-reboot" }
+    Entry = "Suspender" { Actions = "exec ~/.pekwm/scripts/dbus-suspend" }
+  }
+  Entry = "Cerrar sesión" { Actions = "Exit" }
 }
 
 WindowMenu = "Window Menu" {

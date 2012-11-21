@@ -17,12 +17,13 @@
 # because when I was doing fluxbox's docs, people used to complain that there
 # wasn't one, and I wanted to avoid that for pekwm. ;) --eyez
 
-xrandr --output VGA1 --auto --right-of LVDS1
-feh --bg-fill Imágenes/wallpaper.png &
+xrandr --output VGA1 --auto --right-of LVDS1 &
 xrdb -merge $HOME/.Xresources &
 tint2 &
-xfce4-power-manager &
+sleep 1
 nm-applet &
 pidgin &
 sleep 1
 urxvt -e tmux &
+thunar --daemon &
+xfce4-power-manager &
