@@ -36,7 +36,7 @@ Screen {
     FullscreenDetect = "True"
     HonourRandr = "True"
     HonourAspectRatio = "True"
-    EdgeSize = "1 1 1 1"
+    EdgeSize = "0 0 0 0"
     EdgeIndent = "False"
     PixmapCacheSize = "20"
     DoubleClickTime = "250"
