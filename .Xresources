@@ -89,11 +89,11 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Monaco for Powerline:regular:size=11:hinting:false:antialias:false
-URxvt*imFont:               xft:Monaco for Powerline:regular:size=11:hinting:false:antialias:false
-URxvt*boldFont:             xft:Monaco for Powerline:bold:size=11:hinting:false:antialias:false
-URxvt*italicFont:           xft:Monaco for Powerline:italic:size=11:hinting:false:antialias:false
-URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=11:hinting:false:antialias:false
+URxvt*font:                 xft:Source Code Pro for Powerline:regular:size=11:hinting:false:antialias:false
+URxvt*imFont:               xft:Source Code Pro for Powerline:regular:size=11:hinting:false:antialias:false
+URxvt*boldFont:             xft:Source Code Pro for Powerline:bold:size=11:hinting:false:antialias:false
+URxvt*italicFont:           xft:Source Code Pro for Powerline:italic:size=11:hinting:false:antialias:false
+URxvt*boldItalicFont:       xft:Source Code Pro for Powerline:bold:italic:size=11:hinting:false:antialias:false
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
