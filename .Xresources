@@ -89,11 +89,11 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Meslo LG L for Powerline:regular:size=10
-URxvt*imFont:               xft:Meslo LG L for Powerline:regular:size=10
-URxvt*boldFont:             xft:Meslo LG L for Powerline:bold:size=10
-URxvt*italicFont:           xft:Meslo LG L for Powerline:italic:size=10
-URxvt*boldItalicFont:       xft:Meslo LG L for Powerline:bold:italic:size=10
+URxvt*font:                 xft:Meslo LG L for Powerline:regular:size=11
+URxvt*imFont:               xft:Meslo LG L for Powerline:regular:size=11
+URxvt*boldFont:             xft:Meslo LG L for Powerline:bold:size=11
+URxvt*italicFont:           xft:Meslo LG L for Powerline:italic:size=11
+URxvt*boldItalicFont:       xft:Meslo LG L for Powerline:bold:italic:size=11
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -104,5 +104,5 @@ URxvt*termName: rxvt-unicode-256color
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: opera
 URxvt.matcher.button: 1
-URxvt.letterSpace: -2
+URxvt.letterSpace: -1
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
