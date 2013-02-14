@@ -17,12 +17,8 @@
 # because when I was doing fluxbox's docs, people used to complain that there
 # wasn't one, and I wanted to avoid that for pekwm. ;) --eyez
 
-source $HOME/.fehbg &
-xrandr --output VGA1 --auto --right-of LVDS1 &
 xrdb -merge $HOME/.Xresources &
-tint2 &
-nm-applet &
 pidgin &
 xfce4-power-manager &
 urxvt -e tmux &
-thunar --daemon &
+lxpanel -p Lubuntu &
