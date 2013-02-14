@@ -81,3 +81,5 @@ alias zmv="noglob zmv -W"
 # https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
 alias -g G='| grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* } 
+
+bindkey "^R" history-incremental-search-backward
