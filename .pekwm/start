@@ -18,7 +18,8 @@
 # wasn't one, and I wanted to avoid that for pekwm. ;) --eyez
 
 xrdb -merge $HOME/.Xresources &
-pidgin &
 xfce4-power-manager &
-urxvt -e tmux &
+sleep 5 &
 lxpanel -p Lubuntu &
+urxvt -e tmux &
+pidgin &
