@@ -43,7 +43,7 @@ font_shadow = 0
 panel_background_id = 1
 wm_menu = 1
 panel_layer = top
-panel_items = TSC
+panel_items = TCS
 strut_policy = follow_size
 
 #---------------------------------------------
@@ -72,17 +72,17 @@ task_active_background_id = 3
 # SYSTRAYBAR
 #---------------------------------------------
 systray = 1
-systray_padding = 1 1 1
+systray_padding = 10 0 10
 systray_background_id = 2
 
 #---------------------------------------------
 # CLOCK
 #---------------------------------------------
-#time1_format = %a %d %b %H:%M
-time1_format = %H:%M
-time1_font = Droid Sans 9
+time1_format = %a %d %b %H:%M
+#time1_format = %H:%M
+time1_font = Droid Sans Bold 9
 clock_font_color = #ffffff 76
-clock_padding = 6 0
+clock_padding = 30 0
 clock_background_id = 2
 #clock_lclick_command = xclock
 clock_rclick_command = orage
