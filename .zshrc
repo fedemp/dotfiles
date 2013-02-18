@@ -35,10 +35,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/:/opt/eclipse:$PATH
-export PAGER=most
 
-alias less="most"
-alias ls="ls -ahl --color=auto"
+export PAGER=~/bin/vimpager 
+alias less=$PAGER 
+alias most=$PAGER
+
+alias ls="ls -Ah --color=auto"
 alias df='df -h'
 alias k9='kill -9'
 alias grep='grep --color'
