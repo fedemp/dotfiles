@@ -20,6 +20,6 @@
 xrdb -merge $HOME/.Xresources &
 xfce4-power-manager &
 sleep 5 &
-lxpanel -p Lubuntu &
+tint2 &
 urxvt -e tmux &
 pidgin &
