@@ -19,7 +19,10 @@
 
 xrdb -merge $HOME/.Xresources &
 xfce4-power-manager &
-sleep 5 &
+compton &
+#eval `cat $HOME/.fehbg`
+#sleep 1
 tint2 &
 urxvt -e tmux &
 pidgin &
+eval `spacefm --desktop`
