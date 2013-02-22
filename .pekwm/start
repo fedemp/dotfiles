@@ -25,4 +25,4 @@ compton &
 tint2 &
 urxvt -e tmux &
 pidgin &
-eval `spacefm --desktop`
+spacefm --desktop
