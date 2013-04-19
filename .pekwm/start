@@ -18,11 +18,9 @@
 # wasn't one, and I wanted to avoid that for pekwm. ;) --eyez
 
 xrdb -merge $HOME/.Xresources &
+eval `cat ~/.fehbg`
 xfce4-power-manager &
 compton &
-#eval `cat $HOME/.fehbg`
-#sleep 1
 tint2 &
-urxvt -e tmux &
+urxvt &
 pidgin &
-spacefm --desktop
