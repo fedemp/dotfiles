@@ -4,7 +4,7 @@ Files {
     Menu = "~/.pekwm/menu"
     Start = "~/.pekwm/start"
     AutoProps = "~/.pekwm/autoproperties"
-    Theme = "~/.pekwm/themes/greybird"
+    Theme = "~/.pekwm/themes/greybird-pekwm_0.1.6"
     Icons = "~/.pekwm/icons/"
 }
 
