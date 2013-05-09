@@ -83,11 +83,11 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Source Code Pro for Powerline:regular:size=11
-URxvt*imFont:               xft:Source Code Pro for Powerline:regular:size=11
-URxvt*boldFont:             xft:Source Code Pro for Powerline:bold:size=11
-URxvt*italicFont:           xft:Source Code Pro for Powerline:italic:size=11
-URxvt*boldItalicFont:       xft:Source Code Pro for Powerline:bold:italic:size=11
+URxvt*font:                 xft:PragmataPro:Regular:size=11
+URxvt*imFont:               xft:PragmataPro:Regular:size=11
+URxvt*boldFont:             xft:PragmataPro:Bold:size=11
+URxvt*italicFont:           xft:PragmataPro:Italic:size=11
+URxvt*boldItalicFont:       xft:PragmataPro:Bold Italic:size=11
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
