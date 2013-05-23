@@ -79,15 +79,17 @@ Xft.lcdfilter:  lcddefault
 *color15:                 S_base3
 
 ! urxvt
+URxvt*iso14755: False
+URxvt*iso14755_52: False
 URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:monospace:Regular:size=10
-URxvt*imFont:               xft:monospace:Regular:size=10
-URxvt*boldFont:             xft:monospace:Bold:size=10
-URxvt*italicFont:           xft:monospace:Italic:size=10
-URxvt*boldItalicFont:       xft:monospace:Bold Italic:size=10
+URxvt*font:                 xft:PragmataPro for Powerline:Regular:size=14
+URxvt*imFont:               xft:PragmataPro for Powerline:Regular:size=14
+URxvt*boldFont:             xft:PragmataPro:Bold:size=14
+URxvt*italicFont:           xft:PragmataPro:Italic:size=14
+URxvt*boldItalicFont:       xft:PragmataPro:Bold Italic:size=14
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
