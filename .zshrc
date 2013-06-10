@@ -44,7 +44,7 @@ alias most=$PAGER
 alias ls="ls -Ah --color=auto"
 alias df='df -h'
 alias k9='kill -9'
-alias grep='grep --color'
+# alias grep='grep --color'
 eval `dircolors ~/.dircolors`
 bindkey '[D' emacs-backward-word
 bindkey '[C' emacs-forward-word
@@ -82,7 +82,7 @@ autoload zmv
 alias zmv="noglob zmv -W"
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
-alias -g G='| grep' # now you can do: ls foo G something
+alias -g G='| ack-grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* } 
 
 bindkey "^R" history-incremental-search-backward
