@@ -1,17 +1,56 @@
 # The following lines were added by compinstall
 
-zstyle ':completion:*' auto-description '%d'
-zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix
+zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate _prefix
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
-zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'l:|=* r:|=*' ''
+zstyle ':completion:*' match-original both
+zstyle ':completion:*' max-errors 3
 zstyle ':completion:*' menu select=0
-zstyle ':completion:*' prompt 'Found %e'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/fede/.zshrc'
 
+
+# FJDJFD
+zstyle ':completion:*' special-dirs true
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+zstyle ':completion:*:expand:*' tag-order all-expansions
+zstyle ':completion:*' verbose yes 
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d' 
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+# zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+#zstyle ':completion:*:processes' command 'ps ax -o pid,s,nice,stime,args | sed "/ps/d"'
+zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
+zstyle ':completion:*:processes-names' command 'ps axho command' 
+#zstyle ':completion:*:urls' local 'www' '/var/www/htdocs' 'public_html'
+zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}') 
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:*:*:users' ignored-patterns \
+zstyle ':completion:*:scp:*' tag-order \
+zstyle ':completion:*:scp:*' group-order \
+zstyle ':completion:*:ssh:*' tag-order \
+zstyle ':completion:*:ssh:*' group-order \
+zstyle '*' single-ignored show#
+#
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -19,7 +58,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory autocd extendedglob nomatch notify
+setopt appendhistory autocd extendedglob notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -29,8 +68,8 @@ source ~/.dotfiles/pure/prompt.zsh
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
 
-export PAGER=~/bin/vimpager 
-alias less=$PAGER 
+export PAGER=~/bin/vimpager
+alias less=$PAGER
 alias most=$PAGER
 
 alias ls="ls -Ah --color=auto"
@@ -75,7 +114,6 @@ alias zmv="noglob zmv -W"
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
 alias -g G='| ack-grep' # now you can do: ls foo G something
-function fn() { ls **/*$1* } 
+function fn() { ls **/*$1* }
 
-bindkey "^R" history-incremental-search-backward
-
+bindkey "^R" history-incremental-search-backward 
