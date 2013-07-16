@@ -110,3 +110,6 @@
   enabled = true
 [credential]
 	helper = cache
+[user]
+	email = bpm230@gmail.com
+	name = fedemp
