@@ -117,3 +117,5 @@ alias -g G='| ack-grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* }
 
 bindkey "^R" history-incremental-search-backward 
+bindkey '^[[Z' reverse-menu-complete
+setopt menucomplete
