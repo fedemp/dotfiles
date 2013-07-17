@@ -56,7 +56,7 @@ export PAGER=~/bin/vimpager
 alias less=$PAGER
 alias most=$PAGER
 
-alias ls="ls -Ah --color=auto"
+alias ls="ls -h --color=auto"
 alias df='df -h'
 alias k9='kill -9'
 # alias grep='grep --color'
