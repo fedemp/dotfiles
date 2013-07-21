@@ -1,48 +1,49 @@
 # The following lines were added by compinstall
 
-# zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate _prefix
+# zstyle ':completion:*' auto-description 'specify %d'
+# zstyle ':completion:*' completer _expand _complete _approximate
+# zstyle ':completion:*' completions 1
+# zstyle ':completion:*' file-sort name
+# zstyle ':completion:*' format 'completing %d'
+# zstyle ':completion:*' glob 1
 # zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-# zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'l:|=* r:|=*' ''
-# zstyle ':completion:*' match-original both
-# zstyle ':completion:*' max-errors 3
-# zstyle ':completion:*' menu select=0
-# zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-# zstyle ':completion:*' squeeze-slashes true
-# zstyle ':completion:*' use-compctl false
+# zstyle ':completion:*' ignore-parents parent pwd ..
+# zstyle ':completion:*' insert-unambiguous true
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+# zstyle ':completion:*' matcher-list '' '+m:{a-z}={A-Z} r:|[._-]=* r:|=*' '' 'l:|=* r:|=*'
+# zstyle ':completion:*' max-errors 2 not-numeric
+# zstyle ':completion:*' menu select=1
+# zstyle ':completion:*' original true
+# zstyle ':completion:*' prompt 'correcting with %e errors'
+# zstyle ':completion:*' substitute 1
 # zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/fede/.zshrc'
+# zstyle :compinstall filename '/home/fede/.zshrc'
 
-# Taken from oh-my-zsh
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
-
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
+zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-
-# disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
-
+zstyle ':completion:*' users off
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path ~/.dotfiles/.zshcache/
+zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 
 autoload -Uz compinit
 compinit
-
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory autocd extendedglob notify
+setopt appendhistory autocd extendedglob nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -61,8 +62,6 @@ alias df='df -h'
 alias k9='kill -9'
 # alias grep='grep --color'
 eval `dircolors ~/.dircolors`
-bindkey '[D' emacs-backward-word
-bindkey '[C' emacs-forward-word
 
 alias gs='git status'
 alias gi='vim .gitignore'
@@ -100,6 +99,6 @@ alias zmv="noglob zmv -W"
 alias -g G='| ack-grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* }
 
-bindkey "^R" history-incremental-search-backward 
+bindkey "^R" history-incremental-search-backward
+
 bindkey '^[[Z' reverse-menu-complete
-setopt menucomplete
