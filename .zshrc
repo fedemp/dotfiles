@@ -1,25 +1,5 @@
 # The following lines were added by compinstall
 
-# zstyle ':completion:*' auto-description 'specify %d'
-# zstyle ':completion:*' completer _expand _complete _approximate
-# zstyle ':completion:*' completions 1
-# zstyle ':completion:*' file-sort name
-# zstyle ':completion:*' format 'completing %d'
-# zstyle ':completion:*' glob 1
-# zstyle ':completion:*' group-name ''
-# zstyle ':completion:*' ignore-parents parent pwd ..
-# zstyle ':completion:*' insert-unambiguous true
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-# zstyle ':completion:*' matcher-list '' '+m:{a-z}={A-Z} r:|[._-]=* r:|=*' '' 'l:|=* r:|=*'
-# zstyle ':completion:*' max-errors 2 not-numeric
-# zstyle ':completion:*' menu select=1
-# zstyle ':completion:*' original true
-# zstyle ':completion:*' prompt 'correcting with %e errors'
-# zstyle ':completion:*' substitute 1
-# zstyle ':completion:*' verbose true
-# zstyle :compinstall filename '/home/fede/.zshrc'
-
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
@@ -48,7 +28,6 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
-
 source ~/.dotfiles/pure/prompt.zsh
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
@@ -114,3 +93,5 @@ if [ $commands[fasd] ]; then # check if fasd is installed
   alias v='f -e vim'
   alias o='a -e open'
 fi
+
+stty erase \^\? # Fixes backspace for vim
