@@ -1,55 +1,5 @@
 # The following lines were added by compinstall
 
-# zstyle ':completion:*' auto-description 'specify %d'
-# zstyle ':completion:*' completer _expand _complete _approximate
-# zstyle ':completion:*' completions 1
-# zstyle ':completion:*' file-sort name
-# zstyle ':completion:*' format 'completing %d'
-# zstyle ':completion:*' glob 1
-# zstyle ':completion:*' group-name ''
-# zstyle ':completion:*' ignore-parents parent pwd ..
-# zstyle ':completion:*' insert-unambiguous true
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-# zstyle ':completion:*' matcher-list '' '+m:{a-z}={A-Z} r:|[._-]=* r:|=*' '' 'l:|=* r:|=*'
-# zstyle ':completion:*' max-errors 2 not-numeric
-# zstyle ':completion:*' menu select=1
-# zstyle ':completion:*' original true
-# zstyle ':completion:*' prompt 'correcting with %e errors'
-# zstyle ':completion:*' substitute 1
-# zstyle ':completion:*' verbose true
-# zstyle :compinstall filename '/home/fede/.zshrc'
-setopt append_history
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
-setopt share_history # share command history data
-setopt correct_all
-alias man='nocorrect man'
-alias mv='nocorrect mv'
-alias mysql='nocorrect mysql'
-alias mkdir='nocorrect mkdir'
-alias gist='nocorrect gist'
-alias heroku='nocorrect heroku'
-alias ebuild='nocorrect ebuild'
-alias hpodder='nocorrect hpodder'
-alias sudo='nocorrect sudo'
-
-setopt auto_name_dirs
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
-
-alias ..='cd ..'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd/='cd /'
-
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
@@ -62,7 +12,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
-# zstyle ':completion:*' users off
+zstyle ':completion:*' users off
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 
@@ -78,12 +28,12 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
-
 source ~/.dotfiles/pure/prompt.zsh
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
 
 export PAGER=~/bin/vimpager
+export EDITOR=vim
 alias less=$PAGER
 alias most=$PAGER
 
@@ -132,3 +82,16 @@ function fn() { ls **/*$1* }
 bindkey "^R" history-incremental-search-backward
 
 bindkey '^[[Z' reverse-menu-complete
+
+if [ $commands[fasd] ]; then # check if fasd is installed
+  fasd_cache="$HOME/.fasd-init-cache"
+  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+    fasd --init auto >| "$fasd_cache"
+  fi
+  source "$fasd_cache"
+  unset fasd_cache
+  alias v='f -e vim'
+  alias o='a -e open'
+fi
+
+stty erase \^\? # Fixes backspace for vim
