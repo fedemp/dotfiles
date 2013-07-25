@@ -19,6 +19,36 @@
 # zstyle ':completion:*' substitute 1
 # zstyle ':completion:*' verbose true
 # zstyle :compinstall filename '/home/fede/.zshrc'
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
+setopt correct_all
+alias man='nocorrect man'
+alias mv='nocorrect mv'
+alias mysql='nocorrect mysql'
+alias mkdir='nocorrect mkdir'
+alias gist='nocorrect gist'
+alias heroku='nocorrect heroku'
+alias ebuild='nocorrect ebuild'
+alias hpodder='nocorrect hpodder'
+alias sudo='nocorrect sudo'
+
+setopt auto_name_dirs
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias ..='cd ..'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
@@ -32,7 +62,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
-zstyle ':completion:*' users off
+# zstyle ':completion:*' users off
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 
