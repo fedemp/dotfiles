@@ -59,15 +59,14 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export GREP_COLOR='0;32'
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
-bindkey '^[OA' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[OB' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
 bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
 bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
 bindkey '^[OF' end-of-line                          # [End] - Go to end of line
-bindkey '^[[C' forward-word                      # [Ctrl-RightArrow] - move forward one word
-bindkey '^[[D' backward-word                     # [Ctrl-LeftArrow] - move backward one word
-bindkey '^[[B' history-search-forward
+bindkey '^[Oc' forward-word                      # [Ctrl-RightArrow] - move forward one word
+bindkey '^[Od' backward-word                     # [Ctrl-LeftArrow] - move backward one word
 
 autoload zmv
 alias zmv="noglob zmv -W"
@@ -77,6 +76,8 @@ alias -g G='| ack-grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* }
 
 bindkey "^R" history-incremental-search-backward
+bindkey "^[Oa" history-incremental-search-backward
+bindkey "^[Ob" history-incremental-search-forward
 
 bindkey '^[[Z' reverse-menu-complete
 
