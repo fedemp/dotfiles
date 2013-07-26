@@ -83,7 +83,7 @@ URxvt*iso14755: False
 URxvt*iso14755_52: False
 URxvt*buffered: true
 URxvt*cursorBlink: false
-URxvt.cursorUnderline: false
+URxvt.cursorUnderline: true
 URxvt*underlineColor: #93a1a1
 URxvt*font:                 xft:Meslo LG S for Powerline:Regular:size=11
 URxvt*imFont:               xft:Meslo LG S for Powerline:Regular:size=11
