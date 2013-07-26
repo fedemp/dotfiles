@@ -96,7 +96,7 @@
   default = tracking
 [core]
   autocrlf = false
-  editor = ~/bin/vimpager
+  # editor = ~/bin/vimpager
   excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = true
