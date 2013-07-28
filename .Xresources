@@ -79,11 +79,11 @@ Xft.lcdfilter:  lcddefault
 *color15:                 S_base3
 
 ! urxvt
-URxvt*iso14755: False
-URxvt*iso14755_52: False
+! URxvt*iso14755: False
+! URxvt*iso14755_52: False
 URxvt*buffered: true
 URxvt*cursorBlink: false
-URxvt.cursorUnderline: true
+URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
 URxvt*font:                 xft:Meslo LG S for Powerline:Regular:size=11
 URxvt*imFont:               xft:Meslo LG S for Powerline:Regular:size=11
