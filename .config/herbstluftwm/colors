@@ -1,0 +1,13 @@
+#!/bin/bash
+# To try to get the colors from xdefaults
+
+xrdb=( $(xrdb -query | grep -P "color[0-9]*:" | sort | cut -f 2-) )
+
+declare -A color
+
+index=0
+
+for name in black brightgreen brightyellow brightblue brightmagenta brightcyan brightwhite red green yellow blue magenta cyan white gray brightred; do
+  color[${name}]=${xrdb[$index]}
+  ((index++))
+done
