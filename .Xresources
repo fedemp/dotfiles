@@ -85,11 +85,11 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Meslo LG S for Powerline:Regular:size=11
-URxvt*imFont:               xft:Meslo LG S for Powerline:Regular:size=11
-URxvt*boldFont:             xft:Meslo LG S for Powerline:Regular:size=11
-URxvt*italicFont:           xft:Meslo LG S for Powerline:Italic:size=11
-URxvt*boldItalicFont:       xft:Meslo LG S for Powerline:Regular Italic:size=11
+URxvt*font:                 xft:Meslo LG S for Powerline:Regular:size=10
+URxvt*imFont:               xft:Meslo LG S for Powerline:Regular:size=10
+URxvt*boldFont:             xft:Meslo LG S for Powerline:Regular:size=10
+URxvt*italicFont:           xft:Meslo LG S for Powerline:Italic:size=10
+URxvt*boldItalicFont:       xft:Meslo LG S for Powerline:Regular Italic:size=10
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
