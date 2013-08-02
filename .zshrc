@@ -40,7 +40,7 @@ alias most=$PAGER
 alias ls="ls -h --color=auto"
 alias df='df -h'
 alias k9='kill -9'
-# alias grep='grep --color'
+alias ack='ack-grep'
 eval `dircolors ~/.dircolors`
 
 alias gs='git status'
