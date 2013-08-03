@@ -24,7 +24,7 @@ hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-d spawn dmenu_run -fn "-*-terminus-*-r-*-*-12-*-*-*-*-*-*-*"
 
 # tags
-TAG_NAMES=( {1..9} )
+TAG_NAMES=( {dev,chat,null,4,5,6,7,8,9} )
 TAG_KEYS=( {1..9} 0 )
 
 hc rename default "${TAG_NAMES[0]}" || true
@@ -135,7 +135,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # hc detect_monitors
 
 # find the panel
-panel=~/.config/herbstluftwm/pnel.sh
+panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
