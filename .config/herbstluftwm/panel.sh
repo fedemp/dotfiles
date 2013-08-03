@@ -15,7 +15,7 @@ x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=16
-font="-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
+font="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
 bgcolor=$(herbstclient get frame_border_normal_color)
 selbg=$(herbstclient get window_border_active_color)
 selfg='#101010'
@@ -43,14 +43,29 @@ fi
 function uniq_linebuffered() {
     awk '$0 != l { print ; l=$0 ; fflush(); }' "$@"
 }
+function bat() {
+  local status=$(acpi | awk '{print $3}' | sed 's/,//')
+
+  case $status in
+    Discharging) pow_col="^fg(#efefef)"; pwr_sign="-" ;;
+    Charging) pow_col="^fg(darkred)"; pwr_sign="+";;
+    Full) pow_col="^fg(#909090)"; pwr_sign=":";;
+    Unknown) pow_col="^fg(#909090)"; pwr_sign=":";;
+  esac
+
+  local percent=$(acpi | awk '{print $4}' | sed 's/[,%]//g')
+  echo -n "^fg(#909090)$pwr_sign$percent"
+}
 
 herbstclient pad $monitor $panel_height
 {
     # events:
     #mpc idleloop player &
     while true ; do
-        date +'date ^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
-        sleep 1 || break
+			batshow="$(bat)"
+			echo "bat $batshow"
+			date +'date ^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
+			sleep 1 || break
     done > >(uniq_linebuffered)  &
     childpid=$!
     herbstclient --idle
@@ -59,6 +74,7 @@ herbstclient pad $monitor $panel_height
     TAGS=( $(herbstclient tag_status $monitor) )
     visible=true
     date=""
+    batshow=""
     windowtitle=""
     while true ; do
         bordercolor="#26221C"
@@ -91,7 +107,7 @@ herbstclient pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg() $date $separator"
+        right="$separator^bg() $batshow $date $separator"
         right_text_only=$(echo -n "$right"|sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
@@ -106,6 +122,9 @@ herbstclient pad $monitor $panel_height
                 #echo "reseting tags" >&2
                 TAGS=( $(herbstclient tag_status $monitor) )
                 ;;
+						bat*)
+								batshow="${cmd[@]:1}"
+								;;
             date)
                 #echo "reseting date" >&2
                 date="${cmd[@]:1}"
