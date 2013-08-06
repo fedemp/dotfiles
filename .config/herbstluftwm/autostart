@@ -85,30 +85,20 @@ hc set frame_border_active_color ${color["magenta"]}
 hc set frame_border_normal_color ${color["black"]}
 hc set frame_bg_normal_color ${color["black"]}
 hc set frame_bg_active_color ${color["gray"]}
-hc set frame_border_width 1
-hc set window_border_width 1
 hc set window_border_normal_color ${color["black"]}
 hc set window_border_active_color ${color["blue"]}
-hc set always_show_frame 1
-hc set window_gap 4
 
 # colors
-# hc set frame_border_active_color '#222222'
-# hc set frame_border_normal_color '#101010'
-# hc set frame_bg_normal_color '#565656'
-# hc set frame_bg_active_color '#345F0C'
- hc set frame_border_width 1
- hc set window_border_width 3
- hc set window_border_inner_width 1
-# hc set window_border_normal_color '#454545'
-# hc set window_border_active_color '#9fbc00'
- hc set always_show_frame 1
- hc set frame_gap 4
+hc set frame_border_width 0
+hc set window_border_width 1
+hc set window_border_inner_width 1
+hc set always_show_frame 0
+hc set frame_gap 10
 # # add overlapping window borders
- hc set window_gap -2
-hc set frame_padding 2
+hc set window_gap 0
+hc set frame_padding 1
 hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
+hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 
 
@@ -121,8 +111,6 @@ hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
-
-for_window [class="Pidgin"] floating enable
 
 # unlock, just to be sure
 hc unlock
