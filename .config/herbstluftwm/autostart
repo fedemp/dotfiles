@@ -20,8 +20,8 @@ Mod=Mod4
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
-hc keybind $Mod-Return spawn urxvt
-hc keybind $Mod-d spawn dmenu_run -fn "-*-terminus-*-r-*-*-12-*-*-*-*-*-*-*"
+hc keybind $Mod-Return spawn st
+hc keybind $Mod-d spawn dmenu_run -fn "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*"
 
 # tags
 TAG_NAMES=( {dev,chat,null,4,5,6,7,8,9} )
@@ -106,7 +106,7 @@ hc set frame_bg_transparent 1
 # rules
 hc unrule -F
 #hc rule class=XTerm tag=3 # move all xterms to tag 3
-hc rule focus=off # normally do not focus new clients
+hc rule focus=on # normally do not focus new clients
 # give focus to most common terminals
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
