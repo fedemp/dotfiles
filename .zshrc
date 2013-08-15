@@ -18,6 +18,11 @@ zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 
 autoload -Uz compinit
 compinit
+
+autoload bashcompinit
+bashcompinit
+source /usr/local/share/bash-completion/completions/bspc
+
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
