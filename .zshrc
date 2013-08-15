@@ -23,6 +23,8 @@ autoload bashcompinit
 bashcompinit
 source /usr/local/share/bash-completion/completions/bspc
 
+source ~/.npmcompletion
+
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
