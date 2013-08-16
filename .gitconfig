@@ -86,6 +86,7 @@
 [merge]
   summary = true
   verbosity = 1
+	tool = fugitive
 [apply]
   whitespace = nowarn
 [branch]
@@ -110,3 +111,5 @@
   enabled = true
 [credential]
 	helper = cache
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
