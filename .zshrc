@@ -19,10 +19,6 @@ zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 autoload -Uz compinit
 compinit
 
-autoload bashcompinit
-bashcompinit
-source /usr/local/share/bash-completion/completions/bspc
-
 source ~/.npmcompletion
 
 # End of lines added by compinstall
