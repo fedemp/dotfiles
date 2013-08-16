@@ -9,7 +9,18 @@ static char font[] = "Menlo for Powerline:pixelsize=14:antialias=false:autohint=
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
-/* timeouts (in milliseconds) */
+/* Kerning / character bounding-box mutlipliers */
+float cwscale = 1.0;
+float chscale = 1.0;
+
+/*
+ * word delimiter string
+ *
+ * More advanced example: " `'\"()[]{}"
+ */
+static char worddelimiters[] = " ";
+
+/* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
 static unsigned int tripleclicktimeout = 600;
 
@@ -17,8 +28,14 @@ static unsigned int tripleclicktimeout = 600;
 static bool allowaltscreen = true;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 60;
+static unsigned int xfps = 120;
 static unsigned int actionfps = 30;
+
+/*
+ * blinking timeout (set to 0 to disable blinking) for the terminal blinking
+ * attribute.
+ */
+static unsigned int blinktimeout = 800;
 
 /* TERM value */
 static char termname[] = "st-256color";
@@ -66,7 +83,15 @@ static unsigned int defaultcs = 14;
 static unsigned int defaultitalic = 11;
 static unsigned int defaultunderline = 7;
 
-/* Internal shortcuts. */
+/* Internal mouse shortcuts. */
+/* Beware that overloading Button1 will disable the selection. */
+static Mousekey mshortcuts[] = {
+	/* keysym		mask		string */
+	{ Button4,		XK_ANY_MOD,	"\031"},
+	{ Button5,		XK_ANY_MOD,	"\005"},
+};
+
+/* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 
 static Shortcut shortcuts[] = {
@@ -134,7 +159,7 @@ static Key key[] = {
 	{ XK_KP_Right,      XK_ANY_MOD,     "\033[C",        0,   -1,    0},
 	{ XK_KP_Right,      XK_ANY_MOD,     "\033OC",        0,   +1,    0},
 	{ XK_KP_Prior,      ShiftMask,      "\033[5;2~",     0,    0,    0},
-	{ XK_KP_Prior,      XK_ANY_MOD,     "\033[5~",	     0,    0,    0},
+	{ XK_KP_Prior,      XK_ANY_MOD,     "\033[5~",       0,    0,    0},
 	{ XK_KP_Begin,      XK_ANY_MOD,     "\033[E",        0,    0,    0},
 	{ XK_KP_End,        ControlMask,    "\033[J",       -1,    0,    0},
 	{ XK_KP_End,        ControlMask,    "\033[1;5F",    +1,    0,    0},
@@ -187,7 +212,7 @@ static Key key[] = {
 	{ XK_Left,          ShiftMask,      "\033[1;2D",     0,    0,    0},
 	{ XK_Left,          ControlMask,    "\033[1;5D",     0,    0,    0},
 	{ XK_Left,          Mod1Mask,       "\033[1;3D",     0,    0,    0},
-	{ XK_Left,	    XK_ANY_MOD,     "\033[D",        0,   -1,    0},
+	{ XK_Left,          XK_ANY_MOD,     "\033[D",        0,   -1,    0},
 	{ XK_Left,          XK_ANY_MOD,     "\033OD",        0,   +1,    0},
 	{ XK_Right,         ShiftMask,      "\033[1;2C",     0,    0,    0},
 	{ XK_Right,         ControlMask,    "\033[1;5C",     0,    0,    0},
@@ -221,7 +246,7 @@ static Key key[] = {
 	{ XK_End,           XK_ANY_MOD,     "\033[4~",       0,    0,    0},
 	{ XK_Prior,         ControlMask,    "\033[5;5~",     0,    0,    0},
 	{ XK_Prior,         ShiftMask,      "\033[5;2~",     0,    0,    0},
-	{ XK_Prior,         XK_NO_MOD,      "\033[5~",       0,    0,    0},
+	{ XK_Prior,         XK_ANY_MOD,     "\033[5~",       0,    0,    0},
 	{ XK_Next,          ControlMask,    "\033[6;5~",     0,    0,    0},
 	{ XK_Next,          ShiftMask,      "\033[6;2~",     0,    0,    0},
 	{ XK_Next,          XK_ANY_MOD,     "\033[6~",       0,    0,    0},
