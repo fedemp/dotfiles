@@ -4,7 +4,7 @@ flavor=${1:-dzen2}
 
 bspc control --put-status
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-statusforpanel > "$PANEL_FIFO" &
+# statusforpanel > "$PANEL_FIFO" &
 case "$flavor" in
     bar)
         cat "$PANEL_FIFO" | panel_bar | bar
