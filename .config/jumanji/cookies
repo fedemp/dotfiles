@@ -1,7 +1,6 @@
 #HttpOnly_.google.com.ar	TRUE	/	FALSE	1392487765	NID	67=DiTF9A2u31dii3CJp9yBVyxtqrj8msyHzz1b_wckT7_iYmLybUZScCpi-xNIIb1Fq7yiIHkS35jGDRkr6Wh4AoudYl8Qr9uZMmq2pmOYZg9ahfjqYCYlNn2OosFawp3r
 #HttpOnly_.paypal.com	TRUE	/	TRUE	2007397826	KHcl0EuY7AKSMgfvHl7J5E7hPtK	tYnR4SaUS65QbV1mdLnL5wsLyv9lGwrWTm-7G1uMMSM-fwWoIwszjCyN4jGrwJ5hLBuo6BEq4Ev7HgFe
 #HttpOnly_.paypal.com	TRUE	/	TRUE	1692037826	cookie_check	yes
-#HttpOnly_.paypal.com	TRUE	/	TRUE	1376681426	Ryae5wz4ngziK9EqPJQ_8OLNWj0	XGEi5JdjseUd6PTP5HXdRP5MNNC5wA9OjhNir2xuiLLKkHBAYmdL6RgdQx6Wf0Nu41igo_2gPfvqIFDX
 www.paypal.com	FALSE	/	FALSE	2322757825	Apache	10.74.8.41.1376677825536345
 #HttpOnly_.paypal.com	TRUE	/	TRUE	2007397827	navlns	0.0
 .paypal.d1.sc.omtrdc.net	TRUE	/	FALSE	1439749834	s_vi	[CS]v1|290737E5051D0529-40000147202C362F[CE]
@@ -10,7 +9,6 @@ www.paypal.com	FALSE	/	FALSE	2322757825	Apache	10.74.8.41.1376677825536345
 es.wikipedia.org	FALSE	/	FALSE	1377282663	centralnotice_bucket	0-4.2
 es.wikipedia.org	FALSE	/	FALSE	1408213863	centralnotice_bannercount_fr12	1
 .reddit.com	TRUE	/	FALSE	1439749918	__utma	55650728.1793293874.1376677919.1376677919.1376677919.1
-.reddit.com	TRUE	/	FALSE	1376679718	__utmb	55650728.1.10.1376677919
 .reddit.com	TRUE	/	FALSE	1392445918	__utmz	55650728.1376677919.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
 engine.adzerk.net	FALSE	/	FALSE	1408213902	azk-views	
 engine.adzerk.net	FALSE	/	FALSE	1379269902	azk-events	
@@ -21,16 +19,8 @@ engine.adzerk.net	FALSE	/	FALSE	1377541754	azk	a883282817ae4df8a6a29a427f68d82f
 #HttpOnly_.google.com	TRUE	/	FALSE	1392489175	NID	67=Dn7W9EdGYbztmYI9HTnmcHqlleKqfDq00PdFvclrrFyBnmWTUUvvDFXZLZbPb1BPSZaVp_gUFe6AiTdyW0VjHsHyfy7-0HiD6IAx8UneQU_ylbKTuQKRxLCbEhVbDBXK
 .google.com.ar	TRUE	/	FALSE	1439749975	PREF	ID=9d1ea4ddb84cf6f0:U=971bb82c7081db8b:FF=0:TM=1376676565:LM=1376677975:S=hJN_GuSfzMHsLIZw
 github.com	FALSE	/	FALSE	1377283001	tracker	http%3A%2F%2Fr.duckduckgo.com%2F
-github.com	FALSE	/	FALSE	1439750841	__utma	1.866735218.1376678202.1376678202.1376678202.1
-github.com	FALSE	/	FALSE	1376680641	__utmb	1.2.10.1376678202
-github.com	FALSE	/	FALSE	1392446841	__utmz	1.1376678202.1.1.utmcsr=r.duckduckgo.com|utmccn=(referral)|utmcmd=referral|utmcct=/
-#HttpOnly_.github.com	TRUE	/	TRUE	2007830845	logged_in	no
-#HttpOnly_github.com	FALSE	/	TRUE	1672531200	_gh_sess	BAh7BzoPc2Vzc2lvbl9pZCIlMzI2MTY4ZjdmYzJlOGUwYzQyN2UwNjI4YTAwYTliZGE6EF9jc3JmX3Rva2VuSSIxcmowVmRJZWFncHo5MXQzeXp5SFVQbC9vUDlOZWx4S2R4aFRWZEZCaG9iRT0GOgZFRg%3D%3D--3e5cbcbbdba3e30c7d86b3d763774cde2a5b2d50
-github.com	FALSE	/	FALSE	1376765245	spy_repo	jrburke%2Frequirejs
-github.com	FALSE	/	FALSE	1376765245	spy_repo_at	2013-08-16T18%3A47%3A25.399Z
 .linuxine.com	TRUE	/	FALSE	1378678760	SESSa964434612d6429cbfb06a7d517148ac	bfs8mlnru87s0edhdd6sffa5h5
 .linuxine.com	TRUE	/	FALSE	1439751035	__utma	139705774.1629107931.1376678943.1376678943.1376678943.1
-.linuxine.com	TRUE	/	FALSE	1376680835	__utmb	139705774.2.10.1376678943
 .linuxine.com	TRUE	/	FALSE	1392447035	__utmz	139705774.1376678943.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=jumanji%20ubuntu%20crash
 .alternativeto.net	TRUE	/	FALSE	1439751069	__gads	ID=2eceb287eafb21bd:T=1376679069:S=ALNI_Ma1U_sTWOoza3asMDI4UyGQDAy-yA
 .getclicky.com	TRUE	/	FALSE	1577145000	__cfduid	deae176afd6b764926fd9c280141287691376679069911
@@ -55,17 +45,12 @@ in.getclicky.com	FALSE	/	FALSE	2007831076	cluid	4019444217
 .serving-sys.com	TRUE	/	FALSE	1384440677	D1	
 .serving-sys.com	TRUE	/	FALSE	1384440677	u2	149e8860-3c49-4c00-893b-ae2f97166d773UZ0b0
 .alternativeto.net	TRUE	/	FALSE	1439751105	__utma	200332798.1557268911.1376679070.1376679070.1376679070.1
-.alternativeto.net	TRUE	/	FALSE	1376680905	__utmb	200332798.2.10.1376679070
 .alternativeto.net	TRUE	/	FALSE	1392447105	__utmz	200332798.1376679070.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=jumanji%20report%20issue%20browser
-.technoratimedia.com	TRUE	/	FALSE	1376765507	tads_zora	1|15933|2
 #HttpOnly_.adnxs.com	TRUE	/	FALSE	1384455108	icu	ChIIhrgDEAoYAiACKAIwxOm5kAUKEgiLsgcQChgCIAIoAjDE6bmQBRDE6bmQBRgD
 #HttpOnly_.adnxs.com	TRUE	/	FALSE	1384455110	uuid2	1116631811585751126
-#HttpOnly_.adnxs.com	TRUE	/	FALSE	1376765510	sess	1
 #HttpOnly_.adnxs.com	TRUE	/	FALSE	1384455110	anj	Kfu=8fG10Xcvjr/?0P(*AuB(+Z89Iz(<7.BTWMxmD#S*^LuTw.ud]VO!Zx>a*e=nanz$N=n^]zT]+fXHw:3uDwcQ%5Q$:moX2HLC:AJ+*$qm>KOeAw2-QUrf'EJsb4VUE%#AFTU/VbyF!':MgNL/_Q
 ad.yieldmanager.com	FALSE	/	FALSE	1439751111	ih	"b!!!!$!DNDU!!!!#>C_jk!F0Sx!!!!#>C_jG"
 ad.yieldmanager.com	FALSE	/	FALSE	1439751111	bh	"b!!!!#!!0sA!!!!$>C_jk"
-ad.yieldmanager.com	FALSE	/	FALSE	1376697600	vuday1	2*E+5!82pCG18F$
-ad.yieldmanager.com	FALSE	/	FALSE	1376697600	liday1	<06k7o!a>=!82pC=VNZZ
 .turn.com	TRUE	/	FALSE	1392231111	uid	4399156376775937032
 ads.e-planning.net	FALSE	/	FALSE	2007399111	E-Planning.NET	N1062d53b9d22842f
 .twitter.com	TRUE	/	FALSE	1423939912	pid	"v3:1376679112130394746063459"
@@ -73,3 +58,10 @@ ads.e-planning.net	FALSE	/	FALSE	2007399111	E-Planning.NET	N1062d53b9d22842f
 .agkn.com	TRUE	/	FALSE	1534359112	uuid	545595985907316051
 .agkn.com	TRUE	/	FALSE	1439751112	u	9|0DEgZoTEjGaExSAAAAAAEAgIRAQIkwyAAALQCAh4zVAACHjMcAAcE5QEAgAKeAQCABMABAIAFPwEAgATrAQCABTYBAIAE-QEAgAEcmGUbfgAAAAAAAAABAB0AAAMHKQAAABMxMTE2NjMxODExNTg1NzUxMTI2B24AAAAOMTkwc3Q1NDB1dDhwc2EAZwAAABM0Mzk5MTU2Mzc2Nzc1OTM3MDMy
 .alternativeto.net	TRUE	/	FALSE	1408215112	uvts	U7tdhRXe7PIMIVa
+github.com	FALSE	/	FALSE	1440079945	__utma	1.866735218.1376678202.1376678202.1377007946.2
+github.com	FALSE	/	FALSE	1377009745	__utmb	1.1.10.1377007946
+github.com	FALSE	/	FALSE	1392775945	__utmz	1.1376678202.1.1.utmcsr=r.duckduckgo.com|utmccn=(referral)|utmcmd=referral|utmcct=/
+#HttpOnly_.github.com	TRUE	/	TRUE	2008159967	logged_in	no
+#HttpOnly_github.com	FALSE	/	TRUE	1672531200	_gh_sess	BAh7BzoPc2Vzc2lvbl9pZCIlMzI2MTY4ZjdmYzJlOGUwYzQyN2UwNjI4YTAwYTliZGE6EF9jc3JmX3Rva2VuSSIxcmowVmRJZWFncHo5MXQzeXp5SFVQbC9vUDlOZWx4S2R4aFRWZEZCaG9iRT0GOgZFRg%3D%3D--3e5cbcbbdba3e30c7d86b3d763774cde2a5b2d50
+github.com	FALSE	/	FALSE	1377094367	spy_repo	jrburke%2Fr.js
+github.com	FALSE	/	FALSE	1377094367	spy_repo_at	2013-08-20T14%3A12%3A47.703Z
