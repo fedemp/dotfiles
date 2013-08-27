@@ -1,6 +1,6 @@
 #! /bin/sh
 
 while true ; do
-    echo "S^fg(gold)⇅^fg(grey) $(iwgetid --raw)   ^fg(pink)♥ ^fg(grey) $(acpi -b | grep -o '[0-9]\+%')   ^fg(cyan)↻^fg(grey) $(date '+%A %H:%M')"
+    echo "S^fg(gold)⇅^fg(grey) $(iwgetid --raw)   ^fg(pink)♥ ^fg(grey) $(acpi -b | grep -o '[0-9]\+%')   ^fg(cyan)↻^fg(grey) $(date '+%a %d %H:%M')"
     sleep 5
 done
