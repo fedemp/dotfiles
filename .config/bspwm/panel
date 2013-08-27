@@ -1,15 +1,16 @@
 #! /bin/sh
 
-flavor=${1:-dzen2}
+flavor=${1:-bar}
 
 bspc control --put-status
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-statusforpanel > "$PANEL_FIFO" &
 case "$flavor" in
     bar)
+				statusforbar > "$PANEL_FIFO" &
         cat "$PANEL_FIFO" | panel_bar | bar
         ;;
     dzen2)
+				statusforpanel > "$PANEL_FIFO" &
         . panel_colors
         PANEL_HEIGHT=24
         FONT_FAMILY='Dejavu Sans'
