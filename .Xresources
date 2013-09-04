@@ -11,12 +11,12 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Dina
-URxvt*imFont:               xft:Dina
-URxvt*boldFont:             xft:Dina
-URxvt*italicFont:           xft:Dina
-URxvt*boldItalicFont:       xft:Dina
-URxvt*depth: 32
+URxvt*font:                 xft:Inconsolata for Powerline:regular:size=13
+URxvt*imFont:               xft:Inconsolata for Powerline:italic:size=13
+URxvt*boldFont:             xft:Inconsolata for Powerline:bold:size=13
+URxvt*italicFont:           xft:Inconsolata for Powerline:italic:size=13
+URxvt*boldItalicFont:       xft:Inconsolata for Powerline:bold italic:size=13
+URxvt*depth: 42
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*loginShell: true
