@@ -72,8 +72,10 @@ elif [ -f "/usr/bin/src-hilite-lesspipe.sh" ]; then
 fi
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
-bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+bindkey '^[OA' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+# bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '^[OB' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+# bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
 bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
 bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
@@ -91,8 +93,8 @@ function fn() { ls **/*$1* }
 bindkey "^R" history-incremental-search-backward
 bindkey "^[[1;5A" history-incremental-search-backward
 bindkey "^[[1;5B" history-incremental-search-forward
-bindkey "^[[a" history-incremental-search-backward
-bindkey "^[[b" history-incremental-search-forward
+bindkey "^[[A" history-incremental-search-backward
+bindkey "^[[B" history-incremental-search-forward
 
 bindkey '^[[Z' reverse-menu-complete
 
