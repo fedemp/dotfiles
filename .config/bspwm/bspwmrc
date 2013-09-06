@@ -5,19 +5,19 @@ REMAINING_DESKS="$(seq 2 9) 0"
 bspc desktop Desktop01 -n $FIRST_DESK
 bspc monitor -a $REMAINING_DESKS
 
-bspc rule -a Pidgin -d 2
+bspc rule -a Pidgin -d 4
 
 bspc config split_ratio         0.5
 bspc config border_width        2
 bspc config window_gap          16
 bspc config borderless_monocle  true
 bspc config gapless_monocle     false
-bspc config normal_border_color "#735162"
+bspc config normal_border_color "#fdf6e3"
 # bspc config normal_border_color "#373445"
 # bspc config focused_border_color "#735162"
-bspc config focused_border_color "#668811"
-xsetroot -solid "#373445"
-hsetroot -solid "#373445"
+bspc config focused_border_color "#d33682"
+xsetroot -solid "#cac4b5"
+# hsetroot -solid "#373445"
 bspc monitor -p 18 0 0 0
 
 # xset fp+ ~/.fonts/stlarch
