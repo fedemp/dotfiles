@@ -16,7 +16,7 @@ URxvt*imFont:               xft:Inconsolata for Powerline:italic:size=13
 URxvt*boldFont:             xft:Inconsolata for Powerline:bold:size=13
 URxvt*italicFont:           xft:Inconsolata for Powerline:italic:size=13
 URxvt*boldItalicFont:       xft:Inconsolata for Powerline:bold italic:size=13
-URxvt*depth: 42
+URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*loginShell: true
