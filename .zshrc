@@ -43,7 +43,7 @@ alias ls="ls -h --color=auto"
 alias df='df -h'
 alias k9='kill -9'
 alias ack='ack-grep'
-eval `dircolors ~/.dircolors`
+eval `dircolors ~/.dir_colors`
 
 alias gs='git status'
 alias gi='vim .gitignore'
@@ -110,4 +110,3 @@ if [ $commands[fasd] ]; then # check if fasd is installed
 fi
 
 stty erase \^\? # Fixes backspace for vim
-export TERM=screen-256color
