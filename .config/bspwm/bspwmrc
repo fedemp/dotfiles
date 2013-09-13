@@ -8,21 +8,26 @@ bspc monitor -a $REMAINING_DESKS
 bspc rule -a Pidgin -d 4
 
 bspc config split_ratio         0.5
-bspc config border_width        2
-bspc config window_gap          16
+bspc config border_width        3
+bspc config window_gap          8
 bspc config borderless_monocle  true
 bspc config gapless_monocle     false
-bspc config normal_border_color "#fdf6e3"
+bspc config normal_border_color "#dbd4c1"
 # bspc config normal_border_color "#373445"
 # bspc config focused_border_color "#735162"
-bspc config focused_border_color "#d33682"
-xsetroot -solid "#cac4b5"
+bspc config focused_border_color "#859900"
+xsetroot -solid "#dbd4c1"
 # hsetroot -solid "#373445"
-bspc monitor -p 18 0 0 0
+bspc monitor -p 24 0 0 0
 
 # xset fp+ ~/.fonts/stlarch
 # xset fp+ ~/.fonts/artwiz
 # xset fp rehash
 sxhkd &
 panel dzen2 &
+calised
+xgamma -gamma 0.8
+xmodmap .Xmodmap
+xrdb -merge .dotfiles/Xresources.light
+setxkbmap us
 #compton &
