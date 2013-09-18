@@ -31,7 +31,7 @@ while read -r line ; do
     case $line in
         S*)
             # system informations
-            sys_infos="^fg($COLOR_STATUS_FG)^bg($COLOR_STATUS_BG)^ca(1, bspc control --toggle-visibility)${PADDING}${line#?}${PADDING}^ca()^fg()^bg()"
+            sys_infos="^fg($COLOR_STATUS_FG)^bg($COLOR_STATUS_BG)^ca(1, bspc control --toggle-visibility)${PADDING}${line#?}"
             ;;
         T*)
             # focused window title
@@ -86,9 +86,9 @@ while read -r line ; do
     set -- $(printf '%s\0%s\0%s' "$wm_infos" "$title" "$sys_infos" | sed 's/\^[a-z]\+([^)]*)//g' | xargs -0 txtw -f "$font_family" -s "$font_size")
     left_width=$1
     center_width=$2
-		right_width=$(($3 + 30))
+		right_width=$(($3 + 45))
     left_indent=0
-    right_indent=$((screen_width - right_width))
+    right_indent=$((screen_width - right_width + 14))
     available_center=$((screen_width - (left_width + right_width)))
     if [ $available_center -lt $center_width ] ; then
         center_indent=$((left_indent + left_width))
