@@ -1,5 +1,7 @@
 #! /bin/sh
 
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
 flavor=${1:-bar}
 
 bspc control --put-status
@@ -14,7 +16,9 @@ case "$flavor" in
         . ~/.config/bspwm/panel_colors
         PANEL_HEIGHT=24
         FONT_FAMILY='droid sans'
-        FONT_SIZE=12
+        FONT_SIZE=11
         cat "$PANEL_FIFO" | panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND"
         ;;
 esac
+
+wait
