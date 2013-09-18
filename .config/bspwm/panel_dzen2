@@ -39,7 +39,7 @@ while read -r line ; do
             ;;
         W*)
             # window manager informations
-            wm_infos="$PADDING"
+            wm_infos=""
             IFS=$FIELDIFS
             set -- ${line#?}
             while [ $# -gt 0 ] ; do
