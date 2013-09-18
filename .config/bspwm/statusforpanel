@@ -1,6 +1,6 @@
 #! /bin/sh
 
 while true ; do
-	echo "S ^i("$HOME"/.config/bspwm/bitmaps/wifi_01.xbm) $(iwgetid --raw)   ^i("$HOME"/.config/bspwm/bitmaps/battery.xbm) $(acpi -b | grep -o '[0-9]\+%')   ^i("$HOME"/.config/bspwm/bitmaps/clock.xbm) $(date '+%a %d, %H:%M')"
+	echo "S ^i("$HOME"/.config/bspwm/bitmaps/wifi_01.xbm) $(iwgetid --raw)   ^i("$HOME"/.config/bspwm/bitmaps/battery.xbm) $(acpi -b | grep -o '[0-9]\+%')   ^i("$HOME"/.config/bspwm/bitmaps/clock.xbm) $(date '+%a %d, %H:%M')  "
 	sleep 5
 done
