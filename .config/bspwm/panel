@@ -7,7 +7,7 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-flavor=${1:-bar}
+flavor=${1:-dzen2}
 
 bspc control --put-status
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
