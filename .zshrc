@@ -32,7 +32,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
-. ~/.dotfiles/pure/pure.zsh
+# . ~/.dotfiles/pure/pure.zsh
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
 
@@ -71,15 +71,16 @@ elif [ -f "/usr/bin/src-hilite-lesspipe.sh" ]; then
     export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 fi
 
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
-bindkey '^[OA' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-# bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[OB' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-# bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
-bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
-bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
-bindkey '^[OF' end-of-line                          # [End] - Go to end of line
+bindkey '^[[A' up-line-or-beginning-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '^[[B' down-line-or-beginning-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+bindkey '^[[7~' beginning-of-line                    # [Home] - Go to beginning of line
+bindkey '^[[8~' end-of-line                         # [End] - Go to end of line
 bindkey '^[Oc' forward-word                      # [Ctrl-RightArrow] - move forward one word
 bindkey '^[Od' backward-word                     # [Ctrl-LeftArrow] - move backward one word
 
@@ -91,10 +92,6 @@ alias -g G='| ack-grep' # now you can do: ls foo G something
 function fn() { ls **/*$1* }
 
 bindkey "^R" history-incremental-search-backward
-bindkey "^[[1;5A" history-incremental-search-backward
-bindkey "^[[1;5B" history-incremental-search-forward
-bindkey "^[[A" history-incremental-search-backward
-bindkey "^[[B" history-incremental-search-forward
 
 bindkey '^[[Z' reverse-menu-complete
 
@@ -110,3 +107,5 @@ if [ $commands[fasd] ]; then # check if fasd is installed
 fi
 
 stty erase \^\? # Fixes backspace for vim
+
+unsetopt MULTIBYTE
