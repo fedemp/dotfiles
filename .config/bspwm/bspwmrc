@@ -17,15 +17,10 @@ xsetroot -solid "#eee8d5"
 # hsetroot -solid "#373445"
 bspc config top_padding 24
 
-# xset fp+ ~/.fonts/stlarch
-# xset fp+ ~/.fonts/artwiz
-# xset fp rehash
 xmodmap .dotfiles/.Xmodmap
 sxhkd &
-panel dzen2 &
+.config/bspwm/panel dzen2 &
 calised
 xgamma -gamma 0.8
 xmodmap .Xmodmap
-xrdb -merge .dotfiles/Xresources.light
 setxkbmap us
-#compton &
