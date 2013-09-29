@@ -32,7 +32,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
-# . ~/.dotfiles/pure/pure.zsh
+. ~/.dotfiles/pure/pure.zsh
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
 
