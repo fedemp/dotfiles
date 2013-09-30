@@ -3,7 +3,7 @@
 font_family='droid sans'
 font_size=11
 
-. panel_colors
+. $HOME/.config/bspwm/panel_colors
 
 adaptive_centering=0
 screen_width=$(sres -W)
