@@ -5,11 +5,22 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "anka/coder:pixelsize=13:antialias=false:autohint=false";
+static char font[] = "Meslo LG M:pixelsize=14:antialias=false:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
-/* timeouts (in milliseconds) */
+/* Kerning / character bounding-box mutlipliers */
+float cwscale = 1.0;
+float chscale = 1.0;
+
+/*
+ * word delimiter string
+ *
+ * More advanced example: " `'\"()[]{}"
+ */
+static char worddelimiters[] = " ";
+
+/* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
 static unsigned int tripleclicktimeout = 600;
 
@@ -17,8 +28,20 @@ static unsigned int tripleclicktimeout = 600;
 static bool allowaltscreen = true;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 60;
+static unsigned int xfps = 120;
 static unsigned int actionfps = 30;
+
+/*
+ * blinking timeout (set to 0 to disable blinking) for the terminal blinking
+ * attribute.
+ */
+static unsigned int blinktimeout = 800;
+
+/*
+ * bell volume. It must be a value between -100 and 100. Use 0 for disabling
+ * it
+ */
+static int bellvolume = 0;
 
 /* TERM value */
 static char termname[] = "st-256color";
@@ -28,27 +51,25 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-"#073642",
-"#dc322f",
-"#859900",
-"#b58900",
-"#268bd2",
-"#d33682",
-"#2aa198",
-"#eee8d5",
 
-	/* 8 bright colors */
-"#002b36",
-"#cb4b16",
-"#586e75",
-"#657b83",
-"#839496",
-"#6c71c4",
-"#93a1a1",
-"#fdf6e3",
+"#282A2E",
+"#A54242",
+"#8C9440",
+"#DE935F",
+"#5F819D",
+"#85678F",
+"#5E8D87",
+"#C5C8C6",
+"#373B41",
+"#CC6666",
+"#B5BD68",
+"#F0C674",
+"#81A2BE",
+"#B294BB",
+"#8ABEB7",
+"#E5E8E6",
 
-	[255] = 0,
+[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
@@ -59,9 +80,9 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-static unsigned int defaultfg = 11;
-static unsigned int defaultbg = 15;
-static unsigned int defaultcs = 14;
+static unsigned int defaultfg = 7;
+static unsigned int defaultbg = 0;
+static unsigned int defaultcs = 256;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
@@ -71,7 +92,15 @@ static unsigned int defaultcs = 14;
 static unsigned int defaultitalic = 11;
 static unsigned int defaultunderline = 7;
 
-/* Internal shortcuts. */
+/* Internal mouse shortcuts. */
+/* Beware that overloading Button1 will disable the selection. */
+static Mousekey mshortcuts[] = {
+	/* keysym		mask		string */
+	{ Button4,		XK_ANY_MOD,	"\031"},
+	{ Button5,		XK_ANY_MOD,	"\005"},
+};
+
+/* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 
 static Shortcut shortcuts[] = {
@@ -104,13 +133,13 @@ static Shortcut shortcuts[] = {
  * * < 0: crlf mode is disabled
  *
  * Be careful with the order of the definitons because st searchs in
- * this table sequencially, so any XK_ANY_MOD must be in the last
+ * this table sequentially, so any XK_ANY_MOD must be in the last
  * position for a key.
  */
 
 /*
- * If you want something else but the function keys of X11 (0xFF00 - 0xFFFF)
- * mapped below, add them to this array.
+ * If you want keys other than the X11 function keys (0xFD00 - 0xFFFF)
+ * to be mapped below, add them to this array.
  */
 static KeySym mappedkeys[] = { -1 };
 
@@ -139,7 +168,7 @@ static Key key[] = {
 	{ XK_KP_Right,      XK_ANY_MOD,     "\033[C",        0,   -1,    0},
 	{ XK_KP_Right,      XK_ANY_MOD,     "\033OC",        0,   +1,    0},
 	{ XK_KP_Prior,      ShiftMask,      "\033[5;2~",     0,    0,    0},
-	{ XK_KP_Prior,      XK_ANY_MOD,     "\033[5~",	     0,    0,    0},
+	{ XK_KP_Prior,      XK_ANY_MOD,     "\033[5~",       0,    0,    0},
 	{ XK_KP_Begin,      XK_ANY_MOD,     "\033[E",        0,    0,    0},
 	{ XK_KP_End,        ControlMask,    "\033[J",       -1,    0,    0},
 	{ XK_KP_End,        ControlMask,    "\033[1;5F",    +1,    0,    0},
@@ -192,7 +221,7 @@ static Key key[] = {
 	{ XK_Left,          ShiftMask,      "\033[1;2D",     0,    0,    0},
 	{ XK_Left,          ControlMask,    "\033[1;5D",     0,    0,    0},
 	{ XK_Left,          Mod1Mask,       "\033[1;3D",     0,    0,    0},
-	{ XK_Left,	    XK_ANY_MOD,     "\033[D",        0,   -1,    0},
+	{ XK_Left,          XK_ANY_MOD,     "\033[D",        0,   -1,    0},
 	{ XK_Left,          XK_ANY_MOD,     "\033OD",        0,   +1,    0},
 	{ XK_Right,         ShiftMask,      "\033[1;2C",     0,    0,    0},
 	{ XK_Right,         ControlMask,    "\033[1;5C",     0,    0,    0},
@@ -226,7 +255,7 @@ static Key key[] = {
 	{ XK_End,           XK_ANY_MOD,     "\033[4~",       0,    0,    0},
 	{ XK_Prior,         ControlMask,    "\033[5;5~",     0,    0,    0},
 	{ XK_Prior,         ShiftMask,      "\033[5;2~",     0,    0,    0},
-	{ XK_Prior,         XK_NO_MOD,      "\033[5~",       0,    0,    0},
+	{ XK_Prior,         XK_ANY_MOD,     "\033[5~",       0,    0,    0},
 	{ XK_Next,          ControlMask,    "\033[6;5~",     0,    0,    0},
 	{ XK_Next,          ShiftMask,      "\033[6;2~",     0,    0,    0},
 	{ XK_Next,          XK_ANY_MOD,     "\033[6~",       0,    0,    0},
