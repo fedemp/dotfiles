@@ -22,5 +22,6 @@ sxhkd &
 .config/bspwm/panel dzen2 &
 calised
 xgamma -gamma 0.8
-xmodmap .Xmodmap
 setxkbmap us
+xmodmap .Xmodmap
+
