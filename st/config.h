@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Meslo LG M:pixelsize=12:antialias=false:autohint=false";
+static char font[] = "Droid Sans Mono:pixelsize=14:antialias=false:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
@@ -30,22 +30,22 @@ static unsigned int tabspaces = 8;
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"black",
-	"#c82829",
-	"#718c00",
-	"#eab700",
-	"#4271ae",
-	"#8959a8",
-	"#3e999f",
-	"#fafafa",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
-	"#d6d6d6",
-	"#f2777a",
-	"#99cc99",
-	"#ffcc66",
-	"#6699cc",
-	"#cc99cc",
-	"#66cccc",
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
 	"white",
 
 	[255] = 0,
@@ -59,9 +59,9 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-static unsigned int defaultfg = 239;
-static unsigned int defaultbg = 7;
-static unsigned int defaultcs = 239;
+static unsigned int defaultfg = 237;
+static unsigned int defaultbg = 255;
+static unsigned int defaultcs = 238;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
