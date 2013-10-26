@@ -39,7 +39,7 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 # export PAGER=~/bin/vimpager
 export EDITOR=vim
 
-alias ls="ls -h --color=auto"
+alias ls="ls -h --color=always"
 alias df='df -h'
 alias k9='kill -9'
 alias ack='ack-grep'
@@ -47,6 +47,7 @@ eval `dircolors ~/.dir_colors`
 
 alias gs='git status'
 alias gi='vim .gitignore'
+alias ag='ag --color'
 
 # Less Colors for Man Pages
 # http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
@@ -61,7 +62,7 @@ alias gi='vim .gitignore'
 export GREP_COLOR='0;32'
 
 export PAGER="less"
-export LESS="-R"
+export LESS="-R -i -g -M -R -x4 -X -f -F -z-1"
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
     # ubuntu 12.10: sudo apt-get install source-highlight
@@ -88,7 +89,7 @@ autoload zmv
 alias zmv="noglob zmv -W"
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
-alias -g G='| ack-grep' # now you can do: ls foo G something
+alias -g G='| ag' # now you can do: ls foo G something
 function fn() { ls **/*$1* }
 
 bindkey "^R" history-incremental-search-backward
@@ -107,5 +108,14 @@ if [ $commands[fasd] ]; then # check if fasd is installed
 fi
 
 stty erase \^\? # Fixes backspace for vim
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 unsetopt MULTIBYTE

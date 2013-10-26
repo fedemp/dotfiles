@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Meslo LG M:pixelsize=12:antialias=false:autohint=false";
+static char font[] = "PragmataPro:pixelsize=13:antialias=false:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
@@ -28,48 +28,47 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"#c82829",
-	"#718c00",
-	"#eab700",
-	"#4271ae",
-	"#8959a8",
-	"#3e999f",
-	"#fafafa",
+    /* 8 normal colors */
+    "black",
+    "red3",
+    "green3",
+    "yellow3",
+    "blue2",
+    "magenta3",
+    "cyan3",
+    "gray90",
 
-	/* 8 bright colors */
-	"#d6d6d6",
-	"#f2777a",
-	"#99cc99",
-	"#ffcc66",
-	"#6699cc",
-	"#cc99cc",
-	"#66cccc",
-	"white",
+    /* 8 bright colors */
+    "gray50",
+    "red",
+    "green",
+    "yellow",
+    "#5c5cff",
+    "magenta",
+    "cyan",
+    "white",
 
-	[255] = 0,
+    [255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
+    /* more colors can be added after 255 to use with DefaultXX */
+    "#fafafa",
 };
-
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-static unsigned int defaultfg = 239;
-static unsigned int defaultbg = 7;
-static unsigned int defaultcs = 239;
+static unsigned int defaultfg = 238;
+static unsigned int defaultbg = 256;
+static unsigned int defaultcs = 238;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
  * will reverse too. Another logic would only make the simple feature too
  * complex.
  */
-static unsigned int defaultitalic = 11;
-static unsigned int defaultunderline = 7;
+static unsigned int defaultitalic = 241;
+static unsigned int defaultunderline = 241;
 
 /* Internal shortcuts. */
 #define MODKEY Mod1Mask
