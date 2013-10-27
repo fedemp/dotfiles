@@ -1,4 +1,4 @@
-export BSPWM_SOCKET=/tmp/bspwm-socket
+export PANEL_FIFO=/tmp/panel-fifo
 export PATH=$PATH:$HOME/bin/
 export EDITOR=vim
 export GREP_COLOR='0;32'
