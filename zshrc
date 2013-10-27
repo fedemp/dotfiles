@@ -33,19 +33,13 @@ bindkey -v
 
 # Customize to your needs...
 
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/bin/
-
-export EDITOR=vim
 
 alias df='df -h'
 alias ag='ag --color'
+alias ls='ls --color=auto'
 
 eval `dircolors ~/.dir_colors`
 
-export GREP_COLOR='0;32'
-
-export PAGER="less"
-export LESS="-R -i -g -M -R -x4 -X -f -F -z-1"
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
     # ubuntu 12.10: sudo apt-get install source-highlight
