@@ -14,7 +14,7 @@ xtitle -sf 'T%s' > "$PANEL_FIFO" &
 case "$flavor" in
 	bar)
 		$HOME/.config/bspwm/statusforbar > "$PANEL_FIFO" &
-		cat "$PANEL_FIFO" | ~/.config/bspwm/panel_bar | bar &
+		cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_bar | bar &
 		;;
 	dzen2)
 		~/.config/bspwm/statusforpanel > "$PANEL_FIFO" &
