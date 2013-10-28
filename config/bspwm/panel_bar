@@ -8,7 +8,7 @@ while read -r line ; do
 					sys_infos="\\br\\f6${line#?}"
 					;;
         T*)
-					title="\\br\\f7$${line#?}"
+					title="\\br\\f7${line#?}"
 					;;
         W*)
             wm_infos=""
