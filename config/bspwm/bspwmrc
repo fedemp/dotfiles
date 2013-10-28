@@ -15,5 +15,5 @@ bspc config focused_border_color "#859900"
 xsetroot -solid "#333333"
 compton &
 bspc config top_padding 22
-./panel bar &
+$HOME/.config/bspwm/panel bar &
 sxhkd &
