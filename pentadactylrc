@@ -1,1 +1,2 @@
-hi FontFixed /* The font used for fixed-width text */ font-size:11px;font-family:"terminus";font-weight:normal;
+colorscheme solarized-light
+hi FontFixed /* The font used for fixed-width text */ font-size:11px;font-family:"droid sans mono";font-weight:normal;

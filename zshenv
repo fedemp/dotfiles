@@ -1,0 +1,1 @@
+fpath=($HOME/.functions $fpath)

@@ -1,0 +1,6 @@
+function k9() {
+	for i
+	do kill -15 $i
+	done
+	}
+
