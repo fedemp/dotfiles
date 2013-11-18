@@ -1,6 +1,8 @@
 #! /bin/sh
+#
+# Example panel for dzen2
 
-font_family='droid sans'
+font_family='sans-serif'
 font_size=11
 
 . $HOME/.config/bspwm/panel_colors
@@ -9,7 +11,7 @@ adaptive_centering=0
 screen_width=$(sres -W)
 NORMIFS=$IFS
 FIELDIFS=':'
-PADDING=' '
+PADDING='  '
 
 while getopts 'af:s:' opt ; do
     case "$opt" in
@@ -30,16 +32,16 @@ shift $((OPTIND - 1))
 while read -r line ; do
     case $line in
         S*)
-            # system informations
-            sys_infos="^fg($COLOR_STATUS_FG)^bg($COLOR_STATUS_BG)^ca(1, bspc control --toggle-visibility)${PADDING}${line#?}"
+            # clock output
+            sys_infos="^fg($COLOR_STATUS_FG)^bg($COLOR_STATUS_BG)${PADDING}${line#?}${PADDING}^fg()^bg()${PADDING}"
             ;;
         T*)
-            # focused window title
-            title="^fg($COLOR_TITLE_FG)^bg($COLOR_TITLE_BG)^ca(1, bspc window -t floating)^ca(2, bspc window -t locked)^ca(3, bspc window -c)${PADDING}${PADDING}${line#?}${PADDING}${PADDING}^ca()^ca()^ca()"
+            # xtitle output
+            title="^fg($COLOR_TITLE_FG)^bg($COLOR_TITLE_BG)${PADDING}${line#?}${PADDING}^fg()^bg()"
             ;;
         W*)
-            # window manager informations
-            wm_infos=""
+            # bspwm internal state
+            wm_infos="$PADDING"
             IFS=$FIELDIFS
             set -- ${line#?}
             while [ $# -gt 0 ] ; do
@@ -49,33 +51,43 @@ while read -r line ; do
                         # desktops
                         name=${item#?}
                         case $item in
-                            [OFU]*)
-                                # active desktop
-                                FG=$COLOR_ACTIVE_FG
-                                BG=$COLOR_ACTIVE_BG
+                            O*)
+                                # focused occupied desktop
+                                FG=$COLOR_FOCUSED_OCCUPIED_FG
+                                BG=$COLOR_FOCUSED_OCCUPIED_BG
+                                ;;
+                            F*)
+                                # focused free desktop
+                                FG=$COLOR_FOCUSED_FREE_FG
+                                BG=$COLOR_FOCUSED_FREE_BG
+                                ;;
+                            U*)
+                                # focused urgent desktop
+                                FG=$COLOR_FOCUSED_URGENT_FG
+                                BG=$COLOR_FOCUSED_URGENT_BG
                                 ;;
                             o*)
-                                # inactive desktop
-                                FG=$COLOR_INACTIVE_FG
-                                BG=$COLOR_INACTIVE_BG
+                                # occupied desktop
+                                FG=$COLOR_OCUPPIED_FG
+                                BG=$COLOR_OCUPPIED_BG
                                 ;;
                             f*)
-                                # empty desktop
-                                FG=$COLOR_EMPTY_FG
-                                BG=$COLOR_EMPTY_BG
+                                # free desktop
+                                FG=$COLOR_FREE_FG
+                                BG=$COLOR_FREE_BG
                                 ;;
                             u*)
-                                # urgent (inactive) desktop
+                                # urgent desktop
                                 FG=$COLOR_URGENT_FG
                                 BG=$COLOR_URGENT_BG
                                 ;;
                         esac
-                        wm_infos="${wm_infos}^fg(${FG})^bg(${BG})^ca(1, bspc desktop -f ${name})^ca(2, bspc window -d ${name})^ca(3, bspc window -d ${name} -f)${PADDING}${PADDING}${name}${PADDING}${PADDING}^ca()^ca()^ca()"
+                        wm_infos="${wm_infos}^fg(${FG})^bg(${BG})^ca(1, bspc desktop -f ${name})^ca(2, bspc window -d ${name})${PADDING}${name}${PADDING}^ca()^ca()"
                         ;;
                     L*)
                         # layout
                         layout=$(printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/')
-                        wm_infos="${wm_infos}^fg()^bg()${PADDING}${PADDING}^fg($COLOR_LAYOUT_FG)^bg($COLOR_LAYOUT_BG)^ca(1, bspc desktop -l next)^ca(2, bspc desktop -B)${PADDING}$layout${PADDING}^ca()^ca()"
+                        wm_infos="${wm_infos}^fg()^bg()${PADDING}${PADDING}^fg($COLOR_LAYOUT_FG)^bg($COLOR_LAYOUT_BG)^ca(1, bspc desktop -l next)${PADDING}$layout${PADDING}^ca()"
                         ;;
                 esac
                 shift
@@ -86,9 +98,9 @@ while read -r line ; do
     set -- $(printf '%s\0%s\0%s' "$wm_infos" "$title" "$sys_infos" | sed 's/\^[a-z]\+([^)]*)//g' | xargs -0 txtw -f "$font_family" -s "$font_size")
     left_width=$1
     center_width=$2
-		right_width=$(($3 + 45))
+    right_width=$3
     left_indent=0
-    right_indent=$((screen_width - right_width + 14))
+    right_indent=$((screen_width - right_width))
     available_center=$((screen_width - (left_width + right_width)))
     if [ $available_center -lt $center_width ] ; then
         center_indent=$((left_indent + left_width))
@@ -99,5 +111,5 @@ while read -r line ; do
             center_indent=$(( (screen_width - center_width) / 2 ))
         fi
     fi
-		printf "%s\n" "^pa($left_indent)$wm_infos $title^pa($right_indent)$sys_infos"
+    printf "%s\n" "^pa($center_indent)$title^pa($left_indent)$wm_infos^pa($right_indent)$sys_infos"
 done
