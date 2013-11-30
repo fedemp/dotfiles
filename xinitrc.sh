@@ -51,7 +51,7 @@ trap on_exit EXIT SIGHUP SIGINT SIGTERM
 bspwm_autostart="${XDG_CONFIG_HOME:-"$HOME/.config"}/bspwm/autostart"
 
 [ -r "/etc/profile" ] && . "/etc/profile"
-[ -r "${HOME}/profile" ] && . "${HOME}/profile"
+[ -r "${HOME}/.profile" ] && . "${HOME}/.profile"
 [ -r "${bspwm_autostart}" ] && . "${bspwm_autostart}"
 
 sxhkdrc_path=${XDG_CONFIG_HOME:-"$HOME/.config"}/bspwm/sxhkdrc
@@ -59,4 +59,4 @@ sxhkdrc_path=${XDG_CONFIG_HOME:-"$HOME/.config"}/bspwm/sxhkdrc
 
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
-exec bspwm -s "$PANEL_FIFO" -p W
+bspwm
