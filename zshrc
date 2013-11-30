@@ -19,8 +19,6 @@ zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
 autoload -Uz compinit
 compinit
 
-source ~/.npmcompletion
-
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -36,9 +34,6 @@ bindkey -v
 
 alias df='df -h'
 alias ag='ag --color'
-alias ls='ls --color=auto'
-
-eval `dircolors ~/.dir_colors`
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
@@ -93,6 +88,7 @@ zle -N zle-keymap-select
 
 unsetopt MULTIBYTE
 
+fpath=($HOME/.config/functions $fpath)
 autoload -U promptinit && promptinit
 prompt pure
 
