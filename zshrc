@@ -88,8 +88,9 @@ zle -N zle-keymap-select
 
 unsetopt MULTIBYTE
 
-fpath=($HOME/.config/functions $fpath)
 autoload -U promptinit && promptinit
 prompt pure
 
 autoload k9 l gs fn
+
+source $HOME/.profile
