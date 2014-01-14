@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "inconsolata:pixelsize=14:antialias=false:autohint=false";
+static char font[] = "Liberation Mono:pixelsize=12:antialias=false:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
@@ -28,25 +28,25 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-"#1a1a1a",
-"#d75f5f",
-"#87af5f",
-"#ffaf5f",
-"#87afd7",
-"#8787af",
-"#5f8787",
-"#808080",
-"#404040",
-"#ea8484",
-"#c7f09f",
-"#ffcc9a",
-"#a5caef",
-"#a6a6de",
-"#69b2b2",
-"#d7d7d7",
 
-[255] = 0,
+"#1c1c1c",
+"#9e2828",
+"#57a748",
+"#d1a747",
+"#42628a",
+"#a86e9f",
+"#49b4b6",
+"#d7d9cd",
+"#627369",
+"#dd5e5e",
+"#84c059",
+"#f6e47f",
+"#83afe1",
+"#cc89bd",
+"#63e1e2",
+"#f6f6f5",
+
+	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
@@ -59,7 +59,7 @@ static const char *colorname[] = {
  */
 static unsigned int defaultfg = 7;
 static unsigned int defaultbg = 0;
-static unsigned int defaultcs = 15;
+static unsigned int defaultcs = 256;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
