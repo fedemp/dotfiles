@@ -3,7 +3,7 @@
 #
 
 super + shift + q
-    bspc quit
+    pkill -x panel; bspc quit
 
 super + w
     bspc window -c
