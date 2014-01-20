@@ -2,7 +2,7 @@
 #
 # Example panel for dzen2
 
-font_family='roboto'
+font_family='sans-serif'
 font_size=10
 
 . $HOME/.config/bspwm/panel_colors
@@ -11,7 +11,7 @@ adaptive_centering=0
 screen_width=$(sres -W)
 NORMIFS=$IFS
 FIELDIFS=':'
-PADDING='  '
+PADDING=' '
 
 while getopts 'af:s:' opt ; do
     case "$opt" in
