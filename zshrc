@@ -34,6 +34,7 @@ bindkey -v
 
 alias df='df -h'
 alias ag='ag --color'
+alias ls='ls --color=auto'
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
