@@ -17,6 +17,7 @@ bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 # clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
+date '+S%A %d, %R' > "$PANEL_FIFO" &
 
 case "$flavor" in
     bar)
@@ -24,9 +25,9 @@ case "$flavor" in
         ;;
     dzen2)
         . $HOME/.config/bspwm/panel_colors
-        FONT_FAMILY='Liberation Mono'
-        FONT_SIZE=10
-        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
+        FONT_FAMILY='Roboto'
+        FONT_SIZE=13
+        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -x 183 -w 1000 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
         ;;
 esac
 

@@ -2,13 +2,14 @@
 #
 # Example panel for dzen2
 
-font_family='sans-serif'
-font_size=10
+font_family='roboto'
+font_size=9
 
 . $HOME/.config/bspwm/panel_colors
 
-adaptive_centering=0
-screen_width=$(sres -W)
+adaptive_centering=1
+# screen_width=$(sres -W)
+screen_width=1000
 NORMIFS=$IFS
 FIELDIFS=':'
 PADDING=' '
@@ -111,5 +112,6 @@ while read -r line ; do
             center_indent=$(( (screen_width - center_width) / 2 ))
         fi
     fi
-    printf "%s\n" "^pa($center_indent)$title^pa($left_indent)$wm_infos^pa($right_indent)$sys_infos"
+    # printf "%s\n" "^pa($center_indent)$title^pa($left_indent)$wm_infos^pa($right_indent)$sys_infos"
+    printf "%s\n" "^pa($left_indent)$wm_infos | $title^pa($right_indent)$sys_infos"
 done
