@@ -17,7 +17,7 @@ PADDING=' '
 while getopts 'af:s:' opt ; do
     case "$opt" in
         a)
-            adaptive_centering=1
+            adaptive_centering=0
             ;;
         f)
             font_family=$OPTARG
