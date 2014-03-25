@@ -1,8 +1,0 @@
-#! /bin/bash
-
-while true ; do
-    date="\ue016 $(date '+%a %d, %H:%M')"
-		bat="\ue03F $(acpi -b | grep -o '[0-9]\+%')"
-    printf '\nS%b %b \n' "$bat" "$date"
-    sleep 5
-done
