@@ -9,7 +9,7 @@ font_size=9
 
 adaptive_centering=1
 # screen_width=$(sres -W)
-screen_width=1000
+screen_width=1346
 NORMIFS=$IFS
 FIELDIFS=':'
 PADDING=' '

@@ -6,14 +6,14 @@ bspc rule -a Pidgin -d ^4
 bspc rule -a Chromium -d ^2
 
 bspc config split_ratio         0.52
-bspc config border_width        4
-bspc config window_gap          8
+bspc config border_width        5
+bspc config window_gap          10
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config normal_border_color "#435056"
 bspc config focused_border_color "#6e7a77"
 xsetroot -solid "#435056"
-bspc config top_padding 22
+bspc config top_padding 25
 setxkbmap us
 xmodmap $HOME/.Xmodmap
 $HOME/.config/bspwm/panel &
