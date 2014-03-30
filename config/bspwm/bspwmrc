@@ -17,5 +17,5 @@ bspc config top_padding 25
 setxkbmap us
 xmodmap $HOME/.Xmodmap
 $HOME/.config/bspwm/panel &
-# sh $HOME/.fehbg
+sh $HOME/.fehbg
 sxhkd &
