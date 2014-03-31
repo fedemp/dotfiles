@@ -1,4 +1,4 @@
-# The following lines were added by compinstall
+ # The following lines were added by compinstall
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
@@ -93,5 +93,3 @@ autoload -U promptinit && promptinit
 prompt pure
 
 autoload k9 l gs fn
-
-source $HOME/.profile
