@@ -16,6 +16,8 @@ xsetroot -solid "#435056"
 bspc config top_padding 25
 setxkbmap us
 xmodmap $HOME/.Xmodmap
+hidcur &
 $HOME/.config/bspwm/panel &
 sh $HOME/.fehbg
 sxhkd &
+xsetroot -cursor_name left_ptr
