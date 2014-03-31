@@ -12,8 +12,6 @@ flavor=${1:-dzen2}
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc config top_padding $PANEL_HEIGHT
-
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 # clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
@@ -27,7 +25,7 @@ case "$flavor" in
         . $HOME/.config/bspwm/panel_colors
         FONT_FAMILY='tamsyn'
         FONT_SIZE=12
-        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -x 183 -w 1000 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
+        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -x 10 -w 1346 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
         ;;
 esac
 
