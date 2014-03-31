@@ -1,10 +1,9 @@
 #tabbrowser-tabs {
 	background-image: none !important;
-	background-color: shade(#eeeeee, 0.68) !important;
+	background-color: #262626 !important;
 	padding-top: 3px !important;
+	font: 12px tamsyn !important;
 }
-
-
 
 .tabbrowser-tab {
 	-moz-appearance: none !important;
@@ -14,46 +13,53 @@
 	border-top-right-radius: 0px !important;
 	padding-left: 5px !important;
 	padding-right: 5px !important;
-	/*
-	margin: 0 2px 0 0 !important;
-	 */
 }
 
 .tabbrowser-tab[selected="true"] {
-	background-color: #e7e7e7 !important;
+	background-color: #b5bd68 !important;
 	color: #424242 !important;
 	minimum-height: 12px !important;
 	maximum-height: 12px !important;
-	padding-bottom: 3px !important;
 }
 
 .tabbrowser-tab:not([selected="true"]) {
-	background-color: #d2d2d2 !important;
-	color: #8b808a !important;
-
+	background-color: #262626 !important;
+	color: #c0c0c0 !important;
 }
 
-.tabs-newtab-button {
-	-moz-appearance: none !important;
-	background-image: none !important;
-	background-color: #d9d9d9 !important;
-	border: 0px !important;
-	border-top-left-radius: 0px !important;
-	border-top-right-radius: 0px !important;
-	padding-left: 5px !important;
-	padding-right: 5px !important;
+.tabbrowser-tab:not([selected="true"]):hover {
+	background-color: #666666 !important;
 }
 
-.tabs-newtab-button:hover {
-	background-color: #e0e0e0 !important;
-}
-
-.tabs-newtab-button:active {
-	background-color: #888888 !important;
-	color: #ffffff !important;
-}
 
 #nav-bar {
 	background-image: none !important;
 	background-color: #e7e7e7 !important;
+}
+
+.scrollbutton-up,
+.scrollbutton-down,
+#appmenu-toolbar-button,
+#tabs-closebutton,
+#alltabs-button,
+#new-tab-button {
+	display: none !important;
+}
+
+.tab-icon-image {
+	width: 12px !important;
+	height: 12px !important;
+}
+
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+	padding-top: 5px !important;
+}
+
+#main-window:not([disablechrome]) #navigator-toolbox[tabsontop=true] {
+	border-bottom: 0px !important;
+}
+
+#TabsToolbar,
+#tabbrowser-tabs {
+	padding-top: 0px !important;
 }
