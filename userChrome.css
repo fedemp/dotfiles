@@ -2,7 +2,7 @@
 	background-image: none !important;
 	background-color: #262626 !important;
 	padding-top: 3px !important;
-	font: 12px tamsyn !important;
+	font: 12px lemon !important;
 }
 
 .tabbrowser-tab {
@@ -37,6 +37,7 @@
 	background-color: #e7e7e7 !important;
 }
 
+.tabs-newtab-button,
 .scrollbutton-up,
 .scrollbutton-down,
 #appmenu-toolbar-button,
