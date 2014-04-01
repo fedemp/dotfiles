@@ -18,6 +18,6 @@ setxkbmap us
 xmodmap $HOME/.Xmodmap
 hidcur &
 $HOME/.config/bspwm/panel &
-sh $HOME/.fehbg
 sxhkd &
 xsetroot -cursor_name left_ptr
+imlibsetroot -t $HOME/.config/bspwm/stripe.png
