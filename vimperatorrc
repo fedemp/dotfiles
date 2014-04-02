@@ -1,10 +1,12 @@
 hi Hint  font-family: monospace; font-size: 12px; font-weight: bold;  color: white; padding: 1px; background-color: #d00000; border: 1px solid #b00000;
 set focuscontent
 hi CmdLine background: #262626; color: #c0c0c0;
-hi CompItem background: #262626; color: #c0c0c0
-hi CmdLine>* font-family: "pragmatapro"; font-size: 11px
+hi CmdLine>* font-family: "dina"; font-size: 10px
 hi Normal color: #c0c0c0; background: #262626;
-hi StatusLine color: #c0c0c0; background: transparent; font-weight: normal; font-family: 'pragmatapro'
+hi StatusLine color: #c0c0c0; background: transparent; font-weight: normal; font-family: 'dina';font-size: 8px;
+highlight CompItem background: #262626; color: #c0c0c0;font: 10px dina
+hi CompItem[selected] background: #5F819D; box-shadow: 0px 0px 1px #9fc1dd;color: #242424
+hi CompDesc color: #c0c0c0
 
 noremap j 5<C-e>
 noremap k 5<C-y>
@@ -20,3 +22,5 @@ cnoremap <C-p> <S-TAB>
 
 map h gT
 map l gt
+
+javascript liberator.beep = function() { return false; }

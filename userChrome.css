@@ -2,7 +2,7 @@
 	background-image: none !important;
 	background-color: #262626 !important;
 	padding-top: 3px !important;
-	font: 12px lemon !important;
+	font: 8px dina !important;
 }
 
 .tabbrowser-tab {
@@ -16,8 +16,8 @@
 }
 
 .tabbrowser-tab[selected="true"] {
-	background-color: #b5bd68 !important;
-	color: #424242 !important;
+	background-color: #738086 !important;
+	color: #262626 !important;
 	minimum-height: 12px !important;
 	maximum-height: 12px !important;
 }
