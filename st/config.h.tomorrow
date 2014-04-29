@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Fixed:pixelsize=12:antialias=false:autohint=false";
+static char font[] = "Meslo LG M:pixelsize=12";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
@@ -51,24 +51,23 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"27292C",
+	"#27292C",
 	"#D77C79",
 	"#C2C77B",
 	"#F4CF86",
 	"#92B2CA",
 	"#C0A7C7",
-	"9AC9C4",
+	"#9AC9C4",
 	"#D7DAD8",
 
 	/* 8 bright colors */
-	"27292C",
+	"#27292C",
 	"#D77C79",
 	"#C2C77B",
 	"#F4CF86",
 	"#92B2CA",
 	"#C0A7C7",
-	"9AC9C4",
+	"#9AC9C4",
 	"#D7DAD8",
 
 	[255] = 0,
