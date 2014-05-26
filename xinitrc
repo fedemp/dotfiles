@@ -15,5 +15,12 @@ fi
 mkfifo "$PANEL_FIFO"
 xset +fp /usr/share/fonts/local
 xset fp rehash
+xrandr --output VGA1 --auto
+xrandr --output LVDS1 --off
+setxkbmap -layout us -variant altgr-intl nodeadkeys
+xmodmap $HOME/.Xmodmap
+hidcur &
+numlockx
+xsetroot -solid "#445563"
 exec bspwm -s "$PANEL_FIFO" -p W
 # exec jwm
