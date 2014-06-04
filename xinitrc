@@ -17,9 +17,8 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
 xmodmap $HOME/.Xmodmap
-hidcur &
+hidcur
 numlockx
-xsetroot -solid "#445563"
-imlibsetroot -t $HOME/.dotfiles/stripe.png
+xsetroot -solid "#435056"
 exec bspwm
 # exec jwm
