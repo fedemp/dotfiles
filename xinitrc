@@ -17,7 +17,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
 xmodmap $HOME/.Xmodmap
-hidcur
+hidcur &
 numlockx
 xsetroot -solid "#435056"
 exec bspwm
