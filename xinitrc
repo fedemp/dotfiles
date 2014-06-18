@@ -19,6 +19,8 @@ setxkbmap -layout us -variant altgr-intl nodeadkeys
 xmodmap $HOME/.Xmodmap
 numlockx
 xsetroot -solid "#435056"
-xrandr --output LVDS1 --off
-xrandr --output VGA1 --auto
+if (xrandr | grep "VGA1 connected"); then
+	xrandr --output LVDS1 --off
+	xrandr --output VGA1 --auto
+fi
 exec bspwm
