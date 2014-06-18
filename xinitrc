@@ -17,8 +17,8 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
 xmodmap $HOME/.Xmodmap
-hidcur &
 numlockx
 xsetroot -solid "#435056"
+xrandr --output LVDS1 --off
+xrandr --output VGA1 --auto
 exec bspwm
-# exec jwm

@@ -22,10 +22,10 @@ case "$flavor" in
         ;;
     dzen2)
         . $HOME/.config/bspwm/panel_colors
-        FONT_FAMILY='dina'
-        FONT_SIZE=8
+        FONT_FAMILY='fixed'
+        FONT_SIZE=10
         $HOME/.config/bspwm/statusforpanel > "$PANEL_FIFO" &
-        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -x 10 -w 1346 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
+        cat "$PANEL_FIFO" | $HOME/.config/bspwm/panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
         ;;
 esac
 
