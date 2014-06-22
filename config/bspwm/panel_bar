@@ -1,5 +1,4 @@
-#! /bin/sh
-#
+#! /bin/bash
 # Example panel for LemonBoy's bar
 
 . $HOME/.config/bspwm/panel_colors
@@ -20,42 +19,51 @@ while read -r line ; do
 			IFS=':'
 			set -- ${line#?}
 			while [ $# -gt 0 ] ; do
+			wm_infos="$wm_infos "
 				item=$1
 				name=${item#?}
 				case $item in
 					O*)
 						# focused occupied desktop
-						wm_infos="$wm_infos %{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u}${name}%{-u}"
+						wm_infos="$wm_infos%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u}%{-u}%{B$COLOR_BACKGROUND}"
 						;;
 					F*)
 						# focused free desktop
-						wm_infos="$wm_infos %{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u}${name}%{-u}"
+						wm_infos="$wm_infos%{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u}%{-u}%{B$COLOR_BACKGROUND}"
 						;;
 					U*)
 						# focused urgent desktop
-						wm_infos="$wm_infos %{F$COLOR_FOCUSED_URGENT_FG}%{B$COLOR_FOCUSED_URGENT_BG}%{U$COLOR_FOREGROUND}%{+u}${name}%{-u}"
+						wm_infos="$wm_infos%{F$COLOR_FOCUSED_URGENT_FG}%{B$COLOR_FOCUSED_URGENT_BG}%{U$COLOR_FOREGROUND}%{+u}${name}%{-u}%{B$COLOR_BACKGROUND}"
 						;;
 					o*)
 						# occupied desktop
-						wm_infos="$wm_infos %{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG}${name}"
+						wm_infos="$wm_infos%{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG}%{B$COLOR_BACKGROUND}"
 						;;
 					f*)
 						# free desktop
-						wm_infos="$wm_infos %{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG}${name}"
+						wm_infos="$wm_infos%{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG}%{B$COLOR_BACKGROUND}"
 						;;
 					u*)
 						# urgent desktop
-						wm_infos="$wm_infos %{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG}${name}"
+						wm_infos="$wm_infos%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG}%{B$COLOR_BACKGROUND}"
 						;;
 					L*)
 						# layout
 						layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
-						wm_infos="$wm_infos    %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}$layout"
-						;;
+						case $layout in
+							T*)
+								#tiled
+								layout_infos="%{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}"
+								;;
+							M*)
+								#monocle
+								layout_infos="%{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}"
+								;;
+						esac
 				esac
 				shift
 			done
 			;;
 	esac
-	printf "%s\n" "%{l} $wm_infos %{c} $title %{r} $sys_infos  "
+	printf "%s\n" "%{l} $layout_infos   $title %{c} $wm_infos %{r} $sys_infos  "
 done
