@@ -1,1 +1,1 @@
-fpath=($HOME/.config/functions $fpath)
+fpath=($HOME/.functions $fpath)
