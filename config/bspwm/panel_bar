@@ -57,7 +57,7 @@ while read -r line ; do
 								;;
 							M*)
 								#monocle
-								layout_infos="%{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}"
+								layout_infos="%{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}"
 								;;
 						esac
 				esac
