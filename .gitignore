@@ -3,3 +3,6 @@ config/chromium
 config/mpd
 config/ranger
 config/pulse
+config/vlc
+config/Trolltech.conf
+config/gtk-2.0/gtkfilechooser.ini
