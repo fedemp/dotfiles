@@ -90,6 +90,18 @@ super + Return
 super + space
 	dmenu_run
 
+XF86AudioPlay
+	ncmpcpp toggle
+
+Print
+	scrot
+
+XF86AudioLowerVolume
+	amixer sset Master 3-
+
+XF86AudioRaiseVolume
+	amixer sset Master 3+
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
