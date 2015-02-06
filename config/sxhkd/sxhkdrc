@@ -88,7 +88,7 @@ super + Return
 	st
 
 super + space
-	dmenu_run
+	dmenu_run -i -h 768 -w 1366 -q -l 1 -o .9 -p " execute" -fn "Mensch-12" -nb "#eeeeee" -nf "#bbbbbb" -sb "#eeeeee" -sf "#333333"
 
 XF86AudioPlay
 	ncmpcpp toggle

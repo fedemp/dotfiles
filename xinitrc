@@ -23,4 +23,4 @@ if (xrandr | grep "VGA1 connected"); then
 	xrandr --output LVDS1 --off
 	xrandr --output VGA1 --auto
 fi
-exec bspwm
+exec frankenwm

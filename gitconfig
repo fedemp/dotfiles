@@ -88,6 +88,7 @@
   summary = true
   verbosity = 1
 	tool = fugitive
+	ff = false
 [apply]
   whitespace = nowarn
 [branch]
@@ -110,7 +111,8 @@
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
-[credential]
-	helper = cache
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[user]
+	email = fpanico@despegar.com
+	name = Federico Panico

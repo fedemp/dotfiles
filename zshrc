@@ -33,8 +33,10 @@ bindkey -v
 
 
 alias df='df -h'
-alias ag='ag --color'
+alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
+alias cp='cp -irv'
+alias pjs="pretty-js -c 'single' -e -t '  ' -i -f"
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
@@ -67,14 +69,13 @@ bindkey "^R" history-incremental-search-backward
 
 bindkey '^[[Z' reverse-menu-complete
 
-if [ $commands[fasd] ]; then # check if fasd is installed
-  fasd_cache="$HOME/.fasd-init-cache"
-  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init auto >| "$fasd_cache"
-  fi
-  source "$fasd_cache"
-  unset fasd_cache
-fi
+autoload -U colors && colors
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
+
+zmodload -i zsh/complist
+eval `dircolors $HOME/.dir_colors`
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 stty erase \^\? # Fixes backspace for vim
 
@@ -90,6 +91,11 @@ zle -N zle-keymap-select
 unsetopt MULTIBYTE
 
 autoload -U promptinit && promptinit
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats "%s %r/%S %b %m%u%c"
+zstyle ':vcs_info:*' actionformats "%s %r/%S %b (%a) %m%u%c"
 prompt pure
-
 autoload k9 l gs fn
