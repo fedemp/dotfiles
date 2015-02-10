@@ -11,16 +11,23 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
 xset +fp /usr/share/fonts/local
 xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
-xmodmap $HOME/.Xmodmap
 numlockx
-xsetroot -solid "#435056"
+
+# enable restart X
+setxkbmap -option terminate:ctrl_alt_bksp
+
+# disable CapsLock & map to Escape
+xmodmap .Xmodmap
+
+# compose key
+# setxkbmap -option compose:ralt
+
+xsetroot -solid "#dddddd"
 if (xrandr | grep "VGA1 connected"); then
-	xrandr --output LVDS1 --off
 	xrandr --output VGA1 --auto
+	xrandr --output LVDS1 --off
 fi
-exec frankenwm
+exec bspwm
