@@ -26,7 +26,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd extendedglob nomatch notify
 setopt autopushd pushdsilent
-bindkey -v
+bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
@@ -55,10 +55,13 @@ zle -N down-line-or-beginning-search
 # https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
 bindkey '^[[A' up-line-or-beginning-search                    # start typing + [Up-Arrow] - fuzzy find history forward
 bindkey '^[[B' down-line-or-beginning-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-bindkey '^[[7~' beginning-of-line                    # [Home] - Go to beginning of line
-bindkey '^[[8~' end-of-line                         # [End] - Go to end of line
-bindkey '^[Oc' forward-word                      # [Ctrl-RightArrow] - move forward one word
-bindkey '^[Od' backward-word                     # [Ctrl-LeftArrow] - move backward one word
+bindkey '^[[1~' beginning-of-line                    # [Home] - Go to beginning of line
+bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
+bindkey '^[OC' forward-word                      # [Ctrl-RightArrow] - move forward one word
+bindkey '^[OD' backward-word                     # [Ctrl-LeftArrow] - move backward one word
+bindkey '^[[P' delete-char
+bindkey '^[[5~' up-line-or-history
+bindkey '^[[6~' down-line-or-history
 
 autoload zmv
 
@@ -91,11 +94,5 @@ zle -N zle-keymap-select
 unsetopt MULTIBYTE
 
 autoload -U promptinit && promptinit
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:*' get-revision true
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats "%s %r/%S %b %m%u%c"
-zstyle ':vcs_info:*' actionformats "%s %r/%S %b (%a) %m%u%c"
 prompt pure
 autoload k9 l gs fn
