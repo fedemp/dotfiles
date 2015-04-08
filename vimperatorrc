@@ -1,13 +1,11 @@
-hi Hint font-family: mensch; font-size: 10px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
+hi Hint font-family: mensch; font-size: 11px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 set focuscontent
-hi CmdLine>* font-family: "liberation sans"; font-size: 10px
-hi StatusLine  font-family: 'liberation sans';font-size: 10px;
-highlight CompItem font: 10px 'liberation sans'
+hi CmdLine>* font-family: ""Fira Mono""; font-size: 11px
+hi StatusLine  font-family: '"Fira Mono"';font-size: 11px;
+highlight CompItem font: 11px '"Fira Mono"'
 
 noremap j 5<C-e>
 noremap k 5<C-y>
-noremap J 20<C-e>
-noremap K 20<C-y>
 noremap <BS> <A-Left>
 noremap Y ;y
 
@@ -17,5 +15,5 @@ noremap <S-Left> :tabmove! -1<CR>
 cnoremap <C-n> <TAB>
 cnoremap <C-p> <S-TAB>
 
-map h gT
-map l gt
+map J gT
+map K gt
