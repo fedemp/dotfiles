@@ -1,4 +1,9 @@
 .pekwm/history
+config/gtk-2.0/gtkfilechooser.ini
+config/higan
+config/gconf
+config/transmission
+config/transmission-daemon
 config/chromium
 config/mpd
 config/ranger
