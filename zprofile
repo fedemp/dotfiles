@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/bin/:$HOME/.gem/ruby/2.2.0/bin
+export PATH=$PATH:$HOME/bin/:$HOME/.gem/ruby/2.2.0/bin:$HOME/npm/bin
 export EDITOR=vim
 export GREP_COLOR='0;32'
 export PAGER="less"
