@@ -22,10 +22,6 @@ setxkbmap -option terminate:ctrl_alt_bksp
 # disable CapsLock & map to Escape
 xmodmap .Xmodmap
 
-# compose key
-# setxkbmap -option compose:ralt
-
-xsetroot -solid "#dddddd"
 if (xrandr | grep "VGA1 connected"); then
 	xrandr --output VGA1 --auto
 	xrandr --output LVDS1 --off
