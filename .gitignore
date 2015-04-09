@@ -15,4 +15,5 @@ config/htop
 config/configstore
 config/menus
 config/mps-youtube
+config/mimeapps.list
 cache
