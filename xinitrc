@@ -26,4 +26,7 @@ if (xrandr | grep "VGA1 connected"); then
 	xrandr --output VGA1 --auto
 	xrandr --output LVDS1 --off
 fi
+
+xsetroot -solid '#222e45'
+
 exec bspwm
