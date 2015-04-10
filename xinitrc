@@ -28,5 +28,6 @@ if (xrandr | grep "VGA1 connected"); then
 fi
 
 xsetroot -solid '#222e45'
+setroot -t $HOME/.dotfiles/stripe.png
 
 exec bspwm
