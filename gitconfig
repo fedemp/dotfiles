@@ -99,8 +99,6 @@
 	default = simple
 [core]
   autocrlf = false
-  # editor = ~/bin/vimpager
-  excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = true
 [diff]
@@ -114,5 +112,5 @@
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [user]
-	email = fpanico@despegar.com
-	name = Federico Panico
+	email = bpm230@gmail.com
+	name = fedemp
