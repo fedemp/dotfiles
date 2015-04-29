@@ -1,8 +1,18 @@
-hi Hint font-family: mensch; font-size: 11px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
+hi Hint font-family: Ubuntu; font-size: 12px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 set focuscontent
-hi CmdLine>* font-family: ""Fira Mono""; font-size: 11px
-hi StatusLine  font-family: '"Fira Mono"';font-size: 11px;
-highlight CompItem font: 11px '"Fira Mono"'
+
+highlight CompItem font: 12px '"Ubuntu"'
+
+hi CmdLine background: #262626; color: #bcbcbc; transition: all 0.25s;
+hi CmdLine>* font: 11px envypn;
+hi CompItem[selected] background: #444;
+hi CompItem background: #262626; color: #bcbcbc; font: 11px envypn;
+hi CompDesc width: 500px; max-width: 500px; color: #6c6c6c;
+hi CompTitle -append background: #5f8787; font-weight: normal; font: 11px envypn
+hi CompTitle>* -append color: #1c1c1c; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 0 0 0; border: 0;
+hi ErrorMsg -append color: #1c1c1c; background: #af5f5f; font-weight: normal;
+hi StatusLine color: #bcbcbc; background: #262626; font-weight: normal; font: 11px envypn
+hi ModeMsg -append background: #87af87; color: #1c1c1c; font: 11px envypn;
 
 noremap j 5<C-e>
 noremap k 5<C-y>
