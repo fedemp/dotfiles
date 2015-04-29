@@ -62,15 +62,13 @@ bindkey '^[OD' backward-word                     # [Ctrl-LeftArrow] - move backw
 bindkey '^[[P' delete-char
 bindkey '^[[5~' up-line-or-history
 bindkey '^[[6~' down-line-or-history
+bindkey "^R" history-incremental-search-backward
+bindkey '^[[Z' reverse-menu-complete
 
 autoload zmv
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
 alias -g G='| ag' # now you can do: ls foo G something
-
-bindkey "^R" history-incremental-search-backward
-
-bindkey '^[[Z' reverse-menu-complete
 
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
@@ -98,5 +96,6 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 autoload -U promptinit && promptinit
+PURE_PROMPT_SYMBOL=">"
 prompt pure
 autoload k9 l gs fn
