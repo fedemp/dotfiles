@@ -11,11 +11,11 @@ URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Inconsolata:regular:size=8
-URxvt*imFont:               xft:Inconsolata:italic:size=8
-URxvt*boldFont:             xft:Inconsolata:bold:size=8
-URxvt*italicFont:           xft:Inconsolata:italic:size=8
-URxvt*boldItalicFont:       xft:Inconsolata:bold italic:size=8
+URxvt*font:                 xft:Roboto Mono:regular:size=10
+URxvt*imFont:               xft:Roboto Mono:italic:size=10
+URxvt*boldFont:             xft:Roboto Mono:bold:size=10
+URxvt*italicFont:           xft:Roboto Mono:italic:size=10
+URxvt*boldItalicFont:       xft:Roboto Mono:bold italic:size=10
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -29,3 +29,22 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 URxvt.intensityStyles: false
+
+*.foreground: #BCBCBC
+*.background: #262626
+*.color0:     #1C1C1C
+*.color8:     #444444
+*.color1:     #AF5F5F
+*.color9:     #FF8700
+*.color2:     #5F875F
+*.color10:    #87AF87
+*.color3:     #87875F
+*.color11:    #FFFFAF
+*.color4:     #5F87AF
+*.color12:    #8FAFD7
+*.color5:     #5F5F87
+*.color13:    #8787AF
+*.color6:     #5F8787
+*.color14:    #5FAFAF
+*.color7:     #6C6C6C
+*.color15:    #FFFFFF
