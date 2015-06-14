@@ -14,6 +14,7 @@ fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
+# setxkbmap latam
 numlockx
 
 # enable restart X
