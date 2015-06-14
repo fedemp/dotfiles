@@ -17,3 +17,10 @@ config/menus
 config/mps-youtube
 config/mimeapps.list
 cache
+config/ImageMagick/
+config/Trolltech
+config/VirtualBox/
+config/mps-youtube/
+config/mpv
+config/ananke
+config/phoenix
