@@ -14,7 +14,7 @@ toolbox#navigator-toolbox {
 
 #main-window[defaultfxtheme="true"] toolbar#TabsToolbar tabs#tabbrowser-tabs tab.tabbrowser-tab {
 	color: #bcbcbc !important;
-	font: 11px envypn !important;
+	font: 11px roboto !important;
 }
 
 #main-window[defaultfxtheme="true"] toolbar#TabsToolbar tabs#tabbrowser-tabs .tabbrowser-tab[selected="true"]:not(:-moz-lwtheme){
