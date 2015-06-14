@@ -31,12 +31,12 @@ bindkey -e
 
 # Customize to your needs...
 
-
 alias df='df -h'
 alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias pjs="pretty-js -c 'single' -e -t '  ' -i -f"
+alias su='su -'
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
@@ -96,6 +96,6 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 autoload -U promptinit && promptinit
-PURE_PROMPT_SYMBOL=">"
+# PURE_PROMPT_SYMBOL=">"
 prompt pure
 autoload k9 l gs fn
