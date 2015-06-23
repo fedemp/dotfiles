@@ -1,4 +1,4 @@
-#! /bin/dash
+#!/usr/bin/env dash
 
 bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9 0
 
@@ -10,4 +10,3 @@ bspc config -m LVDS1 borderless_monocle  true
 bspc config -m LVDS1 gapless_monocle     true
 bspc config -m LVDS1 normal_border_color "#262626"
 bspc config -m LVDS1 focused_border_color "#bcbcbc"
-sxhkd &
