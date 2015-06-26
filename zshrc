@@ -5,29 +5,37 @@ unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:*:*:*' menu select=2
+zstyle ':completion:*' menu select=long
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
 zstyle ':completion:*' users off
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path ~/.dotfiles/cache/
+zstyle ':completion::complete:*' cache-path ~/dotfiles/cache/
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
 
 autoload -Uz compinit
 compinit
 
 # End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+
 HISTSIZE=10000
 SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
 setopt appendhistory autocd extendedglob nomatch notify
 setopt autopushd pushdsilent
+setopt histignorealldups sharehistory
 bindkey -e
-# End of lines configured by zsh-newuser-install
 
 # Customize to your needs...
 
@@ -35,7 +43,6 @@ alias df='df -h'
 alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
 alias cp='cp -irv'
-alias pjs="pretty-js -c 'single' -e -t '  ' -i -f"
 alias su='su -'
 
 # nicer highlighting
@@ -99,3 +106,5 @@ autoload -U promptinit && promptinit
 # PURE_PROMPT_SYMBOL=">"
 prompt pure
 autoload k9 l gs fn
+
+source ~/.zshrc.local
