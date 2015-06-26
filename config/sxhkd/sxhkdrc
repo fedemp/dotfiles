@@ -88,7 +88,7 @@ super + Return
 	st
 
 super + space
-	$HOME/bin/dmenu_run -l 100 -p run -nb "#262626" -nf "#bcbcbc" -fn '-*-tamsyn-medium-r-*-*-12-*-*-*-*-*-*-*' -sb '#8fafd7' -sf '#444444' -f
+	dmenu_run -l 100 -p ">>>" -nb "#262626" -nf "#bcbcbc" -sb '#8fafd7' -sf '#444444' -f
 
 XF86AudioPlay
 	ncmpcpp toggle
