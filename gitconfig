@@ -111,6 +111,5 @@
   enabled = true
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
-[user]
-	email = bpm230@gmail.com
-	name = fedemp
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
