@@ -30,5 +30,7 @@ fi
 
 xsetroot -solid '#222e45'
 setroot -t $HOME/.dotfiles/stripe.png
-
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+# exec startxfce4
 exec bspwm
