@@ -26,3 +26,10 @@ config/ananke
 config/phoenix
 config/Thunar
 config/scudcloud
+config/Skype/
+config/dconf/
+config/deluge/
+config/gtk-3.0/
+config/subtitleeditor/
+config/user-dirs.dirs
+config/user-dirs.locale
