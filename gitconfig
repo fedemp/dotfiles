@@ -88,7 +88,7 @@
   summary = true
   verbosity = 1
 	tool = fugitive
-	ff = false
+	ff = true
 [apply]
   whitespace = nowarn
 [branch]

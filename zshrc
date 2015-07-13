@@ -107,4 +107,6 @@ autoload -U promptinit && promptinit
 prompt pure
 autoload k9 l gs fn
 
-source ~/.zshrc.local
+if [[ -e ~/.zshrc.local ]]; then
+	source ~/.zshrc.local
+fi
