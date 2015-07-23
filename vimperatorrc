@@ -1,18 +1,18 @@
-hi Hint font-family: Roboto; font-size: 12px; font-weight: normal; text-transform: uppercase; color: #333; background-color: #F9EDBE; border-color: #F0C36D; border-width: 1px; border-style: solid; padding: 1px 2px;
+hi Hint font-family: liberation sans; font-size: 12px; font-weight: normal; text-transform: uppercase; color: #333; background-color: #F9EDBE; border-color: #F0C36D; border-width: 1px; border-style: solid; padding: 1px 2px;
 set focuscontent
 
-highlight CompItem font: 12px "roboto"
+highlight CompItem font: 12px "liberation sans"
 
 hi CmdLine background: #262626; color: #bcbcbc; transition: all 0.25s;
-hi CmdLine>* font: 12px "roboto";
+hi CmdLine>* font: 12px "liberation sans";
 hi CompItem[selected] background: #444;
-hi CompItem background: #262626; color: #bcbcbc; font: 12px "roboto";
+hi CompItem background: #262626; color: #bcbcbc; font: 12px "liberation sans";
 hi CompDesc width: 500px; max-width: 500px; color: #6c6c6c;
-hi CompTitle -append background: #5f8787; font-weight: normal; font: 12px "roboto"
+hi CompTitle -append background: #5f8787; font-weight: normal; font: 12px "liberation sans"
 hi CompTitle>* -append color: #1c1c1c; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 0 0 0; border: 0;
 hi ErrorMsg -append color: #1c1c1c; background: #af5f5f; font-weight: normal;
-hi StatusLine color: #bcbcbc; background: #262626; font-weight: normal; font: 12px "roboto"
-hi ModeMsg -append background: #87af87; color: #1c1c1c; font: 12px "roboto";
+hi StatusLine color: #bcbcbc; background: #262626; font-weight: normal; font: 12px "liberation sans"
+hi ModeMsg -append background: #87af87; color: #1c1c1c; font: 12px "liberation sans";
 
 noremap j 5<C-e>
 noremap k 5<C-y>
