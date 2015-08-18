@@ -61,7 +61,9 @@ zle -N down-line-or-beginning-search
 
 # https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
 bindkey '^[[A' up-line-or-beginning-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '^[p' up-line-or-beginning-search                    # start typing + [mod1+p] - fuzzy find history forward
 bindkey '^[[B' down-line-or-beginning-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+bindkey '^[n' down-line-or-beginning-search                  # start typing + [mod1+n] - fuzzy find history backward
 bindkey '^[[1~' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
 bindkey '^[OC' forward-word                      # [Ctrl-RightArrow] - move forward one word
