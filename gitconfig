@@ -70,7 +70,7 @@
   sd = stash drop                   # drop stashes (destory changes)
 
   # status
-  s = status                        # status
+  s = status -s                     # status
   st = status                       # status
   stat = status                     # status
 
@@ -108,7 +108,7 @@
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
-  enabled = true
+  enabled = false
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [credential]
