@@ -112,3 +112,7 @@ autoload k9 l gs fn
 if [[ -e ~/.zshrc.local ]]; then
 	source ~/.zshrc.local
 fi
+
+export BROWSER=firefox
+
+. /etc/profile.d/fzf.zsh
