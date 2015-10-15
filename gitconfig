@@ -111,5 +111,3 @@
   enabled = false
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
-[credential]
-	helper = /usr/lib/git-core/git-credential-gnome-keyring
