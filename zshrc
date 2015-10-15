@@ -1,4 +1,4 @@
- # The following lines were added by compinstall
+# The following lines were added by compinstall
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
@@ -44,6 +44,7 @@ alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias su='su -'
+alias ssh-add='ssh-add -t 10m'
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
