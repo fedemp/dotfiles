@@ -11,8 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
- xset +fp /usr/share/fonts/local
- xset fp rehash
+xset +fp /usr/share/fonts/local
+xset fp rehash
 setxkbmap -layout us -variant altgr-intl nodeadkeys
 # setxkbmap latam
 
@@ -21,13 +21,12 @@ setxkbmap -option terminate:ctrl_alt_bksp
 
 xmodmap ~/.Xmodmap
 
-if (xrandr | grep "VGA1 connected"); then
-	xrandr --output VGA1 --auto
+if (xrandr | grep "HDMI1 connected"); then
 	xrandr --output LVDS1 --off
+	xrandr --output HDMI1 --auto
 fi
 
-setroot --restore
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+# setroot --restore
 # exec startxfce4
+xsetroot --solid "#262626"
 exec bspwm
