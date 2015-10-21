@@ -28,5 +28,5 @@ fi
 
 # setroot --restore
 # exec startxfce4
-xsetroot --solid "#262626"
+xsetroot -solid "#334046"
 exec bspwm
