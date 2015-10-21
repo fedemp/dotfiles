@@ -8,11 +8,11 @@ fi
 
 bspc config split_ratio         0.52
 
-bspc config border_width        3
-bspc config window_gap          15
-bspc config borderless_monocle  true
-bspc config gapless_monocle     true
-bspc config normal_border_color "#262626"
-bspc config focused_border_color "#bcbcbc"
+bspc config -m LVDS1 border_width        3
+bspc config -m LVDS1 window_gap          5
+bspc config -m LVDS1 borderless_monocle  true
+bspc config -m LVDS1 gapless_monocle     true
+bspc config -m LVDS1 normal_border_color "#334046"
+bspc config -m LVDS1 focused_border_color "#435056"
 
 sxhkd &
