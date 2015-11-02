@@ -13,6 +13,6 @@ bspc config -m LVDS1 window_gap          5
 bspc config -m LVDS1 borderless_monocle  true
 bspc config -m LVDS1 gapless_monocle     true
 bspc config -m LVDS1 normal_border_color "#334046"
-bspc config -m LVDS1 focused_border_color "#435056"
+bspc config -m LVDS1 focused_border_color "#666141"
 
 sxhkd &

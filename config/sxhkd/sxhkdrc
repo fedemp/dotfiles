@@ -84,7 +84,7 @@ super + Return
 	st
 
 super + space
-	SHELL=/bin/dash dmenu_run -q -p ">" -nb "#262626" -nf "#bcbcbc" -sb '#8fafd7' -sf '#444444' -f -x 500 -y 400 -w 450 -h 30
+	rofi -show run -bg "#262626" -fg "#bcbcbc" -font 'Droid Sans 10' -bw 0 -hide-scrollbar true
 
 XF86AudioPlay
 	ncmpcpp toggle

@@ -106,7 +106,7 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 autoload -U promptinit && promptinit
-# PURE_PROMPT_SYMBOL=">"
+PURE_GIT_PULL=0 # Useless as ssh keys expire
 prompt pure
 autoload k9 l gs fn
 
