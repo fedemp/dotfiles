@@ -27,3 +27,5 @@ cnoremap <C-p> <S-TAB>
 
 map J gT
 map K gt
+
+set defsearch=duckduckgo
