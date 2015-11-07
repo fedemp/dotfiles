@@ -19,6 +19,9 @@ setxkbmap -layout us -variant altgr-intl nodeadkeys
 # enable restart X
 setxkbmap -option terminate:ctrl_alt_bksp
 
+setxkbmap -option 'caps:ctrl_modifier'
+xcape -e 'Caps_Lock=Escape'
+
 xmodmap ~/.Xmodmap
 
 if (xrandr | grep "HDMI1 connected"); then

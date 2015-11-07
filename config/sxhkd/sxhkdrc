@@ -84,13 +84,19 @@ super + Return
 	st
 
 super + space
-	rofi -show run -bg "#262626" -fg "#bcbcbc" -font 'Droid Sans 10' -bw 0 -hide-scrollbar true
+	rofi -show run -bg "#262626" -fg "#bcbcbc" -font 'Fira Sans 9' -bw 0 -hide-scrollbar true
+
+super + shift + space
+	slock
 
 XF86AudioPlay
 	ncmpcpp toggle
 
 Print
 	scrot
+
+shift + Print
+	scrot -s
 
 XF86AudioLowerVolume
 	amixer sset Master 3-
