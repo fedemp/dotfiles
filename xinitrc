@@ -24,6 +24,9 @@ xcape -e 'Caps_Lock=Escape'
 
 xmodmap ~/.Xmodmap
 
+syndaemon -d
+unclutter -b
+
 if (xrandr | grep "HDMI1 connected"); then
 	xrandr --output LVDS1 --off
 	xrandr --output HDMI1 --auto
