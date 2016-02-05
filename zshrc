@@ -117,3 +117,4 @@ fi
 export BROWSER=firefox
 
 . /etc/profile.d/fzf.zsh
+. /etc/profile.d/vte.sh
