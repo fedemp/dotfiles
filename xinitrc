@@ -24,15 +24,13 @@ xcape -e 'Caps_Lock=Escape'
 
 xmodmap ~/.Xmodmap
 
-syndaemon -d
+syndaemon -d -i 1
 unclutter -b
-
-if (xrandr | grep "HDMI1 connected"); then
-	xrandr --output LVDS1 --off
-	xrandr --output HDMI1 --auto
-fi
 
 # setroot --restore
 # exec startxfce4
 xsetroot -solid "#334046"
+xrdb -merge $HOME/.Xresources
+urxvtd &
+urxvtc &
 exec bspwm
