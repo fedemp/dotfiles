@@ -1,18 +1,20 @@
-hi Hint font-family: Droid Sans; font-size: 13px; font-weight: normal; text-transform: uppercase; color: #333; background-color: #F9EDBE; border-color: #F0C36D; border-width: 1px; border-style: solid; padding: 1px 2px;
-set focuscontent
+" hi Hint font-family: Droid Sans; font-size: 13px; font-weight: normal; text-transform: uppercase; color: #333; background-color: #F9EDBE; border-color: #F0C36D; border-width: 1px; border-style: solid; padding: 1px 2px;
+"
+" highlight CompItem font: 13px "Droid Sans"
+"
+" hi CmdLine background: #262626; color: #bcbcbc; transition: all 0.25s;
+" hi CompTitle -append background: #5f8787; font-weight: normal; font: 13px "Droid Sans"
+" hi CompTitle>* -append color: #1c1c1c; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 0 0 0; border: 0;
+" hi ErrorMsg -append color: #1c1c1c; background: #af5f5f; font-weight: normal;
+" hi StatusLine color: #bcbcbc; background: #262626; font-weight: normal; font: 13px "Droid Sans"
+" hi ModeMsg -append background: #87af87; color: #1c1c1c; font: 13px "Droid Sans";
 
-highlight CompItem font: 13px "Droid Sans"
-
-hi CmdLine background: #262626; color: #bcbcbc; transition: all 0.25s;
-hi CmdLine>* font: 13px "Droid Sans";
-hi CompItem[selected] background: #444;
-hi CompItem background: #262626; color: #bcbcbc; font: 13px "Droid Sans";
-hi CompDesc width: 500px; max-width: 500px; color: #6c6c6c;
-hi CompTitle -append background: #5f8787; font-weight: normal; font: 13px "Droid Sans"
-hi CompTitle>* -append color: #1c1c1c; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 0 0 0; border: 0;
-hi ErrorMsg -append color: #1c1c1c; background: #af5f5f; font-weight: normal;
-hi StatusLine color: #bcbcbc; background: #262626; font-weight: normal; font: 13px "Droid Sans"
-hi ModeMsg -append background: #87af87; color: #1c1c1c; font: 13px "Droid Sans";
+hi CmdLine>* font: 12px "Droid Sans"; color: #333;
+hi StatusLine font: 12px "Droid Sans"; color: #333;
+hi CompDesc -append color: #4a90d9; font: 11px 'droid sans'
+hi CompItem font: 12px "Droid Sans"; color: #333;
+hi CompItem[selected]>* background: #4a90d9; color: #fff !important;
+hi Filter background: #6ea9e5; color: #fff; border: 1px solid #9ec7f1; border-radius: 1px;
 
 noremap j 5<C-e>
 noremap k 5<C-y>
@@ -29,3 +31,5 @@ map J gT
 map K gt
 
 set defsearch=duckduckgo
+
+set gui=nonavigation
