@@ -1,3 +1,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/sindresorhus/pure/
+[submodule "tmux-scroll-copy-mode"]
+	path = tmux-scroll-copy-mode
+	url = https://github.com/NHDaly/tmux-scroll-copy-mode
