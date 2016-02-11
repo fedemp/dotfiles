@@ -39,3 +39,5 @@ config/rtv
 config/feednix
 config/inkscape
 config/gpick
+config/lxterminal
+config/sublime-text-2
