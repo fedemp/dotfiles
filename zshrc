@@ -45,6 +45,7 @@ alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias su='su -'
 alias ssh-add='ssh-add -t 10m'
+alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
