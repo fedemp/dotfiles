@@ -1,21 +1,47 @@
-! Xft settings ---------------------------------------------------------------
+! Apprentice colorscheme
+! special
+*.foreground:   #bcbcbc
+*.background:   #262626
+*.cursorColor:  #bcbcbc
 
-Xft.dpi:        96
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintslight
-Xft.lcdfilter:  lcddefault
+! black
+*.color0:       #1c1c1c
+*.color8:       #444444
+
+! red
+*.color1:       #af5f5f
+*.color9:       #ff8700
+
+! green
+*.color2:       #5f875f
+*.color10:      #87af87
+
+! yellow
+*.color3:       #87875f
+*.color11:      #ffffaf
+
+! blue
+*.color4:       #5f87af
+*.color12:      #8fafd7
+
+! magenta
+*.color5:       #5f5f87
+*.color13:      #8787af
+
+! cyan
+*.color6:       #5f8787
+*.color14:      #5fafaf
+
+! white
+*.color7:       #6c6c6c
+*.color15:      #ffffff
 
 URxvt*buffered: true
-URxvt*cursorBlink: false
-URxvt.cursorUnderline: false
-URxvt*underlineColor: #93a1a1
-URxvt*font:                 xft:Roboto Mono:regular:size=10
-URxvt*imFont:               xft:Roboto Mono:italic:size=10
-URxvt*boldFont:             xft:Roboto Mono:bold:size=10
-URxvt*italicFont:           xft:Roboto Mono:italic:size=10
-URxvt*boldItalicFont:       xft:Roboto Mono:bold italic:size=10
+URxvt*font:                 xft:Roboto Mono:regular:size=9
+URxvt*imFont:               xft:Roboto Mono:italic:size=9
+URxvt*boldFont:             xft:Roboto Mono:bold:size=9
+URxvt*italicFont:           xft:Roboto Mono:italic:size=9
+URxvt*boldItalicFont:       xft:Roboto Mono:bold italic:size=9
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -23,28 +49,18 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode-256color
-URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 URxvt.intensityStyles: false
 
-*.foreground: #BCBCBC
-*.background: #262626
-*.color0:     #1C1C1C
-*.color8:     #444444
-*.color1:     #AF5F5F
-*.color9:     #FF8700
-*.color2:     #5F875F
-*.color10:    #87AF87
-*.color3:     #87875F
-*.color11:    #FFFFAF
-*.color4:     #5F87AF
-*.color12:    #8FAFD7
-*.color5:     #5F5F87
-*.color13:    #8787AF
-*.color6:     #5F8787
-*.color14:    #5FAFAF
-*.color7:     #6C6C6C
-*.color15:    #FFFFFF
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.url-select.button:    1
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
