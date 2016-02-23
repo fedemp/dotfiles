@@ -4,3 +4,6 @@
 [submodule "tmux-scroll-copy-mode"]
 	path = tmux-scroll-copy-mode
 	url = https://github.com/NHDaly/tmux-scroll-copy-mode
+[submodule "lean"]
+	path = lean
+	url = https://github.com/miekg/lean
