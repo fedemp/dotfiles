@@ -44,7 +44,6 @@ alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias su='su -'
-alias ssh-add='ssh-add -t 10m'
 alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # nicer highlighting
@@ -91,15 +90,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 stty erase \^\? # Fixes backspace for vim
 
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-
 unsetopt MULTIBYTE
 
 autoload -z edit-command-line
@@ -108,7 +98,7 @@ bindkey "^X^E" edit-command-line
 
 autoload -U promptinit && promptinit
 PURE_GIT_PULL=0 # Useless as ssh keys expire
-prompt pure
+prompt lean
 autoload k9 l gs fn
 
 if [[ -e ~/.zshrc.local ]]; then
@@ -118,4 +108,3 @@ fi
 export BROWSER=firefox
 
 . /etc/profile.d/fzf.zsh
-. /etc/profile.d/vte.sh
