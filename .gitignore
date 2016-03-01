@@ -41,3 +41,9 @@ config/inkscape
 config/gpick
 config/lxterminal
 config/sublime-text-2
+config/terminator
+config/libfm/
+config/lxpanel/
+config/lxsession/
+config/openbox/
+config/pcmanfm/
