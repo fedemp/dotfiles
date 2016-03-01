@@ -1,5 +1,5 @@
 [global]
-    font = M+ 1m 11
+    font = Fira Sans 10
     format = "%s\n%b"
     sort = yes
     indicate_hidden = yes
@@ -20,7 +20,7 @@
     horizontal_padding = 8
     separator_color = frame
     startup_notification = false
-    browser = /usr/bin/chromium
+    browser = /usr/bin/firefox
 
 [frame]
     width = 3
