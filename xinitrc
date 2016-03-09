@@ -29,7 +29,7 @@ unclutter -b
 
 # setroot --restore
 # exec startxfce4
-xsetroot -solid "#334046"
+xsetroot -solid "#262626"
 # xrdb -merge $HOME/.Xresources
 # urxvtd &
 # urxvtc &
