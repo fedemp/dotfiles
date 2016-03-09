@@ -7,3 +7,6 @@
 [submodule "lean"]
 	path = lean
 	url = https://github.com/miekg/lean
+[submodule "tmux-urlview"]
+	path = tmux-urlview
+	url = https://github.com/tmux-plugins/tmux-urlview
