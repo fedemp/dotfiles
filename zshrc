@@ -101,10 +101,15 @@ autoload -U promptinit && promptinit
 prompt lean
 autoload k9 l gs fn
 
+autoload -U select-word-style
+select-word-style bash
+
 if [[ -e ~/.zshrc.local ]]; then
 	source ~/.zshrc.local
 fi
 
-export BROWSER=firefox
+if [[ -e ~/.LESS_TERMCAP ]]; then
+	source ~/.LESS_TERMCAP
+fi
 
 . /etc/profile.d/fzf.zsh
