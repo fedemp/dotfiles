@@ -1,5 +1,6 @@
 export PATH=$PATH:$HOME/bin/:$HOME/.gem/ruby/2.2.0/bin:$HOME/npm/bin
 export EDITOR=vim
+export BROWSER=firefox
 export GREP_COLOR='0;32'
 export PAGER="less"
 export LESS="-R -i -g -M -R -x4 -X -f -F -z-1"
