@@ -44,6 +44,7 @@ alias ag='ag --color --pager "less -R"'
 alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias su='su -'
+alias vim=nvim
 alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # nicer highlighting

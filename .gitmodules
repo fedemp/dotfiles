@@ -10,3 +10,6 @@
 [submodule "tmux-urlview"]
 	path = tmux-urlview
 	url = https://github.com/tmux-plugins/tmux-urlview
+[submodule "tmux-url-select"]
+	path = tmux-url-select
+	url = https://github.com/dequis/tmux-url-select
