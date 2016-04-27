@@ -33,5 +33,5 @@ xsetroot -solid "#262626"
 # xrdb -merge $HOME/.Xresources
 # urxvtd &
 # urxvtc &
-exec bspwm
-# exec startlxde
+bspwm
+# startlxde
