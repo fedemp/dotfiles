@@ -28,6 +28,7 @@
   # checkout
   co = checkout                     # checkout
   nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+  cob = !sh -c 'git checkout $(git branch | fzf)'
 
   # cherry-pick
   cp = cherry-pick -x               # grab a change from a branch
@@ -82,6 +83,10 @@
   svnd = svn dcommit
   svnl = svn log --oneline --show-commit
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+  # work
+    fmi = checkout feature/moderation/integration
+    fm = !sh -c 'git checkout -b feature/moderation/MOD-$1' -
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [merge]
@@ -99,6 +104,7 @@
 	default = simple
 [core]
   autocrlf = false
+	editor = nvim -c 'startinsert'
 [advice]
   statusHints = true
 [diff]
@@ -110,4 +116,4 @@
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = false
 [mergetool "fugitive"]
-	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
