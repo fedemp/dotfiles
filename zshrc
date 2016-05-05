@@ -114,4 +114,4 @@ if [[ -e ~/.LESS_TERMCAP ]]; then
 	source ~/.LESS_TERMCAP
 fi
 
-. /etc/profile.d/fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
