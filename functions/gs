@@ -1,2 +1,2 @@
-function gs() { git status }
+function gs() { tig status }
 
