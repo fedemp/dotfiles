@@ -1,0 +1,1 @@
+bind generic X !git difftool --tool=fugitive --no-prompt %(commit)

@@ -1,0 +1,583 @@
+{
+	"parser": "babel-eslint",
+
+	"ecmaFeatures": {
+		"jsx": true
+	},
+
+	"env": {
+		"browser": true
+	},
+
+	"globals": {
+		"define": true
+	},
+
+	/*
+		ESLint supports only the JSX syntax not the semantic of react.
+		This plugin adds react specific linting rules to ESLint.
+	*/
+	"plugins": [
+		"react"
+	],
+
+	/*
+		First argument of the rule is severity:
+		0 = off, 1 = warning, 2 = error.
+  	*/
+	"rules": {
+
+		/* Disallow multiple blank lines */
+		"no-multiple-empty-lines": [2, {"max": 1}],
+
+		/* Enforce quote style */
+		"quotes": [2, "double"],
+
+		/*
+			Requires to always put curly braces around blocks
+			in loops and conditionals.
+		*/
+		"curly": [2, "all"],
+
+		/*
+			Requires type-safe equality operators === and !==
+			instead of their regular counterparts == and !=.
+		*/
+		"eqeqeq": [2, "allow-null"],
+
+		/*
+			Requires all `for in` loops to filter object's items.
+		*/
+		"guard-for-in": [2],
+
+		/*
+			Requires immediate function invocations
+			to be wrapped in parentheses.
+		*/
+		"wrap-iife": [2, "inside"],
+
+		/*
+			Cyclomatic complexity measures the number of
+			linearly independent paths through a program's source code.
+		*/
+		"complexity": [2, 5],
+
+		/*
+			Controls block nesting.
+		*/
+		"max-depth": [2, 5],
+
+		/*
+			Requires all constructor functions to be capitalized.
+		*/
+		"new-cap": [2, {"capIsNew": false}],
+
+		/*
+			Prohibits the use of `arguments.caller` and `arguments.callee`.
+		*/
+		"no-caller": [2],
+
+		/*
+			Disallows mixed spaces & tabs.
+			Smart tabs supresses errors when used for alignment.
+		*/
+		"no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+
+		/*
+			Requires "use strict" in functions.
+		*/
+		"strict": [2, "function"],
+
+		/*
+			Disallows trailing spaces.
+		*/
+		"no-trailing-spaces": [2],
+
+		/*
+			Disallows undefined variables.
+		*/
+		"no-undef": [2],
+
+		/*
+			Disallows unused variables.
+		*/
+		"no-unused-vars": [2],
+
+		/*
+			Semicolons must be used any place where they are valid.
+		*/
+		"semi": [2, "always"],
+
+		/*
+			Require dot notation style whenever possible.
+		*/
+		"dot-notation": [2],
+
+		/*
+			Disallow alert, prompt, and confirm.
+		*/
+		"no-alert": [2],
+
+		/*
+			Disallow console.*.
+		*/
+		"no-console": [2],
+
+		/*
+			Disallow debugger statements.
+		*/
+		"no-debugger": [2],
+
+		/*
+			Disallow ambiguous assignments in for, if,
+			while, and do...while conditional statements.
+		*/
+		"no-cond-assign": [2],
+
+		/*
+			Disallow constant values in conditionals.
+		*/
+		"no-constant-condition": [2],
+
+		/*
+			Disallow controls characters in regular expressions.
+			Control characters are special, invisible characters in the ASCII range 0-31.
+		*/
+		"no-control-regex": [2],
+
+		/*
+			Disallow regexs that look like division.
+		*/
+		"no-div-regex": [2],
+
+		/*
+			Disallow spaces in regular expressions.
+		*/
+		"no-regex-spaces": [2],
+
+		/*
+			Disallow invalid regular expressions.
+		*/
+		"no-invalid-regexp": [2],
+
+		/*
+			Disallow empty character classes in regular expressions.
+		*/
+		"no-empty-character-class": [2],
+
+		/*
+			Disallow duplicate arguments.
+		*/
+		"no-dupe-args": [2],
+
+		/*
+			Disallow duplicate keys.
+		*/
+		"no-dupe-keys": [2],
+
+		/*
+			Disallow a duplicate case label in switch statements.
+		*/
+		"no-duplicate-case": [2],
+
+		/*
+			Disallow empty block statements.
+		*/
+		"no-empty": [2],
+
+		/*
+			Disallow assignment of the exception parameter.
+		*/
+		"no-ex-assign": [2],
+
+		/*
+			Disallow extra boolean casts.
+			(e.g. !!bar ? baz : bat => Redundant double negation in bar)
+		*/
+		"no-extra-boolean-cast": [2],
+
+		/*
+			No irregular whitespace. Various whitespace characters can be inputted
+			by programmers by mistake for example from copying or keyboard shortcuts.
+		*/
+		"no-irregular-whitespace": [2],
+
+		/*
+			Disallow negated left operand of in operator.
+		*/
+		"no-negated-in-lhs": [2],
+
+		/*
+			Disallow global object function calls.
+			(e.g. it disallows this => Math(), JSON())
+		*/
+		"no-obj-calls": [2],
+
+		/*
+			Disallow sparse arrays.
+			(e.g. var items = [,,])
+		*/
+		"no-sparse-arrays": [2],
+
+		/*
+			Disallow unreachable code.
+		*/
+		"no-unreachable": [2],
+
+		/*
+			Disallows => (foo == NaN)
+			Allows => isNaN(foo)
+		*/
+		"use-isnan": [2],
+
+		/*
+			Ensures that the results of typeof are compared against a valid string.
+			(e.g. this is bad => typeof foo === "strnig", string is misspelled)
+		*/
+		"valid-typeof": [2],
+
+		/*
+			Avoid unexpected multiline expressions.
+		*/
+		"no-unexpected-multiline": [2],
+
+		/*
+			Treat var as block scoped.
+		*/
+		"block-scoped-var": [2],
+
+		/*
+			Require default case in switch statements.
+		*/
+		"default-case": [2],
+
+		/*
+			Enforce newline before and after dot.
+			Bad => object. \n foo()
+			Good => object \n .foo()
+		*/
+		"dot-location": [2, "property"],
+
+		/*
+			Disallow Yoda conditions.
+			Bad => "color" === foo
+			Good => foo === "color"
+		*/
+		"yoda": [2, "never"],
+
+		/*
+			Require radix parameter.
+		*/
+		"radix": [2],
+
+		/*
+			No with statements.
+		*/
+		"no-with": [2],
+
+		/*
+			Disallow unncessary concatenation of strings.
+		*/
+		"no-useless-concat": [2],
+
+		/*
+			Disallow unnecessary .call() and .apply().
+		*/
+		"no-useless-call": [2],
+
+		/*
+			Disallow octal literals.
+		*/
+		"no-octal": [2],
+
+		/*
+			Disallow redeclaring variables.
+			builtinGlobals:true => checks with built-in global vars (e.g. Object, Array, Number)
+		*/
+		"no-redeclare": [2, {"builtinGlobals": true}],
+
+		/*
+			Disallow eval().
+		*/
+		"no-eval": [2],
+
+		/*
+			Disallow Implied eval().
+			e.g. setTimeout("alert('Hi!');", 100);
+		*/
+		"no-implied-eval": [2],
+
+		/*
+			Disallow variables deletion.
+			The delete operator will only delete the properties of objects.
+		*/
+		"no-delete-var": [2],
+
+		/*
+			Disallow extra Semicolons.
+			e.g. var x = 5;;;;;
+		*/
+		"no-extra-semi": [2],
+
+		/*
+			Requires that function declarations be in
+			the root of a program or the body of a function.
+		*/
+		"no-inner-declarations": [2],
+
+		/*
+			Requires "break" after cases in switch statements.
+		*/
+		"no-fallthrough": [2],
+
+		/*
+			Error occurs when a label is used to mark a statement that is not an iteration or switch.
+		*/
+		"no-empty-label": [2],
+
+		/*
+			Disallows extending native objects.
+		*/
+		"no-extend-native": [2],
+
+		/*
+			Disallows floating decimals.
+			Bad => .7, 7.
+			Good => 0.7, 7.0
+		*/
+		"no-floating-decimal": [2],
+
+		/*
+			Disallow iterator (i.e. __iterator__) access
+		*/
+		"no-iterator": [2],
+
+		/*
+			Disallow labeled statements.
+		*/
+		"no-labels": [2],
+
+		/*
+			Disallow unnecessary nested blocks.
+		*/
+		"no-lone-blocks": [2],
+
+		/*
+			Disallow functions in loops.
+		*/
+		"no-loop-func": [2],
+
+		/*
+			Disallow multiline strings.
+		*/
+		"no-multi-str": [2],
+
+		/*
+			Disallow reassignment of native objects.
+			e.g. String = new Object();
+		*/
+		"no-native-reassign": [2],
+
+		/*
+			Disallow new Function(...)
+		*/
+		"no-new-func": [2],
+
+		/*
+			Prevents the use of a deprecated JavaScript feature:
+			the use of octal escape sequences.
+		*/
+		"no-octal-escape": [2],
+
+		/*
+			Eliminates the use of String, Number, and Boolean with the new operator.
+		*/
+		"no-new-wrappers": [2],
+
+		/*
+			Disallow process.env.
+		*/
+		"no-process-env": [2],
+
+		/*
+			Disallow use of __proto__.
+		*/
+		"no-proto": [2],
+
+		/*
+			Disallow assignment in return statement.
+		*/
+		"no-return-assign": [2, "always"],
+
+		/*
+			Disallow "javascript:" urls.
+		*/
+		"no-script-url": [2],
+
+		/*
+			Comparing to itself is potentially pointless.
+			var x = 10; if (x === x){ ... }
+		*/
+		"no-self-compare": [2],
+
+		/*
+			Forbids the use of the comma operator, exceptions:
+			a) initialization or update portions of a for statement.
+			b) expression sequence is explicitly wrapped in parentheses.
+		*/
+		"no-sequences": [2],
+
+		/*
+			Enforced cnsistency when throwing exception by disallowing to throw literal
+			which cannot possibly be an Error object.
+			Good => throw new Error("Hey")
+			Bad => throw "Hey"
+		*/
+		"no-throw-literal": [2],
+
+		/*
+			Disallow expressions that evaluate to a value but are never used.
+		*/
+		"no-unused-expressions": [2],
+
+		/*
+			Disallow shadowing of restricted names.
+		*/
+		"no-shadow-restricted-names": [2],
+
+		/*
+			Prevents creating a label that shares a name with a variable that is in scope.
+		*/
+		"no-label-var": [2],
+
+		/*
+			Prevents a catch clause parameter that has the same name as a variable in an outer scope.
+		*/
+		"no-catch-shadow": [2],
+
+		/*
+			Prevents comments that have any of the terms listed below.
+			This is useful when cleaning up old jshint or jscs messages.
+		*/
+		"no-warning-comments": [2, {
+			"terms": ["jshint", "jscs"],
+			"location": "anywhere"
+		}],
+
+		//DISABLED RULES
+
+		"no-shadow": [0],
+		"no-undefined": [0],
+		"no-eq-null": [0],
+		"no-extra-bind": [0],
+		"no-else-return": [0],
+		"no-multi-spaces": [0],
+		"no-new": [0],
+		"no-param-reassign": [0],
+		"no-use-before-define": [0, "nofunc"],
+		"react/jsx-closing-bracket-location": [0],
+		"react/jsx-max-props-per-line": [0],
+		"react/jsx-sort-prop-types": [0],
+		"react/jsx-sort-props": [0],
+		"react/no-set-state": [0],
+		"react/sort-comp": [0],
+
+		//REACT RULES
+
+		/*
+			Prevent missing displayName in a React component definition.
+		*/
+		"react/display-name": [2],
+
+		/*
+			Enforce boolean attributes notation in JSX.
+			Good => <Hello readOnly />;
+			Bad =>  <Hello readOnly={true} />;
+		*/
+		"react/jsx-boolean-value": [2],
+
+		/*
+			Disallow spaces inside of curly braces.
+			Good => <Hello name={firstname} />;
+			Bad => <Hello name={    firstname    } />;
+		*/
+		"react/jsx-curly-spacing": [2],
+
+		/*
+			Validate props indentation.
+		*/
+		"react/jsx-indent-props": [2, "tab"],
+
+		/*
+			Prevent duplicate properties.
+		*/
+		"react/jsx-no-duplicate-props": [2],
+
+		/*
+			Disallow undeclared variables in JSX
+		*/
+		"react/jsx-no-undef": [2],
+
+		/*
+			Prevent React to be incorrectly marked as unused.
+		*/
+		"react/jsx-uses-react": [2],
+
+		/*
+			Prevent variables used in JSX to be incorrectly marked as unused.
+		*/
+		"react/jsx-uses-vars": [2],
+
+		/*
+			Prevent usage of dangerous JSX properties.
+		*/
+		"react/no-danger": [2],
+
+		/*
+			Prevent usage of setState in componentDidMount.
+		*/
+		"react/no-did-mount-set-state": [2],
+
+		/*
+			Prevent usage of setState in componentDidUpdate.
+		*/
+		"react/no-did-update-set-state": [2],
+
+		/*
+			Prevent multiple component definition per file.
+		*/
+		"react/no-multi-comp": [2],
+
+		/*
+			Prevent usage of unknown DOM property.
+		*/
+		"react/no-unknown-property": [2],
+
+		/*
+			Prevent missing props validation in a React component definition.
+		*/
+		"react/prop-types": [2],
+
+		/*
+			Prevent missing React when using JSX.
+		*/
+		"react/react-in-jsx-scope": [2],
+
+		/*
+			Enforce ommiting ".jsx" file extension from require calls.
+			Good => require("/path/to/component")
+			Bad => require("/path/tocomponent.jsx")
+		*/
+		"react/require-extension": [2],
+
+		/*
+			Prevent extra closing tags for components without children.
+		*/
+		"react/self-closing-comp": [2],
+
+		/*
+			Prevent missing parentheses around multiline JSX.
+		*/
+		"react/wrap-multilines": [2]
+	}
+}
