@@ -47,3 +47,6 @@ config/lxpanel/
 config/lxsession/
 config/openbox/
 config/pcmanfm/
+config/qutebrowser/bookmarks
+config/qutebrowser/quickmarks
+config/qutebrowser/qsettings
