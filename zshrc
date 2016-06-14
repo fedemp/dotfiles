@@ -89,7 +89,7 @@ eval `dircolors $HOME/.dir_colors`
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-stty erase \^\? # Fixes backspace for vim
+# stty erase \^\? # Fixes backspace for vim
 
 unsetopt MULTIBYTE
 
