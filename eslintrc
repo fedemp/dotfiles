@@ -578,6 +578,17 @@
 		/*
 			Prevent missing parentheses around multiline JSX.
 		*/
-		"react/wrap-multilines": [2]
+		"react/wrap-multilines": [2],
+
+		/*
+			Enforces consistent spacing before and after commas.
+		 */
+		 "comma-spacing": [2, { "before": false, "after": true }],
+
+		 /*
+			This rule enforces consistent use of trailing commas in object and array literals.
+		  */
+		 "comma-dangle": [2, "never"]
+
 	}
 }
