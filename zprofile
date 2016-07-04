@@ -3,5 +3,5 @@ export EDITOR=nvim
 export BROWSER=qutebrowser
 export GREP_COLOR='0;32'
 export PAGER="less"
-export LESS="-R -i -g -M -R -x4 -X -f -F -z-1"
+export LESS="-R -i -g -M -x4 -X -F -z-1"
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx
