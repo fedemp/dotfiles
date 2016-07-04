@@ -24,14 +24,17 @@ xcape -e 'Caps_Lock=Escape'
 
 xmodmap ~/.Xmodmap
 
-syndaemon -d -i 1 -K -t
+# syndaemon -d -i 1 -K -t
 unclutter -b
 
 # setroot --restore
 # exec startxfce4
 xsetroot -solid "#262626"
+
+nohup redshift & disown
+
 # xrdb -merge $HOME/.Xresources
 # urxvtd &
 # urxvtc &
-bspwm
+exec bspwm
 # startlxde
