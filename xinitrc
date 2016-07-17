@@ -29,7 +29,7 @@ unclutter -b
 
 # setroot --restore
 # exec startxfce4
-xsetroot -solid "#262626"
+xsetroot -solid "#8787af"
 
 nohup redshift & disown
 
