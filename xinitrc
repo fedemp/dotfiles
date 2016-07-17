@@ -22,7 +22,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
 
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 
 # syndaemon -d -i 1 -K -t
 unclutter -b
