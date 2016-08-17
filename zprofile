@@ -4,4 +4,5 @@ export BROWSER=qutebrowser
 export GREP_COLOR='0;32'
 export PAGER="less"
 export LESS="-R -i -g -M -x4 -X -F -z-1"
+export FZF_DEFAULT_COMMAND='ag -g ""'
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx
