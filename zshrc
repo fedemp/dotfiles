@@ -34,7 +34,7 @@ HISTFILE=~/.zsh_history
 
 setopt appendhistory autocd extendedglob nomatch notify
 setopt autopushd pushdsilent
-setopt histignorealldups sharehistory
+setopt histignorealldups sharehistory histignorespace
 bindkey -e
 
 # Customize to your needs...
@@ -45,7 +45,6 @@ alias ls='ls --color=auto'
 alias cp='cp -irv'
 alias su='su -'
 alias vim=nvim
-alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # nicer highlighting
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
