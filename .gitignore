@@ -41,11 +41,11 @@ config/inkscape
 config/gpick
 config/lxterminal
 config/sublime-text-2
+config/sublime-text-3
 config/terminator
 config/libfm/
 config/lxpanel/
 config/lxsession/
-config/openbox/
 config/pcmanfm/
 config/qutebrowser/bookmarks
 config/qutebrowser/quickmarks
