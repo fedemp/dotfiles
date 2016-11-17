@@ -104,7 +104,7 @@
 	default = simple
 [core]
   autocrlf = false
-	editor = nvim -c 'startinsert'
+	editor = nvim
 [advice]
   statusHints = true
 [diff]
