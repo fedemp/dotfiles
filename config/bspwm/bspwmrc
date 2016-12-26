@@ -3,7 +3,8 @@
 if (xrandr | grep "HDMI1 connected"); then
 	bspc monitor HDMI1 -d 1 2 3 4 5 6 7 8 9 0
 else
-	bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9 0
+	MAIN=`xrandr | grep ' connected' | cut -f 1 -d ' '`
+	bspc monitor $MAIN -d 1 2 3 4 5 6 7 8 9 0
 fi
 
 bspc config split_ratio         0.52
