@@ -20,7 +20,7 @@ Print
 
 # program launcher
 super + space
-	rofi -show run -bg "#262626" -fg "#bcbcbc" -font 'Fira Sans 11' -bw 0 -hide-scrollbar true
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
