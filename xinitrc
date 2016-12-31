@@ -13,28 +13,52 @@ fi
 
 xset +fp /usr/share/fonts/local
 xset fp rehash
-setxkbmap -layout us -variant altgr-intl nodeadkeys
-# setxkbmap latam
 
-# enable restart X
+# Keyboard layout
+setxkbmap -layout us -variant altgr-intl nodeadkeys
+
+# Enable restart X
 setxkbmap -option terminate:ctrl_alt_bksp
 
+# Map CapsLock to Esc
 setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
 
-# xmodmap ~/.Xmodmap
-
-# syndaemon -d -i 1 -K -t
+# Hide mouse cursor
 unclutter -b
 
-# setroot --restore
-# exec startxfce4
-xsetroot -solid "#8787af"
-
+# Redshift
 nohup redshift & disown
 
-# xrdb -merge $HOME/.Xresources
-# urxvtd &
-# urxvtc &
+# Wallpaper stuff
+getwallpaper(){
+	_RESOLUTION=`xrandr | grep ' connected' | cut -d ' ' -f 3 | cut -d '+' -f 1`
+	_XRES=`echo ${_RESOLUTION} | cut -d 'x' -f 1`
+	_YRES=`echo ${_RESOLUTION} | cut -d 'x' -f 2`
+	curl https://unsplash.it/${_XRES}/${_YRES} -o $_WALLPAPERFILENAME
+	setroot $_WALLPAPERFILENAME
+}
+
+deletecache(){
+	for f in $_WALLPAPERDIR/*.jpg; do
+		[ $f != ${_WALLPAPERFILENAME}] && rm $f
+	done
+}
+
+_WALLPAPERDATE=`date +%F`
+_WALLPAPERDIR=${XDG_CACHE_HOME}/_wallpaper
+_WALLPAPERFILENAME=${_WALLPAPERDIR}/wallpaper_${_WALLPAPERDATE}.jpg
+
+mkdir -p $_WALLPAPERDIR
+if [ -f $_WALLPAPERFILENAME ]
+then
+ 	setroot $_WALLPAPERFILENAME
+else
+ 	getwallpaper &
+	deletecache &
+fi
+
 exec bspwm
-# startlxde
+
+
+
