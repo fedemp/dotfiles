@@ -1,5 +1,5 @@
 [global]
-    font = Monospace 8
+    font = Open Sans 9
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
@@ -40,7 +40,7 @@
     # window allows bounces back and forth.
     # This option conflicts with "word_wrap".
     # Set to 0 to disable.
-    bounce_freq = 0
+    bounce_freq = 1
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -116,7 +116,7 @@
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
     # to the font height and padding.
-    notification_height = 0
+    notification_height = 10
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -124,7 +124,7 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 8
+    padding = 0
 
     # Horizontal padding.
     horizontal_padding = 8
@@ -155,7 +155,7 @@
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-    width = 3
+    width = 0
     color = "#aaaaaa"
 
 [shortcuts]
@@ -182,13 +182,13 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#fdfdfd"
+    foreground = "#5c616c"
     timeout = 10
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#fdfdfd"
+    foreground = "#5c616c"
     timeout = 10
 
 [urgency_critical]

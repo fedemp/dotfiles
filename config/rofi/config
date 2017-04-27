@@ -1,15 +1,15 @@
-rofi.lines:                          22
-rofi.font:                           Tamzen 17
+rofi.lines:                          16
+rofi.font:                           Iosevka 17
 rofi.color-normal:                   #262626,#bcbcbc,#262626,#5f87af,#262626
 rofi.color-window:                   #262626,#444444,#444444
 rofi.bw:                             0
 rofi.location:                       2
-rofi.padding:                        100
+rofi.padding:                        101
 rofi.fixed-num-lines:                true
 rofi.sidebar-mode:                   true
 rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
-rofi.fullscreen:                     true
+rofi.fullscreen:                     false
 rofi.fake-transparency:              false
 rofi.scroll-method:                  1
 !# vim: set filetype=config : 

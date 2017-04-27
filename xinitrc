@@ -28,7 +28,7 @@ xcape -e 'Caps_Lock=Escape'
 unclutter -b
 
 # Redshift
-nohup redshift & disown
+redshift -l -34.6033333333:-58.3816666667 & disown
 
 # Wallpaper stuff
 getwallpaper(){
@@ -49,16 +49,13 @@ _WALLPAPERDATE=`date +%F`
 _WALLPAPERDIR=${XDG_CACHE_HOME}/_wallpaper
 _WALLPAPERFILENAME=${_WALLPAPERDIR}/wallpaper_${_WALLPAPERDATE}.jpg
 
-mkdir -p $_WALLPAPERDIR
-if [ -f $_WALLPAPERFILENAME ]
-then
- 	setroot $_WALLPAPERFILENAME
-else
- 	getwallpaper &
-	deletecache &
-fi
-
+# mkdir -p $_WALLPAPERDIR
+# if [ -f $_WALLPAPERFILENAME ]
+# then
+#  	setroot $_WALLPAPERFILENAME
+# else
+#  	getwallpaper &
+# 	deletecache &
+# fi
+xsetroot -bitmap Desktop/tripoint.xbm -fg "#262626" -bg "#444444"
 exec bspwm
-
-
-

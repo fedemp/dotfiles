@@ -37,11 +37,11 @@
 *.color15:      #ffffff
 
 URxvt*buffered: true
-URxvt*font:                 xft:Roboto Mono:regular:size=9
-URxvt*imFont:               xft:Roboto Mono:italic:size=9
-URxvt*boldFont:             xft:Roboto Mono:bold:size=9
-URxvt*italicFont:           xft:Roboto Mono:italic:size=9
-URxvt*boldItalicFont:       xft:Roboto Mono:bold italic:size=9
+URxvt*font:                 xft:Iosevka:regular:size=11
+URxvt*imFont:               xft:Iosevka:italic:size=11
+URxvt*boldFont:             xft:Iosevka:bold:size=11
+URxvt*italicFont:           xft:Iosevka:italic:size=11
+URxvt*boldItalicFont:       xft:Iosevka:bold italic:size=11
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -54,10 +54,16 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 URxvt.intensityStyles: false
-
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+! Xft.hintstyle: hintmedium
+! Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  chromium
-URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
