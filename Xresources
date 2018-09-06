@@ -36,12 +36,21 @@
 *.color7:       #6c6c6c
 *.color15:      #ffffff
 
+XTerm.vt100.facename:             Iosevka Term:regular:size=11
+XTerm.vt100.font:                 xft:Iosevka Term:regular:size=11
+XTerm.vt100.imFont:               xft:Iosevka Term:italic:size=11
+XTerm.vt100.boldFont:             xft:Iosevka Term:bold:size=11
+XTerm.vt100.italicFont:           xft:Iosevka Term:italic:size=11
+XTerm.vt100.boldItalicFont:       xft:Iosevka Term:bold italic:size=11
+XTerm.vt100.scrollbar:            false
+XTerm.vt100.saveLines:            4096
+
 URxvt*buffered: true
-URxvt*font:                 xft:Iosevka:regular:size=11
-URxvt*imFont:               xft:Iosevka:italic:size=11
-URxvt*boldFont:             xft:Iosevka:bold:size=11
-URxvt*italicFont:           xft:Iosevka:italic:size=11
-URxvt*boldItalicFont:       xft:Iosevka:bold italic:size=11
+URxvt*font:                 xft:Iosevka Term:regular:size=11
+URxvt*imFont:               xft:Iosevka Term:italic:size=11
+URxvt*boldFont:             xft:Iosevka Term:bold:size=11
+URxvt*italicFont:           xft:Iosevka Term:italic:size=11
+URxvt*boldItalicFont:       xft:Iosevka Term:bold italic:size=11
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -51,7 +60,7 @@ URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode-256color
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
-URxvt.letterSpace: -1
+URxvt.letterSpace: 0
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 URxvt.intensityStyles: false
 Xft.autohint: 0

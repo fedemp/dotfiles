@@ -1,0 +1,37 @@
+auto-reload yes
+reload-time 480
+reload-threads 5
+
+browser "firefox %u"
+html-renderer "w3m -dump -T text/html"
+notify-program notify-send
+notify-screen yes
+notify-beep yes
+
+download-retries 5
+download-full-page yes
+
+color background          default   default
+color listnormal          default   default
+color listfocus           blue    default bold
+color listfocus_unread    blue    default   bold
+color listnormal_unread   default   default   bold
+color info                blue    default   bold
+color article white black
+
+# vim-like bindings
+bind-key j down
+bind-key k up
+bind-key ^J next-feed
+bind-key ^K prev-feed
+bind-key SPACE pagedown
+bind-key b pageup
+bind-key z sort
+bind-key Z rev-sort
+bind-key g home
+bind-key G end
+bind-key ^R random-unread
+bind-key U reload-urls
+bind-key o open-in-browser-and-mark-read
+bind-key O open-in-browser
+bind-key o open-in-browser article

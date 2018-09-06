@@ -1,5 +1,6 @@
 [global]
-    font = Open Sans 9
+    max_icon_size = 8
+    font = Roboto 11
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
@@ -24,7 +25,7 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "%s\n%b"
 
     # Sort messages by urgency.
     sort = yes
@@ -54,7 +55,6 @@
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
 
-
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -71,12 +71,12 @@
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
-    shrink = no
+    shrink = yes
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 25
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -121,13 +121,13 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 1
 
     # Padding between text and separator.
-    padding = 0
+    padding = 10
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 20
 
     # Define a color for the separator.
     # possible values are:
@@ -135,7 +135,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = auto
 
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -149,14 +149,13 @@
     browser = /usr/bin/firefox -new-tab
 
     # Align icons left/right/off
-    icon_position = left
+    icon_position = off
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
     width = 0
-    color = "#aaaaaa"
 
 [shortcuts]
 
@@ -182,20 +181,24 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#fdfdfd"
-    foreground = "#5c616c"
+    background = "#444444"
+    foreground = "#bcbcbc"
     timeout = 10
 
 [urgency_normal]
-    background = "#fdfdfd"
-    foreground = "#5c616c"
+    background = "#444444"
+    foreground = "#bcbcbc"
     timeout = 10
 
 [urgency_critical]
     background = "#900000"
     foreground = "#ffffff"
     timeout = 0
-
+[jmvc]
+    summary = "JMVC build"
+    body = *Error: *
+    urgency = low
+    format = "<b>JMVC</b>\nBuild error"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
