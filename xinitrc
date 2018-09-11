@@ -11,8 +11,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-xset +fp /usr/share/fonts/local
-xset fp rehash
+" xset +fp /usr/share/fonts/local
+" xset fp rehash
+
+if (xrandr | grep "HDMI1 connected"); then
+	xrandr --output LVDS1 --off
+	xrandr --output HDMI1 --auto
+fi
 
 # Keyboard layout
 setxkbmap -layout us -variant altgr-intl nodeadkeys
@@ -25,37 +30,6 @@ setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
 
 # Hide mouse cursor
-unclutter -b
+xbanish &
 
-# Redshift
-redshift -l -34.6033333333:-58.3816666667 & disown
-
-# Wallpaper stuff
-getwallpaper(){
-	_RESOLUTION=`xrandr | grep ' connected' | cut -d ' ' -f 3 | cut -d '+' -f 1`
-	_XRES=`echo ${_RESOLUTION} | cut -d 'x' -f 1`
-	_YRES=`echo ${_RESOLUTION} | cut -d 'x' -f 2`
-	curl https://unsplash.it/${_XRES}/${_YRES} -o $_WALLPAPERFILENAME
-	setroot $_WALLPAPERFILENAME
-}
-
-deletecache(){
-	for f in $_WALLPAPERDIR/*.jpg; do
-		[ $f != ${_WALLPAPERFILENAME}] && rm $f
-	done
-}
-
-_WALLPAPERDATE=`date +%F`
-_WALLPAPERDIR=${XDG_CACHE_HOME}/_wallpaper
-_WALLPAPERFILENAME=${_WALLPAPERDIR}/wallpaper_${_WALLPAPERDATE}.jpg
-
-# mkdir -p $_WALLPAPERDIR
-# if [ -f $_WALLPAPERFILENAME ]
-# then
-#  	setroot $_WALLPAPERFILENAME
-# else
-#  	getwallpaper &
-# 	deletecache &
-# fi
-xsetroot -bitmap Desktop/tripoint.xbm -fg "#262626" -bg "#444444"
 exec bspwm
