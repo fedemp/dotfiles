@@ -1,2 +1,6 @@
-bind main	!	?git revert %(commit)
+bind main			!		?git revert %(commit)
+set tab-size			= 4		# Number of spaces to use when expanding tabs
+set diff-highlight		= true		# String (or bool): Path to diff-highlight script, defaults to `diff-highlight`.
+
+
 
