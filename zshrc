@@ -1,115 +1,90 @@
+autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-${HOME}}/${zcompdump_file:-.zcompdump}"
 # The following lines were added by compinstall
 
-unsetopt menu_complete   # do not autoselect the first completion entry
-unsetopt flowcontrol
-setopt auto_menu         # show completion menu on succesive tab press
-setopt complete_in_word
-setopt always_to_end
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:*:*:*:*' menu select=2
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
-cdpath=(.)
-zstyle ':completion:*' users off
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path ~/dotfiles/cache/
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' max-errors 1 numeric
+zstyle ':completion:*' menu select=0
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
+zstyle :compinstall filename '/home/fpanico/.zshrc'
 
-autoload -Uz compinit
-compinit
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group yes
+zstyle ':completion:*:options' description yes
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
+zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
+zstyle ':completion:*' format '%F{yellow}-- %d --%f'
 
+# enable caching
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-${HOME}}/.zcompcache"
+
+# Man
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
+# load and initialize the completion system
 # End of lines added by compinstall
-
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
-
-setopt appendhistory autocd extendedglob nomatch notify
-setopt autopushd pushdsilent
-setopt histignorealldups sharehistory histignorespace
+#
+# Lines configured by zsh-newuser-install
+HISTSIZE=5000
+SAVEHIST=5000
+HISTFILE=~/.histfile
+setopt autocd extendedglob
 bindkey -e
+# End of lines configured by zsh-newuser-install
 
-# Customize to your needs...
+setopt autopushd pushdsilent
 
-alias df='df -h'
-alias ag='ag --color --pager "less -R"'
-alias ls='ls --color=auto'
+alias cower='cower --color=always'
 alias cp='cp -irv'
+alias df='df -h'
+alias gs='tig status'
 alias su='su -'
 alias vim=nvim
-
-# nicer highlighting
-if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
-    # ubuntu 12.10: sudo apt-get install source-highlight
-    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-elif [ -f "/usr/bin/src-hilite-lesspipe.sh" ]; then
-    # fedora 18: sudo yum install source-highlight
-    export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
-fi
-
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-# https://github.com/skwp/dotfiles/blob/master/zsh/key-bindings.zsh
-bindkey '^[[A' up-line-or-beginning-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[p' up-line-or-beginning-search                    # start typing + [mod1+p] - fuzzy find history forward
-bindkey '^[[B' down-line-or-beginning-search                  # start typing + [Down-Arrow] - fuzzy find history backward
-bindkey '^[n' down-line-or-beginning-search                  # start typing + [mod1+n] - fuzzy find history backward
-bindkey '^[[1~' beginning-of-line                    # [Home] - Go to beginning of line
-bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
-bindkey '^[OC' forward-word                      # [Ctrl-RightArrow] - move forward one word
-bindkey '^[OD' backward-word                     # [Ctrl-LeftArrow] - move backward one word
-bindkey '^[[P' delete-char
-bindkey '^[[5~' up-line-or-history
-bindkey '^[[6~' down-line-or-history
-bindkey "^R" history-incremental-search-backward
-bindkey '^[[Z' reverse-menu-complete
-
-autoload zmv
-
-# https://github.com/skwp/dotfiles/blob/master/zsh/zsh-aliases.zsh
-alias -g G='| ag' # now you can do: ls foo G something
-
-autoload -U colors && colors
-export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
-
-zmodload -i zsh/complist
-eval `dircolors $HOME/.dir_colors`
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# stty erase \^\? # Fixes backspace for vim
-
-unsetopt MULTIBYTE
-
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
+alias ...='cd ../../'
+alias -g G='| rg' # now you can do: ls foo G something
+alias weather='curl http://wttr.in | less'
+alias ls='ls -lhF --color=auto'
 
 autoload -U promptinit && promptinit
-PROMPT_LEAN_TMUX=""
 prompt lean
-autoload k9 l gs fn
 
+# Use smart URL pasting and escaping.
+autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
+autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+
+# Better selection of words
 autoload -U select-word-style
 select-word-style bash
 
-if [[ -e ~/.zshrc.local ]]; then
-	source ~/.zshrc.local
-fi
+# Treat single word simple commands without redirection as candidates for resumption of an existing job.
+setopt AUTO_RESUME
 
-if [[ -e ~/.LESS_TERMCAP ]]; then
-	source ~/.LESS_TERMCAP
-fi
+# Allow comments starting with `#` even in interactive shells.
+setopt INTERACTIVE_COMMENTS
+
+# List jobs in the long format by default.
+setopt LONG_LIST_JOBS
+
+# Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
+setopt NOTIFY
+
+setopt SHARE_HISTORY
+
+export NNN_USE_EDITOR=1
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
 source /usr/share/fzf/key-bindings.zsh
+
+autoload rg
