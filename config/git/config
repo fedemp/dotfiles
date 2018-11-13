@@ -1,17 +1,27 @@
 #  https://github.com/skwp/dotfiles/blob/master/git/gitconfig
 [color]
-	ui = true
-[color "branch"]
-  current = blue
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  commit = yellow bold
-  whitespace = red reverse
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+  pager = true
+# [color "branch"]
+#   current = blue
+#   local = yellow
+#   remote = green
+# [color "diff"]
+#   meta = yellow
+#   frag = magenta bold
+#   old = red bold
+#   new = green bold
+#   commit = yellow bold
+#   whitespace = red reverse
+#
+[color "status"]
+  added = green
+  changed = red
+  untracked = magenta
 [alias]
   # checkout
   co = checkout                     # checkout
@@ -46,7 +56,7 @@
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
-  default = upstream
+	default = current
 [core]
   autocrlf = false
   editor = nvim
@@ -67,8 +77,3 @@
   cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [commit]
   verbose = true
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22

@@ -11,8 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-" xset +fp /usr/share/fonts/local
-" xset fp rehash
+xset +fp /usr/share/fonts/local
+xset fp rehash
 
 if (xrandr | grep "HDMI1 connected"); then
 	xrandr --output LVDS1 --off

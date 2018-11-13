@@ -29,9 +29,9 @@ EIGHTBIT 1
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
  
 NORMAL             00         # global default, although everything should be something.
-FILE               00;37      # normal file
+FILE               01;00      # normal file
 DIR                00;34      # directory
-LINK               01;35      # symbolic link
+LINK               00;35      # symbolic link
 FIFO               00;33      # pipe
 SOCK               01;35      # socket
 BLK                01;33;40   # block device driver
@@ -39,7 +39,7 @@ CHR                01;35;40   # character device driver
 ORPHAN             01;30
 EXEC               00;32
 STICKY_OTHER_WRITABLE 01;33   # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE     01;35      # dir that is other-writable (o+w) and not sticky
+OTHER_WRITABLE     01;31      # dir that is other-writable (o+w) and not sticky
 STICKY             01;34      # dir with the sticky bit set (+t) and not other-writable
 
 # .cmd               01;32      # executables (bright green)
@@ -292,3 +292,5 @@ TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
 TERM dvtm-256color
+TERM alacritty
+TERM st-256color
