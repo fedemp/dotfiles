@@ -32,4 +32,8 @@ xcape -e 'Caps_Lock=Escape'
 # Hide mouse cursor
 xbanish &
 
+redshift &
+
+setroot --blank-color "#73918e"
+
 exec bspwm
