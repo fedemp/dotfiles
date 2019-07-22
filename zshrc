@@ -194,7 +194,7 @@ for key in "${(s: :)key_info[ControlRight]}" "${key_info[AltRight]}"; do
   bindkey -M vicmd "$key" vi-forward-word
 done
 
-source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 
 setopt BANG_HIST              # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
@@ -209,3 +209,6 @@ setopt HIST_VERIFY            # Do not execute immediately upon history expansio
 setopt HIST_BEEP # Beep when accessing non-existent history.
 
 autoload rg
+  
+# Fedora specific
+command -v nodejs-yarn >/dev/null && alias yarn=nodejs-yarn
