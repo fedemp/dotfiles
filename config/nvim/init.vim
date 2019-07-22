@@ -11,6 +11,7 @@ set wildignore+=*/min/*,*/vendor/*,*/node_modules/*,*/bower_components/*
 set inccommand=nosplit
 set diffopt+=internal,algorithm:patience
 set diffopt+=iwhiteall
+set path=.,**
 
 let g:javascript_plugin_flow = 1
 
