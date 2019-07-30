@@ -72,12 +72,10 @@ alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 alias rtv='LESS="-n -R -i -g -M -x4 -z-1" rtv --enable-media'
 
 autoload -U promptinit && promptinit
+export PROMPT_LEAN_COLOR1=5
+export PROMPT_LEAN_COLOR2=4
+export PROMPT_LEAN_COLOR3=3
 prompt lean
-# autoload -Uz add-zsh-hook
-# _pista_prompt() {
-# 	PROMPT="$(pista -zm)"   # `pista -zm` for the miminal variant
-# }
-# add-zsh-hook precmd _pista_prompt
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
