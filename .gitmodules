@@ -18,7 +18,7 @@
 	url = https://github.com/neoclide/coc.nvim
 [submodule "config/nvim/pack/fedemp/start/vim-surrond"]
 	path = config/nvim/pack/fedemp/start/vim-surrond
-	url = https://github.com/tpope/vim-surround
+	url = https://github.com/tpope/vim-surround.git
 [submodule "config/nvim/pack/fedemp/start/vim-jsx-pretty"]
 	path = config/nvim/pack/fedemp/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty
