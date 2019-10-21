@@ -22,3 +22,6 @@
 [submodule "config/nvim/pack/fedemp/start/vim-jsx-pretty"]
 	path = config/nvim/pack/fedemp/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty
+[submodule "config/nvim/pack/fedemp/start/papercolor"]
+	path = config/nvim/pack/fedemp/start/papercolor
+	url = https://github.com/NLKNguyen/papercolor-theme
