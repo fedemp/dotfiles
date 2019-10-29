@@ -83,7 +83,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: iosevka ss04
+    family: iosevka ss05
 
 
     # The `style` can be specified to pick a specific face.

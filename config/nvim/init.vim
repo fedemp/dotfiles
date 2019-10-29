@@ -14,6 +14,7 @@ set wildignore+=*/min/*,*/vendor/*,*/node_modules/*,*/bower_components/*
 set inccommand=nosplit
 set diffopt+=internal,algorithm:patience
 set diffopt+=iwhiteall
+set diffopt+=vertical
 set path=.,**
 
 " coc.vim specific
@@ -40,10 +41,24 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 
-let g:javascript_plugin_flow = 1
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
 
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic

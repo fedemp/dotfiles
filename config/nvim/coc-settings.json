@@ -1,13 +1,8 @@
 {
-	"languageserver": {
-		"flow": {
-			"command": "npx",
-			"args": ["flow", "lsp"],
-			"filetypes": ["javascript", "javascriptreact"],
-			"initializationOptions": {},
-			"requireRootPattern": true,
-			"settings": {},
-			"rootPatterns": [".flowconfig"]
-		}
-	}
+	"diagnostic.errorSign": "×",
+	"diagnostic.infoSign": "»",
+	"diagnostic.hintSign": "»",
+	"tsserver.enableJavascript": false,
+	"tsserver.formatOnType": false,
+	"tsserver.pluginPaths": ["typescript-plugin-css-modules"]
 }
