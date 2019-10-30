@@ -57,7 +57,6 @@ unset _comp_files
 
 setopt autopushd pushdsilent
 
-alias cower='cower --color=always'
 alias cp='cp -irv'
 alias df='df -h'
 alias gs='tig status'
@@ -67,9 +66,9 @@ alias -g G='| rg' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
 alias ls='ls -lhF --color=auto'
 # alias vim='TERM=xterm-256color vim'
-alias vim=nvim
 alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
-alias rtv='LESS="-n -R -i -g -M -x4 -z-1" rtv --enable-media'
+alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
+alias vim=nvim
 
 autoload -U promptinit && promptinit
 export PROMPT_LEAN_COLOR1=5
@@ -105,8 +104,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "^[OA" up-line-or-beginning-search # Up
+bindkey "^[OB" down-line-or-beginning-search # Down
 bindkey '^[[Z' reverse-menu-complete
 
 setopt BEEP                     # Beep on error in line editor.
@@ -210,3 +209,7 @@ autoload rg
   
 # Fedora specific
 command -v nodejs-yarn >/dev/null && alias yarn=nodejs-yarn
+# Archlinux
+command -v cower >/dev/null && alias cower='cower --color=always'
+# Ubuntu
+command -v fdfind >/dev/null && alias fd='fdfind'
