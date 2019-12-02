@@ -9,5 +9,4 @@ export PAGER=less
 export LESS="-n -R -i -g -M -x4 -X -F -z-1"
 export FZF_DEFAULT_COMMAND='fdfind'
 export TZ=/etc/localtime
-export SKIM_DEFAULT_COMMAND="fdfind --type f"
 fpath=($HOME/.functions $fpath)

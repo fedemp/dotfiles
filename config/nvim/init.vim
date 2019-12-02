@@ -17,6 +17,11 @@ set diffopt+=iwhiteall
 set diffopt+=vertical
 set path=.,**
 
+source /usr/share/doc/fzf/examples/fzf.vim
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 " coc.vim specific
 set cmdheight=1
 set updatetime=300
@@ -51,6 +56,8 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <C-d> <Plug>(coc-range-select)
 xmap <silent> <C-d> <Plug>(coc-range-select)
 
+command! -nargs=0 Format :call CocAction('format')
+
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
@@ -58,7 +65,7 @@ set updatetime=300
 set shortmess+=c
 
 " always show signcolumns
-set signcolumn=yes
+set signcolumn=auto
 
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic

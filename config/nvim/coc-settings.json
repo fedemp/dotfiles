@@ -3,6 +3,9 @@
 	"diagnostic.infoSign": "»",
 	"diagnostic.hintSign": "»",
 	"tsserver.enableJavascript": false,
-	"tsserver.formatOnType": false,
-	"tsserver.pluginPaths": ["typescript-plugin-css-modules"]
+	"tsserver.formatOnType": true,
+	"javascript.validate.enable": false,
+	"flow.useNPMPackagedFlow": false,
+	"tsserver.enable": true,
 }
+
