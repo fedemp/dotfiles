@@ -191,8 +191,6 @@ for key in "${(s: :)key_info[ControlRight]}" "${key_info[AltRight]}"; do
   bindkey -M vicmd "$key" vi-forward-word
 done
 
-source /usr/share/fzf/shell/key-bindings.zsh
-
 setopt BANG_HIST              # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
 setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
@@ -213,3 +211,7 @@ command -v nodejs-yarn >/dev/null && alias yarn=nodejs-yarn
 command -v cower >/dev/null && alias cower='cower --color=always'
 # Ubuntu
 command -v fdfind >/dev/null && alias fd='fdfind'
+
+# Ubuntu
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
