@@ -69,7 +69,6 @@ set signcolumn=auto
 
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic
-    hi MatchParen ctermbg=NONE guibg=NONE cterm=italic gui=italic
 endfunction
 augroup MyColors
     autocmd!
@@ -83,3 +82,7 @@ nnoremap <C-P> :FZF<CR>
 nnoremap U <c-r>
 nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
+
+set termguicolors
+
+au TermOpen * setlocal nolist nonumber

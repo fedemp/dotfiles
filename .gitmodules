@@ -31,3 +31,6 @@
 [submodule "config/nvim/pack/fedemp/start/yats.vim"]
 	path = config/nvim/pack/fedemp/start/yats.vim
 	url = https://github.com/HerringtonDarkholme/yats.vim
+[submodule "config/nvim/pack/fedemp/start/pear-tree"]
+	path = config/nvim/pack/fedemp/start/pear-tree
+	url = https://github.com/tmsvg/pear-tree

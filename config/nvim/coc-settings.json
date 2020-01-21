@@ -6,6 +6,6 @@
 	"tsserver.formatOnType": true,
 	"javascript.validate.enable": false,
 	"flow.useNPMPackagedFlow": false,
-	"tsserver.enable": true,
+	"tsserver.enable": true
 }
 
