@@ -34,3 +34,6 @@
 [submodule "config/nvim/pack/fedemp/start/pear-tree"]
 	path = config/nvim/pack/fedemp/start/pear-tree
 	url = https://github.com/tmsvg/pear-tree
+[submodule "config/nvim/pack/fedemp/start/vim-sensible"]
+	path = config/nvim/pack/fedemp/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
