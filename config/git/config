@@ -60,7 +60,7 @@
 [core]
   autocrlf = false
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
   # pager = bat
 [advice]
   statusHints = true

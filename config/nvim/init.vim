@@ -11,7 +11,7 @@ set nofoldenable " Use `zi`
 set grepprg=rg\ --vimgrep
 set grepformat=%f:%l:%c:%m
 set wildignore+=*/min/*,*/vendor/*,*/node_modules/*,*/bower_components/*
-set inccommand=nosplit
+" set inccommand=nosplit
 set diffopt+=internal,algorithm:patience
 set diffopt+=iwhiteall
 set diffopt+=vertical
@@ -75,7 +75,8 @@ augroup MyColors
     autocmd ColorScheme * call MyHighlights()
 augroup END
 
-colorscheme apprentice
+set termguicolors
+colorscheme gruvbox-material
 
 nnoremap <Space> :
 nnoremap <C-P> :FZF<CR>
@@ -86,3 +87,6 @@ nnoremap Q :bd
 set termguicolors
 
 au TermOpen * setlocal nolist nonumber
+source /usr/share/doc/fzf/examples/fzf.vim
+
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
