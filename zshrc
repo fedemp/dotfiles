@@ -74,7 +74,7 @@ autoload -U promptinit && promptinit
 export PROMPT_LEAN_COLOR1=5
 export PROMPT_LEAN_COLOR2=4
 export PROMPT_LEAN_COLOR3=3
-# prompt lean
+prompt lean
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
