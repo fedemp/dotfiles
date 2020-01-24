@@ -37,3 +37,6 @@
 [submodule "config/nvim/pack/fedemp/start/vim-sensible"]
 	path = config/nvim/pack/fedemp/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "config/nvim/pack/fedemp/start/lightline.vim"]
+	path = config/nvim/pack/fedemp/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
