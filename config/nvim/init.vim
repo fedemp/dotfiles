@@ -11,7 +11,7 @@ set nofoldenable " Use `zi`
 set grepprg=rg\ --vimgrep
 set grepformat=%f:%l:%c:%m
 set wildignore+=*/min/*,*/vendor/*,*/node_modules/*,*/bower_components/*
-" set inccommand=nosplit
+set inccommand=nosplit
 set diffopt+=internal,algorithm:patience
 set diffopt+=iwhiteall
 set diffopt+=vertical
@@ -84,9 +84,9 @@ nnoremap U <c-r>
 nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
 
-set termguicolors
-
 au TermOpen * setlocal nolist nonumber
 source /usr/share/doc/fzf/examples/fzf.vim
 
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
+
+let g:AutoPairsFlyMode = 0
