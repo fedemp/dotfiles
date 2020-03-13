@@ -76,7 +76,8 @@ augroup MyColors
 augroup END
 
 set termguicolors
-colorscheme gruvbox-material
+colorscheme PaperColor
+set background=light
 
 nnoremap <Space> :
 nnoremap <C-P> :FZF<CR>
@@ -85,8 +86,16 @@ nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
 
 au TermOpen * setlocal nolist nonumber
-source /usr/share/doc/fzf/examples/fzf.vim
 
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 let g:AutoPairsFlyMode = 0
