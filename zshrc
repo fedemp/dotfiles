@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-${HOME}}/${zcompdump_file:-.zcompdump}"
 # The following lines were added by compinstall
 
@@ -70,11 +77,11 @@ alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
 alias vim=nvim
 
-autoload -U promptinit && promptinit
-export PROMPT_LEAN_COLOR1=5
-export PROMPT_LEAN_COLOR2=4
-export PROMPT_LEAN_COLOR3=3
-prompt lean
+# autoload -U promptinit && promptinit
+# export PROMPT_LEAN_COLOR1=5
+# export PROMPT_LEAN_COLOR2=4
+# export PROMPT_LEAN_COLOR3=3
+# prompt lean
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
@@ -212,4 +219,15 @@ command -v cower >/dev/null && alias cower='cower --color=always'
 # Ubuntu
 command -v fdfind >/dev/null && alias fd='fdfind'
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+if [[ -a /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+	source /usr/share/doc/fzf/examples/key-bindings.zsh
+fi
+
+if [[ -a /usr/share/doc/fzf/key-bindings.zsh ]]; then
+	source /usr/share/doc/fzf/key-bindings.zsh
+fi
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

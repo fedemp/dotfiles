@@ -17,7 +17,13 @@ set diffopt+=iwhiteall
 set diffopt+=vertical
 set path=.,**
 
-source /usr/share/doc/fzf/examples/fzf.vim
+if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
+	source /usr/share/doc/fzf/examples/fzf.vim
+endif
+if filereadable("/usr/share/doc/fzf/fzf.vim")
+	source /usr/share/doc/fzf/fzf.vim
+endif
+
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
@@ -76,8 +82,8 @@ augroup MyColors
 augroup END
 
 set termguicolors
-colorscheme PaperColor
-set background=light
+colorscheme apprentice
+" set background=light
 
 nnoremap <Space> :
 nnoremap <C-P> :FZF<CR>
@@ -88,7 +94,7 @@ nnoremap Q :bd
 au TermOpen * setlocal nolist nonumber
 
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'apprentice',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -99,3 +105,22 @@ let g:lightline = {
       \ }
 
 let g:AutoPairsFlyMode = 0
+
+if has("nvim") && exists("&termguicolors") && &termguicolors
+  let g:terminal_color_0    = "#1C1C1C"
+  let g:terminal_color_8    = "#444444"
+  let g:terminal_color_1    = "#AF5F5F"
+  let g:terminal_color_9    = "#FF8700"
+  let g:terminal_color_2    = "#5F875F"
+  let g:terminal_color_10   = "#87AF87"
+  let g:terminal_color_3    = "#87875F"
+  let g:terminal_color_11   = "#FFFFAF"
+  let g:terminal_color_4    = "#5F87AF"
+  let g:terminal_color_12   = "#8FAFD7"
+  let g:terminal_color_5    = "#5F5F87"
+  let g:terminal_color_13   = "#8787AF"
+  let g:terminal_color_6    = "#5F8787"
+  let g:terminal_color_14   = "#5FAFAF"
+  let g:terminal_color_7    = "#6C6C6C"
+  let g:terminal_color_15   = "#FFFFFF"
+endif

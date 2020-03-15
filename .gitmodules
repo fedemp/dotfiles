@@ -1,6 +1,3 @@
-[submodule "lean"]
-	path = lean
-	url = https://github.com/miekg/lean
 [submodule "config/nvim/pack/fedemp/start/vim-dirvish"]
 	path = config/nvim/pack/fedemp/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish
@@ -13,9 +10,6 @@
 [submodule "config/nvim/pack/fedemp/start/vim-javascript"]
 	path = config/nvim/pack/fedemp/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
-[submodule "config/nvim/pack/fedemp/start/coc.nvim"]
-	path = config/nvim/pack/fedemp/start/coc.nvim
-	url = https://github.com/neoclide/coc.nvim
 [submodule "config/nvim/pack/fedemp/start/vim-surrond"]
 	path = config/nvim/pack/fedemp/start/vim-surrond
 	url = https://github.com/tpope/vim-surround.git
