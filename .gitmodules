@@ -34,3 +34,6 @@
 [submodule "config/nvim/pack/fedemp/start/auto-pairs"]
 	path = config/nvim/pack/fedemp/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
+[submodule "config/nvim/pack/fedemp/start/coc.nvim"]
+	path = config/nvim/pack/fedemp/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
