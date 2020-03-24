@@ -110,6 +110,66 @@
       dconf:
         key: "/org/mate/desktop/applications/terminal/exec"
         value: "'alacritty'"
+    - name: Terminal shortcut
+      dconf:
+        key: "/org/mate/marco/global-keybindings/run-command-terminal"
+        value: "'<Mod4>Return'"
+    - name: Workspace switching
+      dconf:
+        key: "/org/mate/marco/global-keybindings/switch-to-workspace-{{ item }}"
+        value: "'<Mod4>{{ item }}'"
+      loop:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+    - name: Workspace switching
+      dconf:
+        key: "/org/mate/marco/global-keybindings/switch-to-workspace-10"
+        value: "'<Mod4>0'"
+    - name: Switch to previous workspace
+      dconf:
+        key: "/org/mate/marco/global-keybindings/switch-to-workspace-prev"
+        value: "'<Mod4>Tab'"
+    - name: Workspace moving
+      dconf:
+        key: "/org/mate/marco/window-keybindings/move-to-workspace-{{ item }}"
+        value: "'<Primary><Mod4>{{ item }}'"
+      loop:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+    - name: Workspace moving
+      dconf:
+        key: "/org/mate/marco/window-keybindings/move-to-workspace-10"
+        value: "'<Primary><Mod4>10'"
+    - name: Toggle fullscreen
+      dconf:
+        key: "/org/mate/marco/window-keybindings/toggle-fullscreen"
+        value: "'<Alt>F11'"
+    - name: Toggle fullscreen
+      dconf:
+        key: "/org/mate/marco/window-keybindings/toggle-fullscreen"
+        value: "'<Alt>F11'"
+    - name: Tile to right
+      dconf:
+        key: "/org/mate/marco/window-keybindings/tile-to-side-e"
+        value: "'<Mod4>Right'"
+    - name: Tile to left
+      dconf:
+        key: "/org/mate/marco/window-keybindings/tile-to-side-w"
+        value: "'<Mod4>Left'"
     - name: Create dir for Iosevka
       file:
         path: ~/.local/share/fonts/iosevka
@@ -146,6 +206,7 @@
         - { src: '~/.etc/zshrc', dest: '~/.zshrc' }
         - { src: '~/.etc/zshenv', dest: '~/.zshenv' }
         - { src: '~/.etc/zprofile', dest: '~/.profile' }
+        - { src: '~/.etc/dir_colors', dest: '~/.dir_colors' }
         - { src: '~/.etc/functions', dest: '~/.functions' }
         - { src: '~/.etc/config/alacritty', dest: '~/.config/alacritty' }
         - { src: '~/.etc/config/fontconfig', dest: '~/.config/fontconfig' }
