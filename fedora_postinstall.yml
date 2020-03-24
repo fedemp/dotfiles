@@ -25,6 +25,7 @@
       become: yes
       package:
         name:
+          - nodejs
           - redshift-gtk
           - tig
           - celluloid
