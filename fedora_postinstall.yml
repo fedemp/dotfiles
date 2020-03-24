@@ -25,6 +25,7 @@
       become: yes
       package:
         name:
+          - yarnpkg
           - nodejs
           - redshift-gtk
           - tig
@@ -223,3 +224,4 @@
         - { src: '~/.etc/config/nvim', dest: '~/.config/nvim' }
         - { src: '~/.etc/config/redshift', dest: '~/.config/redshift' }
         - { src: '~/.etc/config/tig', dest: '~/.config/tig' }
+        - { src: '~/.etc/config/autostart', dest: '~/.config/autostart' }
