@@ -170,6 +170,14 @@
       dconf:
         key: "/org/mate/marco/window-keybindings/tile-to-side-w"
         value: "'<Mod4>Left'"
+    - name: Set keyboard
+      dconf:
+        key: "/org/mate/desktop/peripherals/keyboard/kbd/layouts"
+        value: "['us\taltgr-intl']"
+    - name: Set background
+      dconf:
+        key: "/org/mate/desktop/background/picture-filename"
+        value: "'/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Cold-no-logo.png'"
     - name: Create dir for Iosevka
       file:
         path: ~/.local/share/fonts/iosevka
