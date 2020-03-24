@@ -1,0 +1,155 @@
+- hosts: localhost
+  tasks:
+    - name: Install pexpect
+      become: yes
+      package:
+        name:
+          - python3-pexpect
+    - name: Add alacritty repository
+      become: yes
+      expect:
+        command: dnf copr enable pschyska/alacritty
+        responses:
+          y/N]: y
+    - name: Install rpmfusion free repo
+      become: yes
+      dnf:
+        name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm"
+        state: present
+    - name: Update repos
+      become: yes
+      dnf:
+        update_cache: yes
+        state: latest
+    - name: Install packages
+      become: yes
+      package:
+        name:
+          - redshift-gtk
+          - tig
+          - celluloid
+          - mate-menu
+          - fd-find
+          - ripgrep
+          - nnn
+          - xcape
+          - fzf
+          - alacritty
+          - neovim
+          - evolution
+          - chromium
+          - git
+          - zsh
+          - arc-theme
+          - papirus-icon-theme
+          - gnome-icon-theme
+          - google-noto-emoji-color-fonts
+          - ibm-plex-mono-fonts
+          - ibm-plex-sans-fonts
+          - ibm-plex-serif-fonts
+          - xclip
+        state: latest
+    - name: Remove packages
+      become: yes
+      package:
+        name:
+          - xfburn
+          - thunderbird
+          - onboard
+          - orca
+          - onboard-data
+          - qt5-qtbase
+          - compiz
+          - simple-scan
+          - filezilla
+          - hexchat
+          - mate-dictionary
+          - exaile
+          - parole
+          - python3-pexpect
+        state: absent
+    - name: Change Marco theme
+      dconf:
+        key: "/org/mate/marco/general/theme"
+        value: "'Arc-Darker'"
+        state: present
+    - name: Change GTK theme
+      dconf:
+        key: "/org/mate/desktop/interface/gtk-theme"
+        value: "'Arc-Darker'"
+    - name: Change icon theme
+      dconf:
+        key: "/org/mate/desktop/interface/icon-theme"
+        value: "'Papirus-Dark'"
+    - name: Change default font
+      dconf:
+        key: "/org/mate/desktop/interface/font-name"
+        value: "'IBM Plex Sans 10'"
+    - name: Change titlebar font
+      dconf:
+        key: "/org/mate/marco/general/titlebar-font"
+        value: "'IBM Plex Sans Semi-Bold 10'"
+    - name: Set to ten workspaces
+      # Missing 'Show workspaces in two rows'
+      dconf:
+        key: "/org/mate/marco/general/num-workspaces"
+        value: "10"
+    - name: Remove border of mate-menu
+      dconf:
+        key: "/org/mate/mate-menu/border-width"
+        value: "0"
+    - name: Change theme of mate-menu
+      dconf:
+        key: "/org/mate/mate-menu/theme-name"
+        value: "'Arc-Darker-solid'"
+    - name: Change theme of notifications
+      dconf:
+        key: "/org/mate/notification-daemon/theme"
+        value: "'coco'"
+    - name: Change default terminal
+      dconf:
+        key: "/org/mate/desktop/applications/terminal/exec"
+        value: "'alacritty'"
+    - name: Create dir for Iosevka
+      file:
+        path: ~/.local/share/fonts/iosevka
+        state: directory
+    - name: Download Iosevka
+      get_url:
+        url: https://github.com/be5invis/Iosevka/releases/download/v3.0.0-rc.4/iosevka-ss04-3.0.0-rc.4.zip
+        dest: /tmp/iosevka.zip
+    - name: Update font cache
+      shell: |
+        fc-cache -vf ~/.local/share/fonts
+        exit 0
+    - name: Change my user
+      become: yes
+      user:
+        name: federico
+        shell: /bin/zsh
+    - name: Checkout personal config
+      become: true
+      become_user: federico
+      git:
+        repo: ssh://git@github.com/fedemp/dotfiles.git
+        dest: ~/.etc
+        track_submodules: true
+        recursive: true
+        key_file: ~/.ssh/id_rsa
+        accept_hostkey: yes
+    - name: Link configuration
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+      loop:
+        - { src: '~/.etc/zshrc', dest: '~/.zshrc' }
+        - { src: '~/.etc/zshenv', dest: '~/.zshenv' }
+        - { src: '~/.etc/zprofile', dest: '~/.profile' }
+        - { src: '~/.etc/functions', dest: '~/.functions' }
+        - { src: '~/.etc/config/alacritty', dest: '~/.config/alacritty' }
+        - { src: '~/.etc/config/fontconfig', dest: '~/.config/fontconfig' }
+        - { src: '~/.etc/config/git', dest: '~/.config/git' }
+        - { src: '~/.etc/config/nvim', dest: '~/.config/nvim' }
+        - { src: '~/.etc/config/redshift', dest: '~/.config/redshift' }
+        - { src: '~/.etc/config/tig', dest: '~/.config/tig' }
