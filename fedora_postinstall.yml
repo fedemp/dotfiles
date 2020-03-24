@@ -213,6 +213,7 @@
         dest: "{{ item.dest }}"
         state: link
       loop:
+        - { src: '/usr/share/git-core/contrib/diff-highlight', dest: '~/.local/bin/diff-highlight' }
         - { src: '~/.etc/zshrc', dest: '~/.zshrc' }
         - { src: '~/.etc/zshenv', dest: '~/.zshenv' }
         - { src: '~/.etc/zprofile', dest: '~/.profile' }
