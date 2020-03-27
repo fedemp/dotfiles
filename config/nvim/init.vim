@@ -27,6 +27,9 @@ endif
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd! FileType dirvish
+autocmd  FileType dirvish set statusline=%f
+
 
 " coc.vim specific
 set cmdheight=1
@@ -100,7 +103,7 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
+      \   'gitbranch': 'FugitiveHead',
       \ },
       \ }
 
@@ -124,3 +127,8 @@ if has("nvim") && exists("&termguicolors") && &termguicolors
   let g:terminal_color_7    = "#6C6C6C"
   let g:terminal_color_15   = "#FFFFFF"
 endif
+
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>

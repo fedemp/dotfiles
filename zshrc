@@ -229,6 +229,10 @@ if [[ -a /usr/share/doc/fzf/key-bindings.zsh ]]; then
 	source /usr/share/doc/fzf/key-bindings.zsh
 fi
 
+if [[ -a /usr/share/fzf/shell/key-bindings.zsh ]]; then
+	source /usr/share/fzf/shell/key-bindings.zsh
+fi
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

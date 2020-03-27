@@ -25,6 +25,7 @@
       become: yes
       package:
         name:
+          - htop
           - yarnpkg
           - nodejs
           - redshift-gtk
