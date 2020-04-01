@@ -25,6 +25,7 @@
       become: yes
       package:
         name:
+          - google-croscore-arimo-fonts
           - htop
           - yarnpkg
           - nodejs
