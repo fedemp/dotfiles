@@ -60,7 +60,6 @@
 [core]
   autocrlf = false
   editor = nvim
-	pager = delta
   # pager = bat
 [advice]
   statusHints = true
@@ -78,3 +77,7 @@
   cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [commit]
   verbose = true
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
