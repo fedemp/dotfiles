@@ -220,6 +220,7 @@ command -v nodejs-yarn >/dev/null && alias yarn=nodejs-yarn
 command -v cower >/dev/null && alias cower='cower --color=always'
 # Ubuntu
 command -v fdfind >/dev/null && alias fd='fdfind'
+command -v yarnpkg >/dev/null && alias yarn=yarnpkg
 
 if [[ -a /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
 	source /usr/share/doc/fzf/examples/key-bindings.zsh
