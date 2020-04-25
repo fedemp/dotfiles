@@ -3,6 +3,8 @@ Type=Application
 Exec=xcape -e 'Caps_Lock=Escape'
 Hidden=false
 X-MATE-Autostart-enabled=true
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
 Name[en_US]=xcape
 Name=xcape
 Comment[en_US]=
