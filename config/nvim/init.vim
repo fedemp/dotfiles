@@ -30,54 +30,12 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 autocmd! FileType dirvish
 autocmd  FileType dirvish set statusline=%f
 
-
-" coc.vim specific
-set cmdheight=1
-set updatetime=300
-set shortmess+=c
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gi <Plug>(coc-implementation)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
-command! -nargs=0 Format :call CocAction('format')
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
 " always show signcolumns
-set signcolumn=auto
+set signcolumn=auto:1
 
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic
+
 endfunction
 augroup MyColors
     autocmd!
@@ -89,7 +47,7 @@ colorscheme apprentice
 " set background=light
 
 nnoremap <Space> :
-nnoremap <C-P> :FZF<CR>
+nnoremap <C-Space> :FZF<CR>
 nnoremap U <c-r>
 nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
@@ -132,5 +90,18 @@ let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-set listchars+=tab:¬\ 
+set listchars+=tab:¬\ ,trail:_
 set tabstop=4 shiftwidth=0 softtabstop=4
+
+set shortmess-=F
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_completion_tsserver_autoimport = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+let g:ale_completion_tsserver_autoimport = 1
+let g:ale_sign_error = '×'
+let g:ale_sign_warning = '‽'

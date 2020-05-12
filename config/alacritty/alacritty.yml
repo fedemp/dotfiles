@@ -67,7 +67,7 @@ font:
     # family: Roboto Mono Nerd Font
     # family: JetBrains Mono Nerd Font
     # family: IBM Plex Mono
-    family: Iosevka ss04
+    family: Iosevka Term SS14
 
     # The `style` can be specified to pick a specific face.
     style: Regular
