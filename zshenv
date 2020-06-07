@@ -11,5 +11,5 @@ export FZF_DEFAULT_COMMAND='fd'
 export TZ=/etc/localtime
 fpath=($HOME/.functions $fpath)
 typeset -U path
-path=($HOME/.npm-packages/bin /home/federico/.local/bin/ $path[@])
+path=($HOME/.npm-packages/bin $HOME/.local/bin/ $path[@])
 eval `dircolors ~/.dir_colors`
