@@ -62,8 +62,6 @@ else
 fi
 unset _comp_files
 
-setopt autopushd pushdsilent
-
 alias cp='cp -irv'
 alias df='df -h'
 alias gs='tig status'
