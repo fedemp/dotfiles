@@ -107,6 +107,12 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-sensible.git')
   call packager#add('itchyny/lightline.vim')
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'do': function('InstallCoc') })
+  call packager#add('machakann/vim-sandwich')
+  call packager#add('treycucco/vim-monotonic')
+  call packager#add('arzg/vim-corvine')
+  call packager#add('stillwwater/vim-nebula')
+  call packager#add('arzg/vim-colors-xcode')
+  call packager#add('reedes/vim-colors-pencil')
 endfunction
 
 function! InstallCoc(plugin) abort
