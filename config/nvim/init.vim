@@ -28,10 +28,7 @@ autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 autocmd! FileType dirvish
-autocmd  FileType dirvish set statusline=%f
-
-" always show signcolumns
-set signcolumn=auto:1
+autocmd  FileType dirvish setlocal statusline=%f
 
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic
@@ -43,8 +40,7 @@ augroup MyColors
 augroup END
 
 set termguicolors
-colorscheme apprentice
-" set background=light
+color seoul256-light
 
 nnoremap <Space> :
 nnoremap <C-Space> :FZF<CR>
@@ -53,36 +49,6 @@ nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
 
 au TermOpen * setlocal nolist nonumber
-
-let g:lightline = {
-      \ 'colorscheme': 'apprentice',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \ },
-      \ }
-
-if has("nvim") && exists("&termguicolors") && &termguicolors
-  let g:terminal_color_0    = "#1C1C1C"
-  let g:terminal_color_8    = "#444444"
-  let g:terminal_color_1    = "#AF5F5F"
-  let g:terminal_color_9    = "#FF8700"
-  let g:terminal_color_2    = "#5F875F"
-  let g:terminal_color_10   = "#87AF87"
-  let g:terminal_color_3    = "#87875F"
-  let g:terminal_color_11   = "#FFFFAF"
-  let g:terminal_color_4    = "#5F87AF"
-  let g:terminal_color_12   = "#8FAFD7"
-  let g:terminal_color_5    = "#5F5F87"
-  let g:terminal_color_13   = "#8787AF"
-  let g:terminal_color_6    = "#5F8787"
-  let g:terminal_color_14   = "#5FAFAF"
-  let g:terminal_color_7    = "#6C6C6C"
-  let g:terminal_color_15   = "#FFFFFF"
-endif
 
 let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
@@ -105,14 +71,9 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-fugitive')
   call packager#add('HerringtonDarkholme/yats.vim')
   call packager#add('tpope/vim-sensible.git')
-  call packager#add('itchyny/lightline.vim')
+  call packager#add('junegunn/seoul256.vim')
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'do': function('InstallCoc') })
   call packager#add('machakann/vim-sandwich')
-  call packager#add('treycucco/vim-monotonic')
-  call packager#add('arzg/vim-corvine')
-  call packager#add('stillwwater/vim-nebula')
-  call packager#add('arzg/vim-colors-xcode')
-  call packager#add('reedes/vim-colors-pencil')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -173,14 +134,32 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_completion_tsserver_autoimport = 1
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\}
-let g:ale_completion_tsserver_autoimport = 1
 let g:ale_sign_error = '×'
 let g:ale_sign_warning = '‽'
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+" set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}\¦
+" set statusline+=%#LineNr#
+set statusline+=\ %-.50F
+set statusline+=\ %m
+set statusline+=%=
+" set statusline+=%#CursorColumn#
+set statusline+=\ %y
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+
+set title
+set titleold
