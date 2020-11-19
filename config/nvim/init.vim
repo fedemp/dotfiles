@@ -69,11 +69,11 @@ function! PackagerInit() abort
   call packager#add('pangloss/vim-javascript')
   call packager#add('NLKNguyen/papercolor-theme')
   call packager#add('tpope/vim-fugitive')
-  call packager#add('HerringtonDarkholme/yats.vim')
   call packager#add('tpope/vim-sensible.git')
   call packager#add('junegunn/seoul256.vim')
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'do': function('InstallCoc') })
   call packager#add('machakann/vim-sandwich')
+  call packager#add('leafgarland/typescript-vim')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -134,8 +134,8 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-let g:ale_sign_error = '×'
-let g:ale_sign_warning = '‽'
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")

@@ -10,16 +10,6 @@
 	"tsserver.enable": true,
 	"tsserver.npm": "/home/fpanico/.npm-packages/bin/npm",
 	"eslint.autoFixOnSave": true,
-	"languageserver": {
-		"flow": {
-			"command": "flow",
-			"args": ["lsp"],
-			"filetypes": ["javascript", "javascriptreact"],
-			"initializationOptions": {},
-			"requireRootPattern": true,
-			"settings": {},
-			"rootPatterns": [".flowconfig"]
-		}
-	}
+	"eslint.run": "onSave"
 }
 
