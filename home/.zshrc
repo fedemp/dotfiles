@@ -69,18 +69,12 @@ alias su='su -'
 alias ...='cd ../../'
 alias -g G='| rg' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
-alias ls='ls -lhF --color=auto'
 # alias vim='TERM=xterm-256color vim'
 alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
 alias vim=nvim
-alias l='exa -l --git --group-directories-first'
-
-# autoload -U promptinit && promptinit
-# export PROMPT_LEAN_COLOR1=5
-# export PROMPT_LEAN_COLOR2=4
-# export PROMPT_LEAN_COLOR3=3
-# prompt lean
+alias ls='exa -l --git --group-directories-first'
+alias l='exa -l --group-directories-first'
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
@@ -213,8 +207,6 @@ setopt HIST_BEEP # Beep when accessing non-existent history.
 
 autoload rg
   
-# Fedora specific
-command -v nodejs-yarn >/dev/null && alias yarn=nodejs-yarn
 # Archlinux
 command -v cower >/dev/null && alias cower='cower --color=always'
 # Ubuntu

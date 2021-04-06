@@ -1,6 +1,0 @@
-#! /bin/dash
-
-while true ; do
-	echo "S bat: $(acpi -b | grep -o '[0-9]\+%') | ¶ $(date '+%a %d, %R')  "
-	sleep 5
-done

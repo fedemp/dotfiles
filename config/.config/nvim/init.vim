@@ -17,19 +17,6 @@ set diffopt+=iwhiteall
 set diffopt+=vertical
 set path=.,**
 
-if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
-	source /usr/share/doc/fzf/examples/fzf.vim
-endif
-if filereadable("/usr/share/doc/fzf/fzf.vim")
-	source /usr/share/doc/fzf/fzf.vim
-endif
-
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-autocmd! FileType dirvish
-autocmd  FileType dirvish setlocal statusline=%f
-
 function! MyHighlights() abort
     highlight Comment cterm=italic gui=italic
 
@@ -40,10 +27,10 @@ augroup MyColors
 augroup END
 
 set termguicolors
-color seoul256-light
+color apprentice
 
 nnoremap <Space> :
-nnoremap <C-Space> :FZF<CR>
+nnoremap <C-Space> :SK<CR>
 nnoremap U <c-r>
 nnoremap gb :buffers<CR>:b<Space>
 nnoremap Q :bd
