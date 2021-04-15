@@ -213,23 +213,11 @@ command -v cower >/dev/null && alias cower='cower --color=always'
 command -v fdfind >/dev/null && alias fd='fdfind'
 command -v yarnpkg >/dev/null && alias yarn=yarnpkg
 
-if [[ -a /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-	source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-
-if [[ -a /usr/share/doc/fzf/key-bindings.zsh ]]; then
-	source /usr/share/doc/fzf/key-bindings.zsh
-fi
-
-if [[ -a /usr/share/fzf/shell/key-bindings.zsh ]]; then
-	source /usr/share/fzf/shell/key-bindings.zsh
-fi
-
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+export PATH=/home/federico/.fnm:$PATH
+eval "`fnm env`"

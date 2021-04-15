@@ -69,8 +69,9 @@ font:
     # family: FiraCode Nerd Font
     # family: Roboto Mono Nerd Font
     # family: IBM Plex Mono
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: Iosevka term ss08
+    family: Iosevka Fixed ss01
     # family: Dejavu Sans Mono
 
     # The `style` can be specified to pick a specific face.
