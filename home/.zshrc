@@ -221,3 +221,5 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # fnm
 export PATH=/home/federico/.fnm:$PATH
 eval "`fnm env`"
+
+source /usr/share/skim/shell/key-bindings.zsh

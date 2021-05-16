@@ -76,3 +76,5 @@
 [user]
 [init]
 	defaultBranch = master
+[pull]
+	rebase = true

@@ -61,6 +61,7 @@ function! PackagerInit() abort
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'do': function('InstallCoc') })
   call packager#add('machakann/vim-sandwich')
   call packager#add('leafgarland/typescript-vim')
+  call packager#add('GutenYe/json5.vim')
 endfunction
 
 function! InstallCoc(plugin) abort
