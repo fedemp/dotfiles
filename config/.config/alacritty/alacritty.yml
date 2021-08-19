@@ -48,7 +48,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 3
-    y: 3
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -112,13 +112,21 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
-    family: Iosevka Fixed ss01
+    # family: monospace
+    # family: Iosevka Fixed ss01
+    # family: New Heterodox Mono
+    # family: Iosevka Fixed
+    family: Iosevka Fixed SS08
+    # family: Rec Mono Linear
     # family: Jetbrains Mono
     # family: IBM Plex Mono
     # family: Overpass Mono
     # family: Fira Code
     # family: Cascadia Code
+    # family: Oxygen Mono
+    # family: Inconsolata
+    # family: Dejavu Sans Mono
+    # family: Ubuntu Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular

@@ -59,9 +59,14 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-sensible.git')
   call packager#add('junegunn/seoul256.vim')
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'do': function('InstallCoc') })
+  call packager#add('nvim-treesitter/nvim-treesitter')
   call packager#add('machakann/vim-sandwich')
   call packager#add('leafgarland/typescript-vim')
   call packager#add('GutenYe/json5.vim')
+  call packager#add('sainnhe/sonokai')
+  call packager#add('hoob3rt/lualine.nvim')
+  " call packager#add('neovim/nvim-lspconfig')
+  " call packager#add('glepnir/lspsaga.nvim')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -136,7 +141,7 @@ endfunction
 
 set statusline=
 " set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}\¦
+set statusline+=%{StatuslineGit()}\@
 " set statusline+=%#LineNr#
 set statusline+=\ %-.50F
 set statusline+=\ %m
@@ -150,4 +155,11 @@ set statusline+=\ %l:%c
 set statusline+=\ 
 
 set title
-set titleold
+
+lua << EOF
+require('lualine').setup()
+EOF
+
+nnoremap <leader>f gggqG:w<CR>
+inoremap <C-C> <ESC>
+nnoremap <C-C> <ESC>

@@ -73,7 +73,7 @@ alias weather='curl http://wttr.in | less'
 alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
 alias vim=nvim
-alias ls='exa -l --git --group-directories-first'
+alias ls='exa -l --group-directories-first'
 alias l='exa -l --group-directories-first'
 
 # Use smart URL pasting and escaping.
