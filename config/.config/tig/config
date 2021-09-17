@@ -5,3 +5,4 @@ set commit-order = default         # Order commits topologically
 set horizontal-scroll = 33%     # Scroll 33% of the view width
 bind generic X !git difftool --tool=fugitive --no-prompt %(commit)
 set line-graphics = utf-8 # Enum: ascii, default, utf-8
+color cursor default red bold
