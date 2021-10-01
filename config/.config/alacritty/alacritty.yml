@@ -115,6 +115,9 @@ font:
     # family: Iosevka Fixed ss01
     # family: New Heterodox Mono
     # family: Iosevka Fixed
+    # family: Iosevka Fixed SS08
+    # family: Iosevka Fixed SS11
+    # family: Iosevka Fixed SS14
     family: Iosevka Fixed SS15
     # family: Rec Mono Linear
     # family: Jetbrains Mono
@@ -164,7 +167,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 12.5
+  size: 13.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
