@@ -3,8 +3,6 @@ local set = vim.opt
 
 set.hidden = true;
 set.number = true
-set.clipboard = "unnamedplus"
-set.ignorecase = true
 set.smartcase = true;
 set.cursorline = true;
 set.list = true;
@@ -14,13 +12,14 @@ set.termguicolors = true
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 0
-set.grepprg= "rg --vimgrep"
+set.grepprg = "rg --vimgrep"
 set.grepformat = "%f:%l:%c:%m"
 set.inccommand = "split"
+set.wildmode = "longest:full,full"
 set.wildignore:append {"*/min/*","*/vendor/*","*/node_modules/*","*/bower_components/*"}
-set.diffopt = {"filler", "iwhiteall", "vertical", "hiddenoff", "algorithm:patience"}
+set.diffopt = {"filler", "iwhiteall", "vertical", "hiddenoff", "algorithm:histogram"}
 set.path= {".","**"}
-set.foldlevelstart = 1
+set.foldlevelstart = 3
 set.completeopt= {"menuone"}
 set.shortmess="a"
 set.colorcolumn="120"
@@ -33,13 +32,14 @@ local options = { noremap=true, silent=true }
 
 map("n", "<Space>", ":", {noremap=true});
 map("n", "U", "", options);
-map("n", "gb", ":Telescope buffers<CR>", options);
+map("n", "gb", ":ls<CR>:b ", {noremap=true});
+map("n", "", ":SK<CR>", options);
 map("n", "", "", options);
+map("c", "", "", options);
 map("i", "", "", options);
 map('n', 'Y', 'y$', options)
-map('n', '', ':Telescope find_files<CR>', options)
-map('n', '<Leader>g', ':Telescope live_grep<CR>', options)
 map('n', '<Leader>f', 'gggqG', options)
+map('n', '<Leader>o', ':TSLspOrganizeSync', {noremap=true})
 
 -- Plugins
 local fn = vim.fn
@@ -58,7 +58,6 @@ require "paq" {
 	"nvim-treesitter/nvim-treesitter-textobjects";
 	"tpope/vim-commentary";
 	'nvim-lua/plenary.nvim';
-	'nvim-telescope/telescope.nvim';
 	'romainl/apprentice';
 	'tpope/vim-fugitive';
 	'NLKNguyen/papercolor-theme';
@@ -66,6 +65,8 @@ require "paq" {
 	'wimstefan/vim-artesanal';
 	'Mofiqul/vscode.nvim';
 	'habamax/vim-freyeday';
+	'jose-elias-alvarez/nvim-lsp-ts-utils';
+	'justinmk/vim-dirvish';
 }
 
 vim.cmd [[colorscheme apprentice]]
@@ -88,7 +89,6 @@ end
 
 cmd[[ set statusline=%!luaeval('my_statusline()') ]]
 
-require('lspconfig').tsserver.setup {} 
 local nvim_lsp = require('lspconfig')
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -139,6 +139,10 @@ local on_attach = function(client, bufnr)
 	vim.cmd [[hi LspDiagnosticsUnderlineInformation cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
 	vim.cmd [[hi LspDiagnosticsUnderlineHint cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
 	vim.cmd [[hi link NormalFloat Folded]]
+
+	local ts_utils = require("nvim-lsp-ts-utils")
+	ts_utils.setup {}
+	ts_utils.setup_client(client);
 end
 
 require'nvim-treesitter.configs'.setup {

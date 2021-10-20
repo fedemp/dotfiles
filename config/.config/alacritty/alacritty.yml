@@ -112,18 +112,14 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: monospace
-    # family: Iosevka Fixed ss01
-    # family: New Heterodox Mono
     # family: Iosevka Fixed
     # family: Iosevka Fixed SS08
-    # family: Iosevka Fixed SS11
     # family: Iosevka Fixed SS14
-    family: Iosevka Fixed SS15
-    # family: Rec Mono Linear
+    # family: Iosevka Fixed SS15
     # family: Jetbrains Mono
     # family: IBM Plex Mono
-    # family: Overpass Mono
     # family: Fira Code
+    family: Iosevka Term SS05
     # family: Cascadia Code
     # family: Oxygen Mono
     # family: Inconsolata
@@ -216,8 +212,56 @@ schemes:
       cyan:    '0x5fafaf'
       white:   '0xffffff'
 
+  jellybeans: &jellybeans
+    primary:
+      background: '0x121212'
+      foreground: '0xdedede'
+    cursor:
+      text:   '0xffffff'
+      cursor: '0xffa460'
+    normal:
+      black:   '0x929292'
+      red:     '0xe27373'
+      green:   '0x94b979'
+      yellow:  '0xffba7b'
+      blue:    '0x97bedc'
+      magenta: '0xe1c0fa'
+      cyan:    '0x00988e'
+      white:   '0xdedede'
+    bright:
+      black:   '0xbdbdbd'
+      red:     '0xffa1a1'
+      green:   '0xbddeab'
+      yellow:  '0xffdca0'
+      blue:    '0xb1d8f6'
+      magenta: '0xfbdaff'
+      cyan:    '0x1ab2a8'
+      white:   '0xffffff'
+  ubuntu: &ubuntu
+    primary:
+      background: '#300a24'
+      foreground: '#eeeeec'
+    normal:
+      black:   '#2e3436'
+      red:     '#cc0000'
+      green:   '#4e9a06'
+      yellow:  '#c4a000'
+      blue:    '#3465a4'
+      magenta: '#75507b'
+      cyan:    '#06989a'
+      white:   '#d3d7cf'
+    bright:
+      black:   '#555753'
+      red:     '#ef2929'
+      green:   '#8ae234'
+      yellow:  '#fce94f'
+      blue:    '#729fcf'
+      magenta: '#ad7fa8'
+      cyan:    '#34e2e2'
+      white:   '#eeeeec' 
+
 # Apply the color scheme.
-colors: *apprentice
+colors: *ubuntu
 
 
 # Colors (Tomorrow Night)
