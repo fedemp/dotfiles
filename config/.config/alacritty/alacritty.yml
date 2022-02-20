@@ -45,9 +45,9 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -61,7 +61,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -111,20 +111,24 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: monospace
+    # family: Cascadia Code
+    # family: Dejavu Sans Mono
+    # family: Fira Code
+    # family: IBM Plex Mono
+    # family: Inconsolata
     # family: Iosevka Fixed
+    # family: Iosevka Fixed SS02
+    # family: Iosevka Fixed SS05
     # family: Iosevka Fixed SS08
+    # family: Iosevka Fixed SS12
     # family: Iosevka Fixed SS14
     # family: Iosevka Fixed SS15
+    # family: Iosevka Fixed SS17
+    family: Iosevka Fixed SS18
     # family: Jetbrains Mono
-    # family: IBM Plex Mono
-    # family: Fira Code
-    family: Iosevka Term SS05
-    # family: Cascadia Code
     # family: Oxygen Mono
-    # family: Inconsolata
-    # family: Dejavu Sans Mono
     # family: Ubuntu Mono
+    # family: monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -163,14 +167,14 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13.5
+  size: 14
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
-  #offset:
-  #  x: 0
-  #  y: 0
+  offset:
+    x: 0
+    y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -186,7 +190,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 schemes:
   apprentice: &apprentice
@@ -259,9 +263,38 @@ schemes:
       magenta: '#ad7fa8'
       cyan:    '#34e2e2'
       white:   '#eeeeec' 
+  gruvboxlight: &gruvboxlight
+    # Default colors
+    primary:
+      # hard contrast: background = '0xf9f5d7'
+      background: '0xfbf1c7'
+      # soft contrast: background = '0xf2e5bc'
+      foreground: '0x3c3836'
+
+    # Normal colors
+    normal:
+      black:   '0xfbf1c7'
+      red:     '0xcc241d'
+      green:   '0x98971a'
+      yellow:  '0xd79921'
+      blue:    '0x458588'
+      magenta: '0xb16286'
+      cyan:    '0x689d6a'
+      white:   '0x7c6f64'
+
+    # Bright colors
+    bright:
+      black:   '0x928374'
+      red:     '0x9d0006'
+      green:   '0x79740e'
+      yellow:  '0xb57614'
+      blue:    '0x076678'
+      magenta: '0x8f3f71'
+      cyan:    '0x427b58'
+      white:   '0x3c3836'
 
 # Apply the color scheme.
-colors: *ubuntu
+colors: *gruvboxlight
 
 
 # Colors (Tomorrow Night)
@@ -474,7 +507,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: On
+    blinking: Always
 
   # Vi mode cursor style
   #
@@ -522,7 +555,7 @@ cursor:
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time

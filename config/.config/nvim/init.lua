@@ -5,7 +5,7 @@ set.hidden = true;
 set.number = true
 set.smartcase = true;
 set.cursorline = true;
-set.list = true;
+set.list = false;
 set.listchars = { eol="↵", tab = "¬ ", trail= "·",extends="◣",precedes="◢",nbsp="␣" }
 set.foldmethod = "indent"
 set.termguicolors = true
@@ -19,12 +19,15 @@ set.wildmode = "longest:full,full"
 set.wildignore:append {"*/min/*","*/vendor/*","*/node_modules/*","*/bower_components/*"}
 set.diffopt = {"filler", "iwhiteall", "vertical", "hiddenoff", "algorithm:histogram"}
 set.path= {".","**"}
-set.foldlevelstart = 3
-set.completeopt= {"menuone"}
+set.foldlevelstart = 99
+set.foldmethod = "expr"
+set.foldexpr = "nvim_treesitter#foldexpr()"
+set.completeopt = {"menuone"}
 set.shortmess="a"
 set.colorcolumn="120"
 set.textwidth=120
-set.guicursor="n-v-c-sm:block-nCursor,i-ci-ve:block-blinkon500-iCursor,r-cr-o:hor20"
+set.guicursor="n-v-c-sm:block-nCursor,ve:block-blinkon500-iCursor,i-ci-r-cr-o:hor40-blinkon500"
+set.signcolumn="number"
 
 -- Mappings
 local map = vim.api.nvim_set_keymap
@@ -38,8 +41,7 @@ map("n", "", "", options);
 map("c", "", "", options);
 map("i", "", "", options);
 map('n', 'Y', 'y$', options)
-map('n', '<Leader>f', 'gggqG', options)
-map('n', '<Leader>o', ':TSLspOrganizeSync', {noremap=true})
+map('n', '<Leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
 
 -- Plugins
 local fn = vim.fn
@@ -51,8 +53,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require "paq" {
-	"savq/paq-nvim";                  -- Let Paq manage itself
-	"neovim/nvim-lspconfig";          -- Mind the semi-colons
+	"savq/paq-nvim";
+	"neovim/nvim-lspconfig";
 	"machakann/vim-sandwich";
 	"nvim-treesitter/nvim-treesitter";
 	"nvim-treesitter/nvim-treesitter-textobjects";
@@ -63,10 +65,12 @@ require "paq" {
 	'NLKNguyen/papercolor-theme';
 	'jsit/toast.vim';
 	'wimstefan/vim-artesanal';
-	'Mofiqul/vscode.nvim';
 	'habamax/vim-freyeday';
 	'jose-elias-alvarez/nvim-lsp-ts-utils';
 	'justinmk/vim-dirvish';
+	'editorconfig/editorconfig-vim';
+	'jose-elias-alvarez/null-ls.nvim';
+	'lifepillar/vim-gruvbox8'
 }
 
 vim.cmd [[colorscheme apprentice]]
@@ -117,11 +121,11 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-	buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-	-- buf_set_keymap('n', '<Leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+	buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+	buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+	buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+	buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+	buf_set_keymap('n', '<Leader>o', ':TSLspOrganizeSync', {noremap=true})
 	vim.cmd [[hi link LspReference  CursorLine]]
 	vim.cmd [[hi link LspReferenceText CursorLine]]
 	vim.cmd [[hi link LspReferenceWrite CursorLine]]
@@ -141,8 +145,13 @@ local on_attach = function(client, bufnr)
 	vim.cmd [[hi link NormalFloat Folded]]
 
 	local ts_utils = require("nvim-lsp-ts-utils")
-	ts_utils.setup {}
+	ts_utils.setup {
+		enable_import_on_completion = true,
+		filter_out_diagnostics_by_severity = {"hint"},
+	}
 	ts_utils.setup_client(client);
+	-- disable tsserver formatting
+	client.resolved_capabilities.document_formatting = false
 end
 
 require'nvim-treesitter.configs'.setup {
@@ -169,17 +178,18 @@ require'nvim-treesitter.configs'.setup {
 		disable = {},
 	},
 	indent = {
-		enable = false,
+		enable = true,
 		disable = {},
 	},
 	ensure_installed = {
 		"tsx",
 		"json",
 		"html",
-		"scss"
+		"scss",
+		"json5",
 	},
 }
-require "nvim-treesitter.parsers".get_parser_configs().tsx.used_by = { "javascript", "typescript.tsx" }
+require "nvim-treesitter.parsers".get_parser_configs().tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 
 require'lspconfig'.tsserver.setup {
 	on_attach = on_attach,
@@ -187,41 +197,14 @@ require'lspconfig'.tsserver.setup {
 		debounce_text_changes = 150,
 	}
 }
--- Capture real implementation of function that sets signs
-local orig_set_signs = vim.lsp.diagnostic.set_signs
-local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
 
-  -- original func runs some checks, which I think is worth doing
-  -- but maybe overkill
-  if not diagnostics then
-    diagnostics = diagnostic_cache[bufnr][client_id]
-  end
+require'lspconfig'.tailwindcss.setup{}
 
-  -- early escape
-  if not diagnostics then
-    return
-  end
-
-  -- Work out max severity diagnostic per line
-  local max_severity_per_line = {}
-  for _,d in pairs(diagnostics) do
-    if max_severity_per_line[d.range.start.line] then
-      local current_d = max_severity_per_line[d.range.start.line]
-      if d.severity < current_d.severity then
-        max_severity_per_line[d.range.start.line] = d
-      end
-    else
-      max_severity_per_line[d.range.start.line] = d
-    end
-  end
-
-  -- map to list
-  local filtered_diagnostics = {}
-  for i,v in pairs(max_severity_per_line) do
-    table.insert(filtered_diagnostics, v)
-  end
-
-  -- call original function
-  orig_set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
-end
-vim.lsp.diagnostic.set_signs = set_signs_limited
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
+        null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
+        null_ls.builtins.formatting.prettier -- prettier, eslint, eslint_d, or prettierd
+    },
+})
