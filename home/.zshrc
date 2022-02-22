@@ -69,12 +69,12 @@ alias su='su -'
 alias ...='cd ../../'
 alias -g G='| rg' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
-# alias vim='TERM=xterm-256color vim'
 alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
 alias vim=nvim
-alias ls='exa -l --group-directories-first'
-alias l='exa -l --group-directories-first'
+command -v exa >/dev/null && alias ls='exa -l --group-directories-first'
+command -v exa >/dev/null && alias l='exa -l --group-directories-first'
+
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
@@ -152,4 +152,4 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 export PATH=/home/federico/.fnm:$PATH
 eval "`fnm env`"
 
-source /usr/share/skim/shell/key-bindings.zsh
+[[ ! -f /usr/share/skim/shell/key-bindings.zsh ]] || source /usr/share/skim/shell/key-bindings.zsh
