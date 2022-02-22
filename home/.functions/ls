@@ -1,7 +1,0 @@
-function ls() {
-	if [ -t 1 ]; then
-		/usr/bin/ls -l -h -F -b -T 0 --color=always --group-directories-first "$@" | less
-	else
-		/usr/bin/ls "$@"
-	fi
-}

@@ -64,17 +64,20 @@ unset _comp_files
 
 alias cp='cp -irv'
 alias df='df -h'
-alias gs='tig status'
+alias gs='git status'
 alias su='su -'
 alias ...='cd ../../'
-alias -g G='| rg' # now you can do: ls foo G something
+alias -g G='| grep' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
-alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
-alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
-alias vim=nvim
+alias nnn='tree -C | less'
+alias vim=vi
+alias ls='ls --color=auto' # Just in case is not set.
 command -v exa >/dev/null && alias ls='exa -l --group-directories-first'
 command -v exa >/dev/null && alias l='exa -l --group-directories-first'
-
+command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
+command -v tig >/dev/null && alias gs='tig status'
+command -v tuir >/dev/null && alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
+command -v nvim >/dev/null && alias vim='nvim'
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
