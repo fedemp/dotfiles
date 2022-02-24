@@ -55,6 +55,7 @@ end
 require "paq" {
 	"savq/paq-nvim";
 	"neovim/nvim-lspconfig";
+    'williamboman/nvim-lsp-installer',
 	"machakann/vim-sandwich";
 	"nvim-treesitter/nvim-treesitter";
 	"nvim-treesitter/nvim-treesitter-textobjects";

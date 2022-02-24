@@ -45,9 +45,9 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 0
-    y: 0
+  #padding:
+  #  x: 0
+  #  y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -63,6 +63,12 @@ window:
   #     - buttonless: Title bar, transparent background and no title bar buttons
   decorations: none
 
+  # Background opacity
+  #
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  #opacity: 1.0
+
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -75,10 +81,10 @@ window:
   startup_mode: Maximized
 
   # Window title
-  title: Alacritty
+  #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -111,25 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: Cascadia Code
-    # family: Dejavu Sans Mono
-    # family: Fira Code
-    # family: IBM Plex Mono
-    # family: Inconsolata
-    # family: Iosevka Fixed
-    # family: Iosevka Fixed SS02
-    # family: Iosevka Fixed SS05
-    # family: Iosevka Fixed SS08
-    # family: Iosevka Fixed SS12
-    # family: Iosevka Fixed SS14
-    # family: Iosevka Fixed SS15
-    family: Iosevka Fixed SS16
-    # family: Iosevka Fixed SS17
-    # family: Iosevka Fixed SS18
-    # family: Jetbrains Mono
-    # family: Oxygen Mono
-    # family: Ubuntu Mono
-    # family: monospace
+    family: monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -168,14 +156,14 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13.5
+  size: 15
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
-  offset:
-    x: 0
-    y: 2
+  #offset:
+  #  x: 0
+  #  y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -189,6 +177,13 @@ font:
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
   #use_thin_strokes: true
+
+  # Use built-in font for box drawing characters.
+  #
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  #
+  #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
@@ -263,16 +258,13 @@ schemes:
       blue:    '#729fcf'
       magenta: '#ad7fa8'
       cyan:    '#34e2e2'
-      white:   '#eeeeec' 
+      white:   '#eeeeec'
   gruvboxlight: &gruvboxlight
-    # Default colors
     primary:
       # hard contrast: background = '0xf9f5d7'
       background: '0xfbf1c7'
       # soft contrast: background = '0xf2e5bc'
       foreground: '0x3c3836'
-
-    # Normal colors
     normal:
       black:   '0xfbf1c7'
       red:     '0xcc241d'
@@ -282,8 +274,6 @@ schemes:
       magenta: '0xb16286'
       cyan:    '0x689d6a'
       white:   '0x7c6f64'
-
-    # Bright colors
     bright:
       black:   '0x928374'
       red:     '0x9d0006'
@@ -294,9 +284,7 @@ schemes:
       cyan:    '0x427b58'
       white:   '0x3c3836'
 
-# Apply the color scheme.
 colors: *apprentice
-
 
 # Colors (Tomorrow Night)
 #colors:
@@ -435,10 +423,17 @@ colors: *apprentice
   #
   #indexed_colors: []
 
+  # Transparent cell backgrounds
+  #
+  # Whether or not `window.opacity` applies to all cell backgrounds or only to
+  # the default background. When set to `true` all cells will be transparent
+  # regardless of their background color.
+  #transparent_background_colors: false
+
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
-bell:
+#bell:
   # Visual Bell Animation
   #
   # Animation effect for flashing the screen when the visual bell is rung.
@@ -454,7 +449,7 @@ bell:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  animation: EaseOutExpo
+  #animation: EaseOutExpo
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
@@ -475,12 +470,6 @@ bell:
   #     args: ["Hello, World!"]
   #
   #command: None
-
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-#background_opacity: 1.0
 
 #selection:
   # This string contains all characters that are used as separators for
@@ -508,7 +497,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: Always
+    blinking: On
 
   # Vi mode cursor style
   #
@@ -519,7 +508,7 @@ cursor:
   #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  blink_interval: 750
+  #blink_interval: 750
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -555,6 +544,9 @@ cursor:
 
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
+
+# Offer IPC using `alacritty msg` (unix only)
+#ipc_socket: true
 
 mouse:
   # Click settings
@@ -630,13 +622,20 @@ hints:
 #   - Right
 #   - Numeric identifier such as `5`
 #
-# - `action` (see key bindings)
+# - `action` (see key bindings for actions not exclusive to mouse mode)
+#
+# - Mouse exclusive actions:
+#
+#   - ExpandSelection
+#       Expand the selection to the current mouse cursor location.
 #
 # And optionally:
 #
 # - `mods` (see key bindings)
 #mouse_bindings:
-#  - { mouse: Middle, action: PasteSelection }
+#  - { mouse: Right,                 action: ExpandSelection }
+#  - { mouse: Right,  mods: Control, action: ExpandSelection }
+#  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
 
 # Key bindings
 #
@@ -705,6 +704,8 @@ hints:
 #   - ToggleFullscreen
 #   - SpawnNewInstance
 #       Spawn a new instance of Alacritty.
+#   - CreateNewWindow
+#       Create a new Alacritty window from the current process.
 #   - ClearLogNotice
 #       Clear Alacritty's UI warning and error notice.
 #   - ClearSelection
@@ -842,7 +843,7 @@ hints:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -948,7 +949,7 @@ hints:
   #- { key: M,              mods: Command,                    action: Minimize              }
   #- { key: Q,              mods: Command,                    action: Quit                  }
   #- { key: W,              mods: Command,                    action: Quit                  }
-  #- { key: N,              mods: Command,                    action: SpawnNewInstance      }
+  - { key: N,              mods: Control|Shift,                    action: SpawnNewInstance      }
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
@@ -973,3 +974,6 @@ hints:
 
   # Print all received window events.
   #print_events: false
+
+  # Highlight window damage information.
+  #highlight_damage: false

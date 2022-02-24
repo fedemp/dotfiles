@@ -6,3 +6,10 @@ export FZF_DEFAULT_COMMAND='fdfind'
 export TZ=/etc/localtime
 fpath=($HOME/.functions $fpath)
 export NNN_FCOLORS='c1e20402006006f701d6ab05'
+
+if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+export PATH
+
