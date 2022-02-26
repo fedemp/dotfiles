@@ -69,12 +69,12 @@ alias su='su -'
 alias ...='cd ../../'
 alias -g G='| grep' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
-alias nnn='tree -C | less'
 alias ls='ls --color=auto' # Just in case is not set.
 alias vim=vi
 command -v exa >/dev/null && alias ls='exa -l --group-directories-first'
 command -v exa >/dev/null && alias l='exa -l --group-directories-first'
 command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
+command -v nnn >/dev/null || alias nnn='tree -C | less'
 command -v tig >/dev/null && alias gs='tig status'
 command -v tuir >/dev/null && alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
 command -vp vim >/dev/null && alias vim='vim'
