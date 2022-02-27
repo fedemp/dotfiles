@@ -55,7 +55,7 @@ end
 require "paq" {
 	"savq/paq-nvim";
 	"neovim/nvim-lspconfig";
-    'williamboman/nvim-lsp-installer',
+	'williamboman/nvim-lsp-installer',
 	"machakann/vim-sandwich";
 	"nvim-treesitter/nvim-treesitter";
 	"nvim-treesitter/nvim-treesitter-textobjects";
@@ -65,7 +65,6 @@ require "paq" {
 	'tpope/vim-fugitive';
 	'NLKNguyen/papercolor-theme';
 	'jsit/toast.vim';
-	'wimstefan/vim-artesanal';
 	'habamax/vim-freyeday';
 	'jose-elias-alvarez/nvim-lsp-ts-utils';
 	'justinmk/vim-dirvish';
@@ -83,77 +82,16 @@ vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnostics
 local fn, cmd = vim.fn, vim.cmd
 
 function my_statusline()
-  local branch = fn.FugitiveHead()
+	local branch = fn.FugitiveHead()
 
-  if branch and #branch > 0 then
-    branch = '  '..branch..' '
-  end
+	if branch and #branch > 0 then
+		branch = '  '..branch..' '
+	end
 
-  return branch..' %-.50F %m%= %{&filetype}  %l:%c %p%% '
+	return branch..' %-.50F %m%= %{&filetype}  %l:%c %p%% '
 end
 
 cmd[[ set statusline=%!luaeval('my_statusline()') ]]
-
-local nvim_lsp = require('lspconfig')
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	-- Mappings.
-	local opts = { noremap=true, silent=true }
-
-	buf_set_keymap("i", "<C-Space>", "", opts);
-
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-	buf_set_keymap('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-	buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-	buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-	buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-	buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-	buf_set_keymap('n', '<Leader>o', ':TSLspOrganizeSync', {noremap=true})
-	vim.cmd [[hi link LspReference  CursorLine]]
-	vim.cmd [[hi link LspReferenceText CursorLine]]
-	vim.cmd [[hi link LspReferenceWrite CursorLine]]
-	vim.cmd [[hi link LspReferenceRead CursorLine]]
-	vim.cmd [[hi link LspDiagnosticsDefaultError WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsDefaultHint WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsDefaultInformation WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsDefaultWarning WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsVirtualTextError Error]]
-	vim.cmd [[hi link LspDiagnosticsVirtualTextWarning WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsVirtualTextInformation WarningMsg]]
-	vim.cmd [[hi link LspDiagnosticsVirtualTextHint WarningMsg]]
-	vim.cmd [[hi LspDiagnosticsUnderlineError cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
-	vim.cmd [[hi LspDiagnosticsUnderlineWarning cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
-	vim.cmd [[hi LspDiagnosticsUnderlineInformation cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
-	vim.cmd [[hi LspDiagnosticsUnderlineHint cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
-	vim.cmd [[hi link NormalFloat Folded]]
-
-	local ts_utils = require("nvim-lsp-ts-utils")
-	ts_utils.setup {
-		enable_import_on_completion = true,
-		filter_out_diagnostics_by_severity = {"hint"},
-	}
-	ts_utils.setup_client(client);
-	-- disable tsserver formatting
-	client.resolved_capabilities.document_formatting = false
-end
 
 require'nvim-treesitter.configs'.setup {
 	textobjects = {
@@ -192,26 +130,93 @@ require'nvim-treesitter.configs'.setup {
 }
 require "nvim-treesitter.parsers".get_parser_configs().tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 
-require'lspconfig'.tsserver.setup {
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-	}
-}
+local lsp_installer = require("nvim-lsp-installer")
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+	local opts = {}
 
-require'lspconfig'.tailwindcss.setup{}
+	-- (optional) Customize the options passed to the server
+	if server.name == "tsserver" or server.name == "tailwindcss" then
+		opts.debounce_text_changes = 150
+		opts.on_attach = function(client, bufnr)
+			local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+			local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+			-- Enable completion triggered by <c-x><c-o>
+			buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+			-- Mappings.
+			local opts = { noremap=true, silent=true }
+
+			buf_set_keymap("i", "<C-Space>", "", opts);
+
+			-- See `:help vim.lsp.*` for documentation on any of the below functions
+			buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+			buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+			buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+			buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+			buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+			-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+			-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+			-- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+			buf_set_keymap('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+			buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+			buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+			buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+			buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+			buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+			buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+			buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+			buf_set_keymap('n', '<Leader>o', ':TSLspOrganizeSync', {noremap=true})
+			vim.cmd [[hi link LspReference  CursorLine]]
+			vim.cmd [[hi link LspReferenceText CursorLine]]
+			vim.cmd [[hi link LspReferenceWrite CursorLine]]
+			vim.cmd [[hi link LspReferenceRead CursorLine]]
+			vim.cmd [[hi link LspDiagnosticsDefaultError WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsDefaultHint WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsDefaultInformation WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsDefaultWarning WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsVirtualTextError Error]]
+			vim.cmd [[hi link LspDiagnosticsVirtualTextWarning WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsVirtualTextInformation WarningMsg]]
+			vim.cmd [[hi link LspDiagnosticsVirtualTextHint WarningMsg]]
+			vim.cmd [[hi LspDiagnosticsUnderlineError cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
+			vim.cmd [[hi LspDiagnosticsUnderlineWarning cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
+			vim.cmd [[hi LspDiagnosticsUnderlineInformation cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
+			vim.cmd [[hi LspDiagnosticsUnderlineHint cterm=underline ctermfg=NONE gui=underline guifg=NONE term=underline]]
+			vim.cmd [[hi link NormalFloat Folded]]
+
+			local ts_utils = require("nvim-lsp-ts-utils")
+			ts_utils.setup {
+				enable_import_on_completion = true,
+				-- filter_out_diagnostics_by_severity = {"hint"},
+			}
+			ts_utils.setup_client(client);
+			-- disable tsserver formatting
+			client.resolved_capabilities.document_formatting = false
+		end
+
+		-- This setup() function will take the provided server configuration and decorate it with the necessary properties
+		-- before passing it onwards to lspconfig.
+		-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+		server:setup(opts)
+	end
+end)
 
 local null_ls = require("null-ls")
 null_ls.setup({
-    sources = {
+	sources = {
 		null_ls.builtins.formatting.prettier.with({
 			prefer_local = "node_modules/.bin",
 		}),
 		null_ls.builtins.diagnostics.eslint_d.with({
 			prefer_local = "node_modules/.bin",
+			timeout = 20000
 		}),
 		null_ls.builtins.code_actions.eslint_d.with({
 			prefer_local = "node_modules/.bin",
+			timeout = 20000
 		}),
-    },
+	},
 })
