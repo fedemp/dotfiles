@@ -1,23 +1,13 @@
-[core]
-  pager = delta
 [color]
   diff = auto
   status = auto
   branch = auto
   interactive = auto
   ui = auto
-[interactive]
-    diffFilter = delta --color-only
 [color "status"]
   added = green
   changed = red
   untracked = magenta
-[delta]
-  features = decorations
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
 [alias]
   # checkout
   co = checkout                     # checkout
