@@ -45,8 +45,7 @@
   default = current
 [core]
   autocrlf = false
-  editor = nvim
-  # pager = bat
+  pager = bat
 [advice]
   statusHints = true
 [diff]
