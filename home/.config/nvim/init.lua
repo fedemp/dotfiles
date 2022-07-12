@@ -23,10 +23,10 @@ set.foldlevelstart = 99
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.completeopt = {"menuone"}
-set.shortmess = "a"
-set.colorcolumn = "120"
-set.textwidth = 120
-set.guicursor = "n-v-c-sm:block-nCursor,ve:block-blinkon500-iCursor,i-ci-r-cr-o:hor40-blinkon500"
+set.shortmess = "at"
+set.colorcolumn = "80"
+set.textwidth = 79
+-- set.guicursor = "n-v-c-sm:block-nCursor,ve:block-blinkon500-iCursor,i-ci-r-cr-o:hor40-blinkon500"
 set.signcolumn = "number"
 
 -- Statusline
@@ -39,12 +39,12 @@ function my_statusline()
 
     return branch .. " %-.50F %m%= %{&filetype}  %l:%c %p%% "
 end
-vim.cmd [[set statusline=%!luaeval('my_statusline()')]]
+vim.cmd("set statusline=%!luaeval('my_statusline()')")
 
 -- Colorscheme
-vim.cmd [[colorscheme apprentice]]
-vim.cmd [[hi link NormalFloat Folded]]
-vim.cmd [[hi Comment cterm=italic gui=italic]]
+vim.cmd("colorscheme apprentice")
+vim.cmd("hi link NormalFloat Folded")
+vim.cmd("hi Comment cterm=italic gui=italic");
 
 -- Mappings
 local map = vim.api.nvim_set_keymap
@@ -87,11 +87,11 @@ require "paq" {
     "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     "lifepillar/vim-gruvbox8",
-    "sainnhe/sonokai"
+	"rebelot/kanagawa.nvim",
 }
 
 -- Treesiter
-require "nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup {
     textobjects = {
         select = {
             enable = true,
@@ -110,13 +110,15 @@ require "nvim-treesitter.configs".setup {
     },
     highlight = {
         enable = true,
-        disable = {}
     },
     indent = {
         enable = true,
-        disable = {}
     },
     ensure_installed = {
+		"javascript",
+		"typescript",
+		"css",
+		"vim",
         "tsx",
         "json",
         "html",

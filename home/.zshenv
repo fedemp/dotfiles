@@ -11,5 +11,8 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]
 then
     PATH="$HOME/.local/bin:$PATH"
 fi
+if ! [[ "$PATH" =~ "$HOME/.npm-global/bin:" ]]
+then
+    PATH="$HOME/.npm-global/bin:$PATH"
+fi
 export PATH
-
