@@ -29,23 +29,6 @@ set.textwidth = 79
 -- set.guicursor = "n-v-c-sm:block-nCursor,ve:block-blinkon500-iCursor,i-ci-r-cr-o:hor40-blinkon500"
 set.signcolumn = "number"
 
--- Statusline
-function my_statusline()
-    local branch = vim.fn.FugitiveHead()
-
-    if branch and #branch > 0 then
-        branch = "  " .. branch .. " "
-    end
-
-    return branch .. " %-.50F %m%= %{&filetype}  %l:%c %p%% "
-end
-vim.cmd("set statusline=%!luaeval('my_statusline()')")
-
--- Colorscheme
-vim.cmd("colorscheme apprentice")
-vim.cmd("hi link NormalFloat Folded")
-vim.cmd("hi Comment cterm=italic gui=italic");
-
 -- Mappings
 local map = vim.api.nvim_set_keymap
 local options = {noremap = true, silent = true}
@@ -59,7 +42,7 @@ map("c", "", "", options)
 map("i", "", "", options)
 map("n", "Y", "y$", options)
 map("i", "<C-Space>", "", options)
-
+vim.g.typescript_compiler_binary = "npx tsc"
 
 -- Plugins installation
 local install_path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
@@ -80,15 +63,30 @@ require "paq" {
     "romainl/apprentice",
     "tpope/vim-fugitive",
     "NLKNguyen/papercolor-theme",
-    "jsit/toast.vim",
-    "habamax/vim-freyeday",
     "justinmk/vim-dirvish",
     "editorconfig/editorconfig-vim",
     "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils",
-    "lifepillar/vim-gruvbox8",
-	"rebelot/kanagawa.nvim",
+	"joshdick/onedark.vim",
+	"echasnovski/mini.nvim",
 }
+
+-- Colorscheme
+vim.cmd("colorscheme apprentice")
+vim.cmd("hi link NormalFloat Folded")
+vim.cmd("hi Comment cterm=italic gui=italic");
+
+-- Statusline
+function my_statusline()
+    local branch = vim.fn.FugitiveHead()
+
+    if branch and #branch > 0 then
+        branch = "  " .. branch .. " "
+    end
+
+    return branch .. " %-.50F %m%= %{&filetype}  %l:%c %p%% "
+end
+vim.cmd("set statusline=%!luaeval('my_statusline()')")
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {

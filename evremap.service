@@ -1,5 +1,6 @@
 [Service]
 WorkingDirectory=/
+# Install in /etc/systemd/system/evremap.service
 # For reasons I don't care to troubleshoot, Fedora 31 won't let me start this
 # unless I use `bash -c` around it.  Putting the command line in directly
 # yields a 203 permission denied error with no logs about what it didn't like.

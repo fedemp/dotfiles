@@ -1,1 +1,1 @@
-setlocal formatexpr&
+setl indentexpr&
