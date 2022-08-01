@@ -26,7 +26,6 @@ set.completeopt = {"menuone"}
 set.shortmess = "at"
 set.colorcolumn = "80"
 set.textwidth = 79
--- set.guicursor = "n-v-c-sm:block-nCursor,ve:block-blinkon500-iCursor,i-ci-r-cr-o:hor40-blinkon500"
 set.signcolumn = "number"
 
 -- Mappings
@@ -42,49 +41,58 @@ map("c", "", "", options)
 map("i", "", "", options)
 map("n", "Y", "y$", options)
 map("i", "<C-Space>", "", options)
-vim.g.typescript_compiler_binary = "npx tsc"
 
 -- Plugins installation
-local install_path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.fn.system({"git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", install_path})
+    vim.fn.system({"git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
-require "paq" {
-    "savq/paq-nvim",
-    "neovim/nvim-lspconfig",
-    "williamboman/nvim-lsp-installer",
-    "machakann/vim-sandwich",
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "tpope/vim-commentary",
-    "nvim-lua/plenary.nvim",
-    "romainl/apprentice",
-    "tpope/vim-fugitive",
-    "NLKNguyen/papercolor-theme",
-    "justinmk/vim-dirvish",
-    "editorconfig/editorconfig-vim",
-    "jose-elias-alvarez/null-ls.nvim",
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-	"joshdick/onedark.vim",
-	"echasnovski/mini.nvim",
-}
+require("packer").startup(
+    function(use)
+        use "wbthomason/packer.nvim"
+        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use "jose-elias-alvarez/typescript.nvim"
+        use "nvim-treesitter/nvim-treesitter-textobjects"
+        use "nvim-lua/plenary.nvim"
+        use "romainl/apprentice"
+        use "tpope/vim-fugitive"
+        use "justinmk/vim-dirvish"
+        use "editorconfig/editorconfig-vim"
+        use "echasnovski/mini.nvim"
+        use "jose-elias-alvarez/null-ls.nvim"
+        use "savq/melange"
+        use {
+            "williamboman/mason.nvim",
+            config = function()
+                require("mason").setup()
+            end
+        }
+		use "neovim/nvim-lspconfig"
+        use {
+            "williamboman/mason-lspconfig.nvim",
+            config = function()
+                require("mason-lspconfig").setup()
+            end,
+        }
+    end
+)
 
 -- Colorscheme
 vim.cmd("colorscheme apprentice")
 vim.cmd("hi link NormalFloat Folded")
-vim.cmd("hi Comment cterm=italic gui=italic");
+vim.cmd("hi Comment cterm=italic gui=italic")
 
 -- Statusline
 function my_statusline()
     local branch = vim.fn.FugitiveHead()
 
     if branch and #branch > 0 then
-        branch = "  " .. branch .. " "
+        branch = string.format("  %s ", branch)
     end
 
-    return branch .. " %-.50F %m%= %{&filetype}  %l:%c %p%% "
+    return string.format("%s %%-.50F %%m%%= %%{&filetype}  %%l:%%c %%p%%%% ", branch)
 end
 vim.cmd("set statusline=%!luaeval('my_statusline()')")
 
@@ -107,16 +115,16 @@ require("nvim-treesitter.configs").setup {
         }
     },
     highlight = {
-        enable = true,
+        enable = true
     },
     indent = {
-        enable = true,
+        enable = true
     },
     ensure_installed = {
-		"javascript",
-		"typescript",
-		"css",
-		"vim",
+        "javascript",
+        "typescript",
+        "css",
+        "vim",
         "tsx",
         "json",
         "html",
@@ -124,85 +132,89 @@ require("nvim-treesitter.configs").setup {
         "json5"
     }
 }
-require "nvim-treesitter.parsers".get_parser_configs().tsx.filetype_to_parsername = {"javascript", "typescript.tsx"}
+--require "nvim-treesitter.parsers".get_parser_configs().tsx.filetype_to_parsername = {"javascript", "typescript.tsx"}
 
 -- LSP
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+   local function buf_set_keymap(...)
+       vim.api.nvim_buf_set_keymap(bufnr, ...)
+   end
+   local function buf_set_option(...)
+       vim.api.nvim_buf_set_option(bufnr, ...)
+   end
 
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+   -- Enable completion triggered by <c-x><c-o>
+   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Mappings.
-    local opts = {noremap = true, silent = true}
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-	-- Mappings.
-	buf_set_keymap("n", "<Leader>o", ":TSLspOrganizeSync", {noremap = true})
-
-	local ts_utils = require("nvim-lsp-ts-utils")
-	ts_utils.setup {
-		enable_import_on_completion = true
-		-- filter_out_diagnostics_by_severity = {"hint"},
-	}
-	ts_utils.setup_client(client)
-	-- disable tsserver formatting
-	client.resolved_capabilities.document_formatting = false
+   -- Mappings.
+   local opts = {noremap = true, silent = true}
+   -- See `:help vim.lsp.*` for documentation on any of the below functions
+   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+   buf_set_keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+   buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+   buf_set_keymap("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+   buf_set_keymap("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+   buf_set_keymap("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+   buf_set_keymap("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+   buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+   buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+   buf_set_keymap("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+   buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
-local lsp_installer = require("nvim-lsp-installer")
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
-lsp_installer.on_server_ready(
-    function(server)
-        local opts = {}
+require("typescript").setup({
+    server = { -- pass options to lspconfig's setup method
+	on_attach = function(client, bufnr)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>o", ":TypescriptOrganizeImports ", {noremap = true})
+		client.resolved_capabilities.document_formatting = false
+		on_attach(client, bufnr)
+	end
+    },
+})
 
-		opts.debounce_text_changes = 150
-		opts.on_attach = on_attach
+require('lspconfig')['tailwindcss'].setup{
+    on_attach = on_attach,
+}
 
-        -- (optional) Customize the options passed to the server
-        -- if server.name == "tsserver" or server.name == "tailwindcss" then
+require('lspconfig')['tailwindcss'].setup{
+    on_attach = on_attach,
+}
 
-        -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-        -- before passing it onwards to lspconfig.
-        -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-        server:setup(opts)
-    end
-)
+require('lspconfig')['eslint'].setup{
+    on_attach = on_attach,
+}
 
 -- Formatting
+-- local null_ls = require("null-ls")
+-- null_ls.setup(
+--     {
+--         sources = {
+--             null_ls.builtins.formatting.prettier.with(
+--                 {
+--                     only_local = "node_modules/.bin"
+--                 }
+--             )
+--         }
+--     }
+-- )
+
 local null_ls = require("null-ls")
 null_ls.setup(
     {
+		debug = true,
         sources = {
-            null_ls.builtins.formatting.prettier.with(
-                {
-                    only_local = "node_modules/.bin"
-                }
-            )
+            null_ls.builtins.formatting.prettierd
         }
     }
 )
+
+-- Terminal settings
+vim.api.nvim_create_autocmd({"TermOpen"}, {pattern = {"*"}, command = "setlocal nonumber norelativenumber"})
+
+require('mini.surround').setup({})
