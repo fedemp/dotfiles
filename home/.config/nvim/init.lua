@@ -22,7 +22,7 @@ set.path = {".", "**"}
 set.foldlevelstart = 99
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
-set.completeopt = {"menuone"}
+set.completeopt = {"menu", "menuone", "noselect"}
 set.shortmess = "at"
 set.colorcolumn = "80"
 set.textwidth = 79
@@ -35,12 +35,12 @@ local options = {noremap = true, silent = true}
 map("n", "<Space>", ":", {noremap = true})
 map("n", "U", "", options)
 map("n", "gb", ":ls<CR>:b ", {noremap = true})
-map("n", "", ":SK<CR>", options)
+map("n", "", ":FZF<CR>", options)
 map("n", "", "", options)
 map("c", "", "", options)
 map("i", "", "", options)
 map("n", "Y", "y$", options)
--- map("i", "<C-Space>", "", options)
+map("i", "<C-Space>", "", options)
 
 -- Plugins installation
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -52,57 +52,107 @@ end
 require("packer").startup(
     function(use)
         use "wbthomason/packer.nvim"
-        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        use "jose-elias-alvarez/typescript.nvim"
-        use "nvim-treesitter/nvim-treesitter-textobjects"
         use "nvim-lua/plenary.nvim"
-        use "romainl/apprentice"
-        use "luisiacc/gruvbox-baby"
-        use "lewis6991/gitsigns.nvim"
-        use {
-            "marko-cerovac/material.nvim",
-            config = function()
-                require("material").setup({italics = {comments = true}})
-            end
+        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use "nvim-treesitter/nvim-treesitter-textobjects"
+        use "neovim/nvim-lspconfig"
+        use "jose-elias-alvarez/typescript.nvim"
+        use "jose-elias-alvarez/null-ls.nvim"
+        -- use "savq/melange"
+        use {"mcchrish/zenbones.nvim", requires = {"rktjmp/lush.nvim"}}
+        -- use {
+        --     "EdenEast/nightfox.nvim",
+        --     config = function()
+        --         require("nightfox").setup(
+        --             {
+        --                 options = {
+        --                     styles = {
+        --                         comments = "italic",
+        --                         keywords = "bold",
+        --                         types = "italic,bold"
+        --                     }
+        --                 }
+        --             }
+        --         )
+        --     end
+        -- }
+        use {'hood/popui.nvim',
+        	config = function()
+        		vim.ui.select = require"popui.ui-overrider"
+        		vim.ui.input = require"popui.input-overrider"
+        	end
         }
         use "tpope/vim-fugitive"
+        use {
+            "lewis6991/gitsigns.nvim",
+            config = function()
+                require("gitsigns").setup()
+            end
+        }
         use "elihunter173/dirbuf.nvim"
         use "editorconfig/editorconfig-vim"
         use "echasnovski/mini.nvim"
-        use "jose-elias-alvarez/null-ls.nvim"
-        use "savq/melange"
+        use "samjwill/nvim-unception"
+        use "akinsho/toggleterm.nvim"
+        use {
+            "nvim-lualine/lualine.nvim",
+            config = function()
+                require("lualine").setup(
+                    {
+                        icons_enabled = true
+                    }
+                )
+            end,
+            requires = {"kyazdani42/nvim-web-devicons"}
+        }
+        use "kyazdani42/nvim-web-devicons"
+        -- use {"doums/suit.nvim",
+        -- 	config = function()
+        -- 		require("suit").setup()
+        -- 	end
+        -- }
         use {
             "williamboman/mason.nvim",
             config = function()
                 require("mason").setup()
             end
         }
-        use "neovim/nvim-lspconfig"
         use {
             "williamboman/mason-lspconfig.nvim",
             config = function()
                 require("mason-lspconfig").setup()
             end
         }
-    end
-)
+        use "hrsh7th/cmp-nvim-lsp"
+        use "hrsh7th/cmp-buffer"
+        use "hrsh7th/cmp-path"
+        use "hrsh7th/nvim-cmp"
+        use "hrsh7th/cmp-vsnip"
+        use "hrsh7th/vim-vsnip"
+		use {
+			'nvim-telescope/telescope.nvim', tag = '0.1.0',
+			-- or                            , branch = '0.1.x',
+			requires = { {'nvim-lua/plenary.nvim'} }
+		}
+	end
+	)
 
 -- Colorscheme
--- vim.cmd("colorscheme apprentice")
+vim.cmd("colorscheme nordbones")
 -- vim.cmd("hi link NormalFloat Folded")
 -- vim.cmd("hi Comment cterm=italic gui=italic")
 
 -- Statusline
-function my_statusline()
-    local branch = vim.fn.FugitiveHead()
-
-    if branch and #branch > 0 then
-        branch = string.format("  %s ", branch)
-    end
-
-    return string.format("%s %%-.50F %%m%%= %%{&filetype}  %%l:%%c %%p%%%% ", branch)
-end
-vim.cmd("set statusline=%!luaeval('my_statusline()')")
+-- function my_statusline()
+-- 	local branch = vim.fn.FugitiveHead()
+--
+-- 	if branch and #branch > 0 then
+-- 		branch = string.format("  %s ", branch)
+-- 	end
+--
+-- 	return string.format("%s %%-.50F %%m%%= %%{&filetype}  %%l:%%c %%p%%%% ", branch)
+-- end
+-- vim.cmd("set statusline=%!luaeval('my_statusline()')")
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {
@@ -142,27 +192,67 @@ require("nvim-treesitter.configs").setup {
 }
 
 -- Mini
-require("mini.surround").setup({})
-require("mini.completion").setup(
+require("mini.surround").setup()
+require("mini.comment").setup()
+require("mini.bufremove").setup({})
+-- require('mini.statusline').setup({})
+
+local cmp = require "cmp"
+
+cmp.setup(
     {
-        lsp_completion = {
-            source_func = "omnifunc",
-            auto_setup = false
-        }
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            end
+        },
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered()
+        },
+        mapping = cmp.mapping.preset.insert(
+            {
+                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-e>"] = cmp.mapping.abort(),
+                ["<CR>"] = cmp.mapping.confirm({select = true}) -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            }
+        ),
+        sources = cmp.config.sources(
+            {
+                {name = "nvim_lsp"}
+                -- { name = 'vsnip' }, -- For vsnip users.
+                -- { name = 'luasnip' }, -- For luasnip users.
+                -- { name = 'ultisnips' }, -- For ultisnips users.
+                -- { name = 'snippy' }, -- For snippy users.
+            },
+            {
+                {name = "buffer"}
+            }
+        )
     }
 )
 
 -- LSP
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
-        vim.keymap.set(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
+        vim.keymap.set(...)
     end
 
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option("omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
+    -- local lsp_formatting = function(bufnr)
+    -- 	vim.lsp.buf.format({
+    -- 		filter = function(client)
+    -- 			-- apply whatever logic you want (in this example, we'll only use null-ls)
+    -- 			return client.name == "null-ls"
+    -- 		end,
+    -- 		bufnr = bufnr,
+    -- 	})
+    -- end
 
     -- Mappings.
     local opts = {noremap = true, silent = true, buffer = bufnr}
@@ -182,37 +272,37 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-    buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    -- buf_set_keymap("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+    buf_set_keymap("n", "<Leader>q", "<cmd>lua require'popui.diagnostics-navigator'()<CR>", opts)
+    buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+    buf_set_keymap("n", "<Leader>d", "<cmd>lua require'popui.diagnostics-navigator'()<CR>", opts)
 end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("typescript").setup(
     {
         server = {
             on_attach = function(client, bufnr)
                 vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>o", ":TypescriptOrganizeImports ", {noremap = true})
-                client.resolved_capabilities.document_formatting = false
                 on_attach(client, bufnr)
-            end
+            end,
+            capabilities = capabilities
         }
     }
 )
 
 require("lspconfig")["tailwindcss"].setup(
     {
-        on_attach = on_attach
-    }
-)
-
-require("lspconfig")["tailwindcss"].setup(
-    {
-        on_attach = on_attach
+        on_attach = on_attach,
+        capabilities = capabilities
     }
 )
 
 require("lspconfig")["eslint"].setup(
     {
-        on_attach = on_attach
+        on_attach = on_attach,
+        capabilities = capabilities
     }
 )
 
@@ -277,6 +367,13 @@ vim.diagnostic.config(
     }
 )
 
-require("gitsigns").setup()
+vim.g.unception_enable_flavor_text = false
+vim.g.unception_open_buffer_in_new_tab = true
 
-vim.cmd("colo material")
+require("toggleterm").setup {
+    open_mapping = [[<c-\>]],
+    shade_terminals = false
+}
+
+vim.ui.select = require "popui.ui-overrider"
+vim.ui.input = require "popui.input-overrider"

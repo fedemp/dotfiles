@@ -12,8 +12,8 @@
   # checkout
   co = checkout                     # checkout
   nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
-  cob = !sh -c 'git checkout $(git branch | sk)'
-  coba = !sh -c 'git checkout $(git branch -a | sk)'
+  cob = !sh -c 'git checkout $(git branch | fzf)'
+  coba = !sh -c 'git checkout $(git branch -a | fzf)'
   WIP = !sh -c 'git commit -m "WIP"'
 
   # pull
@@ -45,7 +45,7 @@
   default = current
 [core]
   autocrlf = false
-  pager = bat
+	pager = less
 [advice]
   statusHints = true
 [diff]
