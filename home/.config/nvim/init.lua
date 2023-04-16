@@ -152,10 +152,10 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("telescope").setup();
+			require("telescope").setup()
 			vim.keymap.set("n", "gb", require("telescope.builtin").buffers, { noremap = true, silent = true })
 			vim.keymap.set("n", "<C-p>", require("telescope.builtin").fd, { noremap = true, silent = true })
-		end
+		end,
 	},
 
 	{
@@ -165,6 +165,12 @@ require("lazy").setup({
 			lspconfig.tsserver.setup({})
 			lspconfig.tailwindcss.setup({})
 			lspconfig.eslint.setup({})
+			lspconfig.lua_ls.setup({
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global
+					globals = { "vim" },
+				},
+			})
 		end,
 	},
 
@@ -210,10 +216,13 @@ require("lazy").setup({
 
 	"nvim-lualine/lualine.nvim",
 
-	{ "akinsho/toggleterm.nvim", opts = {
-		open_mapping = [[<c-\>]],
-		shade_terminals = false,
-	} },
+	{
+		"akinsho/toggleterm.nvim",
+		opts = {
+			open_mapping = [[<c-\>]],
+			shade_terminals = false,
+		},
+	},
 
 	{
 		"echasnovski/mini.nvim",
@@ -286,6 +295,7 @@ require("lazy").setup({
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.prettierd,
+					null_ls.builtins.formatting.stylua,
 				},
 			})
 		end,
