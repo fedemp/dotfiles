@@ -33,7 +33,7 @@
 [merge]
   summary = true
   verbosity = 1
-  tool = fugitive
+  # tool = fugitive
   ff = true
 [apply]
   whitespace = nowarn
@@ -45,7 +45,7 @@
   default = current
 [core]
   autocrlf = false
-	pager = less
+  pager = moar
 [advice]
   statusHints = true
 [diff]
@@ -53,7 +53,7 @@
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
   compactionHeuristic = true
-	algorithm = histogram
+  algorithm = histogram
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
