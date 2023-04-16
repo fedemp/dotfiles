@@ -146,11 +146,6 @@ command -v cower >/dev/null && alias cower='cower --color=always'
 command -v fdfind >/dev/null && alias fd='fdfind'
 command -v yarnpkg >/dev/null && alias yarn=yarnpkg
 
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 [[ ! -f /usr/share/fzf/shell/key-bindings.zsh ]] || source /usr/share/fzf/shell/key-bindings.zsh
 
 # tabtab source for pnpm packages
@@ -202,3 +197,7 @@ fi
 export PNPM_HOME="/var/home/federico/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.etc/home/.p10k.zsh.
+[[ ! -f ~/.etc/home/.p10k.zsh ]] || source ~/.etc/home/.p10k.zsh

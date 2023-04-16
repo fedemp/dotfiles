@@ -50,7 +50,7 @@ window:
   #  y: 0
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -78,7 +78,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  # startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -128,6 +128,8 @@ font:
     family: Iosevka Fixed SS15 # IBM Plex Mono
     family: JetBrains Mono
     family: Iosevka Fixed SS14 # JetBrains Mono
+    family: Monospace
+    family: Spleen
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -173,7 +175,7 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 0
+    y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -198,132 +200,8 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
 
-schemes:
-  apprentice: &apprentice
-    primary:
-      foreground: '0xbcbcbc'
-      background: '0x262626'
-    normal:
-      black:   '0x1c1c1c'
-      red:     '0xaf5f5f'
-      green:   '0x5f875f'
-      yellow:  '0x87875f'
-      blue:    '0x5f87af'
-      magenta: '0x5f5f87'
-      cyan:    '0x5f8787'
-      white:   '0x6c6c6c'
-    bright:
-      black:   '0x444444'
-      red:     '0xff8700'
-      green:   '0x87af87'
-      yellow:  '0xffffaf'
-      blue:    '0x8fafd7'
-      magenta: '0x8787af'
-      cyan:    '0x5fafaf'
-      white:   '0xffffff'
-
-  jellybeans: &jellybeans
-    primary:
-      background: '0x121212'
-      foreground: '0xdedede'
-    cursor:
-      text:   '0xffffff'
-      cursor: '0xffa460'
-    normal:
-      black:   '0x929292'
-      red:     '0xe27373'
-      green:   '0x94b979'
-      yellow:  '0xffba7b'
-      blue:    '0x97bedc'
-      magenta: '0xe1c0fa'
-      cyan:    '0x00988e'
-      white:   '0xdedede'
-    bright:
-      black:   '0xbdbdbd'
-      red:     '0xffa1a1'
-      green:   '0xbddeab'
-      yellow:  '0xffdca0'
-      blue:    '0xb1d8f6'
-      magenta: '0xfbdaff'
-      cyan:    '0x1ab2a8'
-      white:   '0xffffff'
-  ubuntu: &ubuntu
-    primary:
-      background: '#300a24'
-      foreground: '#eeeeec'
-    normal:
-      black:   '#2e3436'
-      red:     '#cc0000'
-      green:   '#4e9a06'
-      yellow:  '#c4a000'
-      blue:    '#3465a4'
-      magenta: '#75507b'
-      cyan:    '#06989a'
-      white:   '#d3d7cf'
-    bright:
-      black:   '#555753'
-      red:     '#ef2929'
-      green:   '#8ae234'
-      yellow:  '#fce94f'
-      blue:    '#729fcf'
-      magenta: '#ad7fa8'
-      cyan:    '#34e2e2'
-      white:   '#eeeeec'
-  gruvboxlight: &gruvboxlight
-    primary:
-      # hard contrast: background = '0xf9f5d7'
-      background: '0xfbf1c7'
-      # soft contrast: background = '0xf2e5bc'
-      foreground: '0x3c3836'
-    normal:
-      black:   '0xfbf1c7'
-      red:     '0xcc241d'
-      green:   '0x98971a'
-      yellow:  '0xd79921'
-      blue:    '0x458588'
-      magenta: '0xb16286'
-      cyan:    '0x689d6a'
-      white:   '0x7c6f64'
-    bright:
-      black:   '0x928374'
-      red:     '0x9d0006'
-      green:   '0x79740e'
-      yellow:  '0xb57614'
-      blue:    '0x076678'
-      magenta: '0x8f3f71'
-      cyan:    '0x427b58'
-      white:   '0x3c3836'
-
-  papercolor: &papercolor
-    primary:
-      background: "#eeeeee"
-      foreground: "#444444"
-
-    cursor:
-      text: "#eeeeee"
-      cursor: "#444444"
-
-    normal:
-      black: "#eeeeee"
-      red: "#af0000"
-      green: "#008700"
-      yellow: "#5f8700"
-      blue: "#0087af"
-      magenta: "#8700af"
-      cyan: "#005f87"
-      white: "#878787"
-
-    bright:
-      black: "#bcbcbc"
-      red: "#af0000"
-      green: "#008700"
-      yellow: "#5f8700"
-      blue: "#0087af"
-      magenta: "#8700af"
-      cyan: "#005f87"
-      white: "#eeeeee"
-
-colors: *apprentice
+import:
+ - ~/.config/alacritty/colors/gruvbox_dark.yaml
 
 # Colors (Tomorrow Night)
 #colors:
