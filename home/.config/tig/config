@@ -1,8 +1,8 @@
 bind main ! ?git revert %(commit)
 set tab-size = 4 # Number of spaces to use when expanding tabs
-set diff-highlight = false # String (or bool): Path to diff-highlight script, defaults to `diff-highlight`.
+set diff-highlight = true # String (or bool): Path to diff-highlight script, defaults to `diff-highlight`.
 set commit-order = default         # Order commits topologically
 set horizontal-scroll = 33%     # Scroll 33% of the view width
 bind generic X !git difftool --tool=fugitive --no-prompt %(commit)
 set line-graphics = utf-8 # Enum: ascii, default, utf-8
-color cursor white magenta bold
+color cursor default magenta bold
