@@ -117,20 +117,29 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas A
-    family: Iosevka Fixed SS06 # Liberation Mono
-    family: Iosevka Fixed SS18 # Input Mono
-    family: Iosevka Fixed SS07 # Monaco
-    family: Iosevka Fixed SS01 # Andale Mono
-    family: Iosevka Fixed SS16 # PT Mono
-    family: Iosevka Fixed SS15 # IBM Plex Mono
-    family: Monospace
-    family: Spleen
-    family: Iosevka Fixed Slab
-    family: Iosevka Term Slab
-    family: JetBrains Mono
+    family: Anonymous Pro
     family: Dejavu Sans Mono
-    family: Iosevka Fixed SS14 # JetBrains Mono
     family: IBM Plex Mono
+    family: Iosevka Fixed Slab
+    family: Iosevka Fixed SS01 # Andale Mono
+    family: Iosevka Fixed SS06 # Liberation Mono
+    family: Iosevka Fixed SS07 # Monaco
+    family: Iosevka Fixed SS14 # JetBrains Mono
+    family: Iosevka Fixed SS15 # IBM Plex Mono
+    family: Iosevka Fixed SS16 # PT Mono
+    family: Iosevka Fixed SS18 # Input Mono
+    family: Iosevka Term Slab
+    family: MesloLGM Nerd Font Mono
+    family: MesloLGS Nerd Font Mono
+    family: Monospace
+    family: Source Code Pro
+    family: Spleen
+    family: Liberation Mono
+    family: Space Mono
+    family: Anonymice Nerd Font Mono
+    family: JetBrains Mono
+    family: Cascadia Code PL
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
