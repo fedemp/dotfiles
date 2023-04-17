@@ -5,7 +5,7 @@ set.colorcolumn = "80"
 set.completeopt = { "menu", "menuone", "preview" }
 set.cursorline = true
 set.diffopt =
-	{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
+{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldlevelstart = 99
 set.foldmethod = "expr"
@@ -186,35 +186,8 @@ require("lazy").setup({
 	{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" } },
 
 	"stevearc/dressing.nvim",
-	--{
-	--	"hood/popui.nvim",
-	--	config = function()
-	--		vim.ui.select = require("popui.ui-overrider")
-	--		vim.ui.input = require("popui.input-overrider")
-	--		vim.api.nvim_set_keymap(
-	--			"n",
-	--			",d",
-	--			':lua require"popui.diagnostics-navigator"()<CR>',
-	--			{ noremap = true, silent = true }
-	--		)
-	--		vim.api.nvim_set_keymap(
-	--			"n",
-	--			",m",
-	--			':lua require"popui.marks-manager"()<CR>',
-	--			{ noremap = true, silent = true }
-	--		)
-	--		vim.api.nvim_set_keymap(
-	--			"n",
-	--			",r",
-	--			':lua require"popui.references-navigator"()<CR>',
-	--			{ noremap = true, silent = true }
-	--		)
-	--	end,
-	--},
 
-	-- "tpope/vim-fugitive",
-
-	"nvim-lualine/lualine.nvim",
+	{ "nvim-lualine/lualine.nvim", config = true },
 
 	{
 		"akinsho/toggleterm.nvim",
