@@ -1,33 +1,33 @@
--- Settings
-local set = vim.opt
-
-set.colorcolumn = "80"
-set.completeopt = { "menu", "menuone", "preview" }
-set.cursorline = true
-set.diffopt =
-{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
-set.foldexpr = "nvim_treesitter#foldexpr()"
-set.foldlevelstart = 99
-set.foldmethod = "expr"
-set.foldmethod = "indent"
-set.grepformat = "%f:%l:%c:%m"
-set.grepprg = "rg --vimgrep"
-set.hidden = true
-set.inccommand = "split"
-set.list = false
-set.listchars = { eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
-set.number = true
-set.path = { ".", "**" }
-set.shiftwidth = 0
-set.shortmess = "at"
-set.signcolumn = "number"
-set.smartcase = true
-set.softtabstop = 4
-set.tabstop = 4
-set.termguicolors = true
-set.textwidth = 79
-set.wildignore:append({ "*/min/*", "*/vendor/*", "*/node_modules/*", "*/bower_components/*" })
-set.wildmode = "longest:full,full"
+--------------
+-- Settings --
+--------------
+vim.opt.colorcolumn = "80"
+vim.opt.completeopt = {"menu","menuone","preview"}
+vim.opt.cursorline = true
+vim.opt.diffopt = { "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldmethod = "indent"
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.hidden = true
+vim.opt.inccommand = "split"
+vim.opt.list = false
+vim.opt.listchars = { eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
+vim.opt.number = true
+vim.opt.path = { ".", "**" }
+vim.opt.shiftwidth = 0
+vim.opt.shortmess = "at"
+vim.opt.signcolumn = "number"
+vim.opt.smartcase = true
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.termguicolors = true
+vim.opt.textwidth = 79
+vim.opt.wildignore:append({ "*/min/*", "*/vendor/*", "*/node_modules/*", "*/bower_components/*" })
+vim.opt.wildmode = "longest:full,full"
+vim.opt.shell = "zsh"
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
 		-- Enable completion triggered by <c-x><c-o>
-		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+		-- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -104,10 +104,9 @@ if os.getenv("NVIM") ~= nil then
 end
 
 require("lazy").setup({
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				textobjects = {
@@ -125,12 +124,50 @@ require("lazy").setup({
 							["iC"] = "@comment.outer",
 						},
 					},
+					move = {
+						enable = true,
+						set_jumps = true, -- whether to set jumps in the jumplist
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>s"] = "@parameter.inner",
+						},
+						swap_previous = {
+							["<leader>S"] = "@parameter.inner",
+						},
+					},
 				},
 				highlight = {
 					enable = true,
 				},
 				indent = {
 					enable = true,
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<c-space>",
+						node_incremental = "<c-space>",
+						scope_incremental = "<c-s>",
+						node_decremental = "<M-space>",
+					},
 				},
 				ensure_installed = {
 					"javascript",
@@ -152,42 +189,53 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("telescope").setup()
+			require("telescope").setup({})
 			vim.keymap.set("n", "gb", require("telescope.builtin").buffers, { noremap = true, silent = true })
 			vim.keymap.set("n", "<C-p>", require("telescope.builtin").fd, { noremap = true, silent = true })
-		end,
-	},
-
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.tsserver.setup({})
-			lspconfig.tailwindcss.setup({})
-			lspconfig.eslint.setup({})
-			lspconfig.lua_ls.setup({
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global
-					globals = { "vim" },
-				},
-			})
+			vim.keymap.set("n", "<Leader>d", ":Telescope diagnostics bufnr=0<cr>", { noremap = true, silent = true })
 		end,
 	},
 
 	{
 		"williamboman/mason.nvim",
-		config = true,
+		build = ":MasonUpdate",
 	},
+	"williamboman/mason-lspconfig.nvim",
+
 	{
-		"williamboman/mason-lspconfig.nvim",
-		config = true,
+		"neovim/nvim-lspconfig",
+		dependencies = { { "williamboman/mason.nvim", config = true }, "williamboman/mason-lspconfig.nvim" },
 	},
+
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"saadparwaiz1/cmp_luasnip",
+	"L3MON4D3/LuaSnip",
 
 	{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" } },
 
 	"stevearc/dressing.nvim",
 
-	{ "nvim-lualine/lualine.nvim", config = true },
+	{
+		"nvim-lualine/lualine.nvim",
+		config = true,
+		opts = {
+			options = {
+				icons_enabled = false,
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				lualine_x = { "filetype" },
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+		},
+	},
 
 	{
 		"akinsho/toggleterm.nvim",
@@ -200,9 +248,8 @@ require("lazy").setup({
 	{
 		"echasnovski/mini.nvim",
 		config = function()
-			require("mini.bracketed").setup()
-			require("mini.completion").setup()
-			require("mini.pairs").setup()
+			require("mini.bracketed").setup({})
+			require("mini.colors").setup({})
 		end,
 	},
 
@@ -277,10 +324,84 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		config = function()
-			require("oil").setup()
+			require("oil").setup({})
 			vim.keymap.set("n", "-", function()
 				require("oil").open()
 			end, { desc = "Open parent directory" })
 		end,
 	},
 })
+
+---------
+-- LSP --
+---------
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+-- Ensure the servers above are installed
+local mason_lspconfig = require("mason-lspconfig")
+
+mason_lspconfig.setup({
+	ensure_installed = { "lua_ls", "eslint", "tsserver", "tailwindcss" },
+})
+
+mason_lspconfig.setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+		})
+	end,
+})
+
+--------------
+-- nvim-cmp --
+--------------
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+luasnip.config.setup({})
+
+-- nvim-cmp setup
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+		["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+		-- C-b (back) C-f (forward) for snippet placeholder navigation.
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+	},
+})
+
+vim.cmd("colorscheme apprenbones");
