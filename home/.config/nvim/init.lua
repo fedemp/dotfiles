@@ -2,9 +2,10 @@
 -- Settings --
 --------------
 vim.opt.colorcolumn = "80"
-vim.opt.completeopt = {"menu","menuone","preview"}
+vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.cursorline = true
-vim.opt.diffopt = { "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
+vim.opt.diffopt =
+{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
@@ -14,7 +15,8 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.hidden = true
 vim.opt.inccommand = "split"
 vim.opt.list = false
-vim.opt.listchars = { eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
+vim.opt.listchars =
+{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
 vim.opt.number = true
 vim.opt.path = { ".", "**" }
 vim.opt.shiftwidth = 0
@@ -47,9 +49,9 @@ end)()
 vim.keymap.set("i", "<C-Space>", "", { noremap = true, silent = true })
 vim.keymap.set("n", "<Space>", ":", { noremap = true })
 vim.keymap.set("n", "U", "", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>e", "vim.diagnostic.open_float", { noremap = true, silent = true })
-vim.keymap.set("n", "[d", "vim.diagnostic.goto_prev", { noremap = true, silent = true })
-vim.keymap.set("n", "]d", "vim.diagnostic.goto_next", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -199,13 +201,10 @@ require("lazy").setup({
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
+		config = true,
 	},
 	"williamboman/mason-lspconfig.nvim",
-
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = { { "williamboman/mason.nvim", config = true }, "williamboman/mason-lspconfig.nvim" },
-	},
+	"neovim/nvim-lspconfig",
 
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-nvim-lsp",
@@ -249,9 +248,11 @@ require("lazy").setup({
 		"echasnovski/mini.nvim",
 		config = function()
 			require("mini.bracketed").setup({})
-			require("mini.colors").setup({})
+			require("mini.surround").setup({})
 		end,
 	},
+
+	"tpope/vim-fugitive",
 
 	{
 		"willothy/flatten.nvim",
@@ -404,4 +405,4 @@ cmp.setup({
 	},
 })
 
-vim.cmd("colorscheme apprenbones");
+vim.cmd("colorscheme apprenbones")

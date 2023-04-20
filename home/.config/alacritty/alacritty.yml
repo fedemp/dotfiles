@@ -124,7 +124,6 @@ font:
     family: Iosevka Fixed SS06 # Liberation Mono
     family: Iosevka Fixed SS07 # Monaco
     family: Iosevka Fixed SS14 # JetBrains Mono
-    family: Iosevka Fixed SS15 # IBM Plex Mono
     family: Iosevka Fixed SS16 # PT Mono
     family: Iosevka Fixed SS18 # Input Mono
     family: MesloLGM Nerd Font Mono
@@ -140,6 +139,14 @@ font:
     family: JetBrains Mono
     family: Iosevka Term Slab
     family: IBM Plex Mono
+    family: Courier Prime
+    family: Iosevka Fixed SS15 # IBM Plex Mono
+    family: Rec Mono Casual
+    family: Rec Mono Semicasual
+    family: Rec Mono Duotone
+    family: Rec Mono Linear
+    family: Input Mono
+    family: Iosevka Fixed SS17 # Recursive Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -178,7 +185,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 16
+  size: 17
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
