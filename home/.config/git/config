@@ -35,6 +35,7 @@
   verbosity = 1
   # tool = fugitive
   ff = true
+  tool = fugitive
 [apply]
   whitespace = nowarn
 [branch]
@@ -45,7 +46,7 @@
   default = current
 [core]
   autocrlf = false
-  pager = moar
+  pager = bat
 [advice]
   statusHints = true
 [diff]
@@ -64,7 +65,7 @@
   verbose = true
 [user]
 [init]
-	defaultBranch = master
+  defaultBranch = master
 [pull]
-	rebase = true
-	twohead = ort
+  rebase = true
+  twohead = ort

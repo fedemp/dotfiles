@@ -79,7 +79,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set({ "n", "v" }, "<Leader>a", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "<Leader>f", function()
-			vim.lsp.buf.format({ async = true })
+			vim.lsp.buf.format({
+				filter = function(client)
+					-- apply whatever logic you want (in this example, we'll only use null-ls)
+					return client.name == "null-ls"
+				end,
+			})
 		end, opts)
 	end,
 })
@@ -106,11 +111,16 @@ if os.getenv("NVIM") ~= nil then
 end
 
 require("lazy").setup({
+	"andymass/vim-matchup",
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
 		config = function()
 			require("nvim-treesitter.configs").setup({
+				matchup = {
+					enable = true,
+				},
 				textobjects = {
 					select = {
 						enable = true,
@@ -213,6 +223,7 @@ require("lazy").setup({
 	"L3MON4D3/LuaSnip",
 
 	{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" } },
+	{ dir = "~/photon" },
 
 	"stevearc/dressing.nvim",
 
@@ -405,4 +416,6 @@ cmp.setup({
 	},
 })
 
-vim.cmd("colorscheme apprenbones")
+vim.cmd("colorscheme photon2")
+vim.cmd("cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'")
+vim.cmd("cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'")

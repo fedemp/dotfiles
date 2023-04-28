@@ -194,7 +194,7 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 fi
 
 # pnpm
-export PNPM_HOME="/var/home/federico/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
