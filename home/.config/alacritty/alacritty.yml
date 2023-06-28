@@ -120,33 +120,30 @@ font:
     family: Anonymous Pro
     family: Dejavu Sans Mono
     family: Iosevka Fixed Slab
-    family: Iosevka Fixed SS01 # Andale Mono
-    family: Iosevka Fixed SS06 # Liberation Mono
-    family: Iosevka Fixed SS07 # Monaco
-    family: Iosevka Fixed SS14 # JetBrains Mono
-    family: Iosevka Fixed SS16 # PT Mono
-    family: Iosevka Fixed SS18 # Input Mono
-    family: MesloLGM Nerd Font Mono
     family: Monospace
-    family: Source Code Pro
     family: Spleen
     family: Liberation Mono
     family: Space Mono
-    family: Anonymice Nerd Font Mono
     family: Fira Code
     family: Cascadia Code PL
     family: MesloLGS Nerd Font Mono
-    family: JetBrains Mono
-    family: Iosevka Term Slab
     family: IBM Plex Mono
-    family: Rec Mono Casual
     family: Rec Mono Semicasual
     family: Rec Mono Duotone
-    family: Rec Mono Linear
-    family: Iosevka Fixed SS17 # Recursive Mono
-    family: Input Mono
     family: Iosevka Fixed SS15 # IBM Plex Mono
     family: Courier Prime
+    family: JetBrains Mono
+    family: Rec Mono Casual
+    family: MesloLGM Nerd Font Mono
+    family: Source Code Pro
+    family: Anonymice Nerd Font Mono
+    family: Rec Mono Linear
+    family: Iosevka Term Slab
+    family: Input Mono
+    family: Input Mono Condensed
+    family: Input Mono Narrow
+    family: Input Mono Compressed
+    family: Iosevka Fixed SS17 # Recursive Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -185,7 +182,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 17
+  size: 18
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

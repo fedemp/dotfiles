@@ -5,7 +5,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.cursorline = true
 vim.opt.diffopt =
-{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
+	{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
@@ -16,7 +16,7 @@ vim.opt.hidden = true
 vim.opt.inccommand = "split"
 vim.opt.list = false
 vim.opt.listchars =
-{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
+	{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
 vim.opt.number = true
 vim.opt.path = { ".", "**" }
 vim.opt.shiftwidth = 0
@@ -221,11 +221,20 @@ require("lazy").setup({
 	"hrsh7th/cmp-buffer",
 	"saadparwaiz1/cmp_luasnip",
 	"L3MON4D3/LuaSnip",
+	"hrsh7th/cmp-nvim-lsp-signature-help",
 
 	{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" } },
-	{ dir = "~/photon" },
+	"andreypopp/vim-colors-plain",
+	"https://github.com/ramojus/mellifluous.nvim",
+	"cideM/yui",
+	"https://gitlab.com/maxice8/acme.nvim",
+	"https://github.com/adigitoleo/vim-mellow",
 
-	"stevearc/dressing.nvim",
+	{ "stevearc/dressing.nvim", opts = {
+		select = {
+			backend = { "builtin" },
+		},
+	} },
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -252,6 +261,7 @@ require("lazy").setup({
 		opts = {
 			open_mapping = [[<c-\>]],
 			shade_terminals = false,
+			terminal_mappings = true,
 		},
 	},
 
@@ -336,12 +346,16 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		config = function()
-			require("oil").setup({})
+			require("oil").setup({
+				skip_confirm_for_simple_edits = true,
+			})
 			vim.keymap.set("n", "-", function()
 				require("oil").open()
 			end, { desc = "Open parent directory" })
 		end,
 	},
+
+	"https://github.com/amadeus/vim-mjml.git",
 })
 
 ---------
@@ -413,9 +427,48 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
+		{ name = 'nvim_lsp_signature_help' }
 	},
 })
 
-vim.cmd("colorscheme photon2")
+vim.cmd("colorscheme plain")
+
+--------------
+-- Commands --
+--------------
+
 vim.cmd("cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'")
 vim.cmd("cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'")
+
+----------
+-- Term --
+----------
+
+function _G.set_terminal_keymaps()
+	local opts = { buffer = 0 }
+	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+	vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+---------------
+-- Filetypes --
+---------------
+vim.filetype.add({
+  extension = {
+    eslintrc = "json",
+    mdx = "markdown",
+    prettierrc = "json",
+    mjml = "html",
+  },
+  pattern = {
+    [".*%.env.*"] = "sh",
+  },
+})
