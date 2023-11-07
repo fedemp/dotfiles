@@ -75,8 +75,8 @@ alias -g G='| grep' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
 alias ls='ls --color=auto' # Just in case is not set.
 alias vim=vi
-command -v exa >/dev/null && alias ls='exa --group-directories-first'
-command -v exa >/dev/null && alias l='exa -l --group-directories-first'
+command -v eza >/dev/null && alias ls='eza --group-directories-first'
+command -v eza >/dev/null && alias l='eza -l --group-directories-first'
 command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 command -v nnn >/dev/null || alias nnn='tree -C | less'
 command -v tig >/dev/null && alias gs='tig status'
@@ -192,11 +192,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
 
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.etc/home/.p10k.zsh.
