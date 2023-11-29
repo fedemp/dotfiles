@@ -5,15 +5,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# The following lines were added by compinstall
+# Load color definitions
+autoload -Uz colors
+colors
 
+# The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' max-errors 1 numeric
 zstyle ':completion:*' menu select=0
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename '/home/fpanico/.zshrc'
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group yes
@@ -25,19 +27,6 @@ zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
 zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
 zstyle ':completion:*' format '%F{yellow}-- %d --%f'
 
-setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
-setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
-setopt AUTO_MENU           # Show completion menu on a successive tab press.
-setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-setopt AUTO_PARAM_SLASH    # If completed parameter is a directory, add a trailing slash.
-setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
-unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
-unsetopt FLOW_CONTROL # Disable start/stop characters in shell editor.
-
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-
 # enable caching
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-${HOME}}/.zcompcache"
@@ -48,14 +37,47 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
 # load and initialize the completion system
 # End of lines added by compinstall
-#
+
+setopt AUTO_CD							# If the command is directory and cannot be executed, perform cd to this directory
+setopt AUTO_PUSHD						# Make cd push the old directory onto the directory stack
+setopt PUSHD_IGNORE_DUPS				# Removes older duplicates in the directory stack
+setopt COMPLETE_IN_WORD					# Complete from both ends of a word.
+setopt ALWAYS_TO_END					# Move cursor to the end of a completed word.
+setopt AUTO_MENU						# Show completion menu on a successive tab press.
+setopt AUTO_LIST						# Automatically list choices on ambiguous completion.
+setopt AUTO_PARAM_SLASH					# If completed parameter is a directory, add a trailing slash.
+setopt EXTENDED_GLOB					# Needed for file modification glob modifiers with compinit
+unsetopt MENU_COMPLETE					# Do not autoselect the first completion entry.
+unsetopt FLOW_CONTROL					# Disable start/stop characters in shell editor.
+setopt AUTO_RESUME						# Resumes the most recent job when the shell receives a SIGCONT signal.
+setopt INTERACTIVE_COMMENTS				# Allows comments to be written in interactive shells.
+setopt LONG_LIST_JOBS					# Lists jobs in a long format by default.
+setopt NOTIFY							# Reports the status of background jobs immediately, not just before printing a prompt.
+setopt SHARE_HISTORY					# Shares history between all sessions.
+setopt BEEP								# Causes the shell to beep if an error occurs.
+setopt BANG_HIST						# Treats the ‘!’ character specially during expansion.
+setopt EXTENDED_HISTORY					# Saves timestamps for each command in the history.
+setopt INC_APPEND_HISTORY				# Adds history immediately after typing a command.
+setopt HIST_EXPIRE_DUPS_FIRST			# Expires duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS					# Doesn’t record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS				# Deletes old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS				# Doesn’t display a line previously found.
+setopt HIST_IGNORE_SPACE				# Doesn’t record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS				# Doesn’t write duplicate entries in the history file.
+setopt HIST_VERIFY						# Doesn’t execute immediately upon history expansion.
+setopt HIST_BEEP						# Beeps when accessing nonexistent history
+unsetopt RM_STAR_SILENT          		# Notify when rm is running with *
+setopt RM_STAR_WAIT              		# Wait for 10 seconds confirmation when running rm with *
+	
+PROMPT_EOL_MARK='%K{red} %k'
+
 # Lines configured by zsh-newuser-install
 HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=~/.histfile
-setopt autocd extendedglob
 bindkey -e
 # End of lines configured by zsh-newuser-install
+#
 autoload -Uz compinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
 if (( $#_comp_files )); then
@@ -65,9 +87,14 @@ else
 fi
 unset _comp_files
 
-alias cp='cp -irv'
+# Suppress suggestions and globbing
+alias find='noglob find'
+alias touch='nocorrect touch'
+alias mkdir='nocorrect mkdir -pv'
+alias fd='noglob fd'
+
+alias cp='nocorrect cp -irv'
 alias mv='mv -iv'
-alias df='df -h'
 alias gs='git status'
 alias su='su -'
 alias ...='cd ../../'
@@ -75,13 +102,18 @@ alias -g G='| grep' # now you can do: ls foo G something
 alias weather='curl http://wttr.in | less'
 alias ls='ls --color=auto' # Just in case is not set.
 alias vim=vi
+abbr chown="chown --preserve-root"
+abbr ln="ln -i"
+abbr mv="mv -i"
+abbr rm="rm -I"
+abbr df="df -h"
+
 command -v eza >/dev/null && alias ls='eza --group-directories-first'
 command -v eza >/dev/null && alias l='eza -l --group-directories-first'
 command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 command -v nnn >/dev/null || alias nnn='tree -C | less'
 command -v tig >/dev/null && alias gs='tig status'
-command -v tuir >/dev/null && alias tuir='LESS="-n -R -i -g -M -x4 -z-1" tuir --enable-media'
-command -vp vim >/dev/null && alias vim='vim'
+command -v vim >/dev/null && alias vim='vim' # Destroy previous alias to vi.
 command -v nvim >/dev/null && alias vim='nvim'
 
 # Use smart URL pasting and escaping.
@@ -92,32 +124,15 @@ autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U select-word-style
 select-word-style bash
 
-# Treat single word simple commands without redirection as candidates for resumption of an existing job.
-setopt AUTO_RESUME
-
-# Allow comments starting with `#` even in interactive shells.
-setopt INTERACTIVE_COMMENTS
-
-# List jobs in the long format by default.
-setopt LONG_LIST_JOBS
-
-# Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
-setopt NOTIFY
-
-setopt SHARE_HISTORY
-
-export NNN_USE_EDITOR=1
-
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-setopt BEEP                     # Beep on error in line editor.
-
-#
-# Variables
-#
+# History suppression
+alias clear=' clear'
+alias pwd=' pwd'
+alias exit=' exit'
 
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
@@ -126,25 +141,12 @@ WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 zmodload zsh/terminfo
 typeset -gA key_info
 
-setopt BANG_HIST              # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
-setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
-setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
-setopt HIST_BEEP # Beep when accessing non-existent history.
-
 autoload rg
   
 # Archlinux
 command -v cower >/dev/null && alias cower='cower --color=always'
 # Ubuntu
 command -v fdfind >/dev/null && alias fd='fdfind'
-command -v yarnpkg >/dev/null && alias yarn=yarnpkg
 
 [[ ! -f /usr/share/fzf/shell/key-bindings.zsh ]] || source /usr/share/fzf/shell/key-bindings.zsh
 

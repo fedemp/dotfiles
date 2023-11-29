@@ -332,7 +332,7 @@ lsp.set_sign_icons({
 lsp.extend_cmp()
 
 local cmp = require("cmp")
-local lspkind = require("lspkind")
+-- local lspkind = require("lspkind")
 cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 	sources = {
@@ -346,9 +346,9 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 	}),
-	formatting = {
-		format = lspkind.cmp_format(),
-	},
+	-- formatting = {
+	-- 	format = lspkind.cmp_format(),
+	-- },
 })
 
 require("mason").setup({})
