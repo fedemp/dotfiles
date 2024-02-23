@@ -1,4 +1,4 @@
-import = ["/var/home/federico/.config/alacritty/colors/tokyonight_day.toml"]
+import = ["/var/home/federico/.config/alacritty/colors/seoul_light.toml"]
 
 [bell]
 animation = "EaseOutExpo"
