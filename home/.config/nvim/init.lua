@@ -44,6 +44,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"tpope/vim-fugitive",
 
+	"kaarmu/typst.vim",
+
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "0.1.*",
+		build = function()
+			require("typst-preview").update()
+		end,
+	},
+
 	-- "folke/which-key.nvim",
 
 	-- "onsails/lspkind.nvim",
@@ -110,26 +121,18 @@ require("lazy").setup({
 				lualine_a = {
 					{
 						"mode",
+						icons_enabled = true,
 						colors = { gui = "bold" },
 					},
 				},
 				lualine_b = { "filename" },
-				lualine_c = {},
+				lualine_c = { { "diagnostics", icons_enabled = false } },
 				lualine_x = {
 					"branch",
 					{
 						"diff",
 						colored = true, -- Displays a colored diff status if set to true
-						symbols = { added = " ", modified = " ", removed = " " }, -- Changes the symbols used by the diff.
-					},
-					{
-						"diagnostics",
-						symbols = {
-							Error = " ",
-							Warn = " ",
-							Hint = " ",
-							Info = " ",
-						},
+						symbols = { added = "+", modified = "±", removed = "-" }, -- Changes the symbols used by the diff.
 					},
 				},
 				lualine_y = { "filetype" },
@@ -302,6 +305,7 @@ require("lazy").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
 					javascript = { { "prettierd", "prettier" } },
+					html = { { "prettierd", "prettier" } },
 					json = { { "prettierd", "prettier" } },
 				},
 				format_on_save = {
@@ -322,12 +326,12 @@ lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 end)
 
-lsp.set_sign_icons({
-	error = " ",
-	warn = " ",
-	hint = " ",
-	info = " ",
-})
+-- lsp.set_sign_icons({
+-- 	error = " ",
+-- 	warn = " ",
+-- 	hint = " ",
+-- 	info = " ",
+-- })
 
 lsp.extend_cmp()
 
@@ -356,6 +360,16 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "tsserver" },
 	handlers = {
 		lsp.default_setup,
+
+		typst_lsp = function()
+			require("lspconfig").typst_lsp.setup({
+				settings = {
+					exportPdf = "onSave", -- Choose onType, onSave or never.
+					-- serverPath = "" -- Normally, there is no need to uncomment it.
+				},
+			})
+		end,
+
 		lua_ls = function()
 			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 		end,
