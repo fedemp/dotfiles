@@ -64,6 +64,8 @@
 [commit]
   verbose = true
 [user]
+	name = Federico
+	email = federicopanico@gmail.com
 [init]
   defaultBranch = master
 [pull]
