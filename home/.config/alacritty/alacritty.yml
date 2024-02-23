@@ -117,33 +117,33 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas A
-    family: Anonymous Pro
-    family: Dejavu Sans Mono
-    family: Iosevka Fixed Slab
-    family: Monospace
-    family: Spleen
-    family: Liberation Mono
-    family: Space Mono
-    family: Fira Code
-    family: Cascadia Code PL
-    family: MesloLGS Nerd Font Mono
-    family: IBM Plex Mono
-    family: Rec Mono Semicasual
-    family: Rec Mono Duotone
-    family: Courier Prime
-    family: JetBrains Mono
-    family: Rec Mono Casual
-    family: MesloLGM Nerd Font Mono
-    family: Source Code Pro
-    family: Anonymice Nerd Font Mono
-    family: Rec Mono Linear
-    family: Iosevka Term Slab
-    family: Input Mono
-    family: Input Mono Condensed
-    family: Input Mono Narrow
-    family: Input Mono Compressed
-    family: Iosevka Fixed SS17 # Recursive Mono
-    family: Iosevka Fixed SS15 # IBM Plex Mono
+    # family: Anonymous Pro
+    # family: Dejavu Sans Mono
+    # family: Iosevka Fixed Slab
+    # family: Monospace
+    # family: Spleen
+    # family: Liberation Mono
+    # family: Space Mono
+    # family: Fira Code
+    # family: Cascadia Code PL
+    # family: MesloLGS Nerd Font Mono
+    # family: IBM Plex Mono
+    # family: Rec Mono Semicasual
+    # family: Rec Mono Duotone
+    # family: Courier Prime
+    # family: JetBrains Mono
+    # family: Rec Mono Casual
+    # family: MesloLGM Nerd Font Mono
+    # family: Source Code Pro
+    # family: Anonymice Nerd Font Mono
+    # family: Rec Mono Linear
+    # family: Iosevka Term Slab
+    # family: Input Mono
+    # family: Input Mono Condensed
+    # family: Input Mono Narrow
+    # family: Input Mono Compressed
+    # family: Iosevka Fixed SS17 # Recursive Mono
+    # family: Iosevka Fixed SS15 # IBM Plex Mono
     family: Intel One Mono
 
     # The `style` can be specified to pick a specific face.
