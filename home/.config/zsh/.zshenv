@@ -36,4 +36,3 @@ path=(
 
 # Enable man pages
 MANPATH=$XDG_DATA_HOME/man:$MANPATH
-

@@ -125,6 +125,9 @@ command -v fzf > /dev/null && [ -f /etc/zsh_completion.d/fzf-key-bindings ] && .
 
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
+export PATH="/var/home/federico/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
 source ${XDG_DATA_HOME}/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.etc/home/.config/zsh/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:--}/.p10k.zsh ]] || source ${ZDOTDIR:--}/.p10k.zsh
