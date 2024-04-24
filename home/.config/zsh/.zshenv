@@ -16,6 +16,7 @@ export EDITOR=nvim
 export PAGER=less
 export LESS="-n -R -i -g -M -x4 -X -F -z-1"
 export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS='--color=16'
 export TZ=/etc/localtime
 fpath=($HOME/.functions $fpath)
 export NNN_FCOLORS='c1e20402006006f701d6ab05'
