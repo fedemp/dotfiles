@@ -4,6 +4,7 @@ set diff-highlight = false # String (or bool): Path to diff-highlight script, de
 set commit-order = default         # Order commits topologically
 set horizontal-scroll = 33%     # Scroll 33% of the view width
 bind generic X !git difftool --tool=fugitive --no-prompt %(commit)
+bind status D !@?rm %(file)
 set line-graphics = utf-8 # Enum: ascii, default, utf-8
 # color cursor color15 magenta bold
-color cursor color15 red 
+color cursor color0 blue 
