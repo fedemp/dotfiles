@@ -44,16 +44,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"tpope/vim-fugitive",
 
-	"kaarmu/typst.vim",
-
-	{
-		"chomosuke/typst-preview.nvim",
-		lazy = false, -- or ft = 'typst'
-		version = "0.1.*",
-		build = function()
-			require("typst-preview").update()
-		end,
-	},
+	-- "kaarmu/typst.vim",
+	--
+	-- {
+	-- 	"chomosuke/typst-preview.nvim",
+	-- 	lazy = false, -- or ft = 'typst'
+	-- 	version = "0.1.*",
+	-- 	build = function()
+	-- 		require("typst-preview").update()
+	-- 	end,
+	-- },
 
 	-- "folke/which-key.nvim",
 
@@ -81,12 +81,22 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"stevearc/oil.nvim",
-		opts = {
-			skip_confirm_for_simple_edits = true,
-		},
-	},
+	-- {
+	-- 	"stevearc/oil.nvim",
+	-- 	opts = {
+	-- 		skip_confirm_for_simple_edits = true,
+	-- 	},
+	-- },
+{
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+},
 
 	{
 		"stevearc/dressing.nvim",
@@ -107,39 +117,41 @@ require("lazy").setup({
 		},
 	},
 
-	{
-		-- Set lualine as statusline
-		"nvim-lualine/lualine.nvim",
-		-- See `:help lualine.txt`
-		opts = {
-			options = {
-				icons_enabled = true,
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-			},
-			sections = {
-				lualine_a = {
-					{
-						"mode",
-						icons_enabled = true,
-						colors = { gui = "bold" },
-					},
-				},
-				lualine_b = { "filename" },
-				lualine_c = { { "diagnostics", icons_enabled = false } },
-				lualine_x = {
-					"branch",
-					{
-						"diff",
-						colored = true, -- Displays a colored diff status if set to true
-						symbols = { added = "+", modified = "±", removed = "-" }, -- Changes the symbols used by the diff.
-					},
-				},
-				lualine_y = { "filetype" },
-				lualine_z = { "progress" },
-			},
-		},
-	},
+	-- {
+	-- 	-- Set lualine as statusline
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	-- See `:help lualine.txt`
+	-- 	opts = {
+	-- 		options = {
+	-- 			icons_enabled = true,
+	-- 			component_separators = { left = "", right = "" },
+	-- 			section_separators = { left = "", right = "" },
+	-- 		},
+	-- 		sections = {
+	-- 			lualine_a = {
+	-- 				{
+	-- 					"mode",
+	-- 					icons_enabled = true,
+	-- 					colors = { gui = "bold" },
+	-- 				},
+	-- 			},
+	-- 			lualine_b = { "filename" },
+	-- 			lualine_c = { { "diagnostics", icons_enabled = false } },
+	-- 			lualine_x = {
+	-- 				"branch",
+	-- 				{
+	-- 					"diff",
+	-- 					colored = true, -- Displays a colored diff status if set to true
+	-- 					symbols = { added = "+", modified = "±", removed = "-" }, -- Changes the symbols used by the diff.
+	-- 				},
+	-- 			},
+	-- 			lualine_y = { "filetype" },
+	-- 			lualine_z = { "progress" },
+	-- 		},
+	-- 	},
+	-- },
+
+	"bluz71/nvim-linefly", 
 
 	{
 		"numToStr/Comment.nvim",
@@ -302,6 +314,7 @@ require("lazy").setup({
 					javascript = { { "prettierd", "prettier" } },
 					html = { { "prettierd", "prettier" } },
 					json = { { "prettierd", "prettier" } },
+					graphql = { { "prettierd", "prettier" } },
 				},
 				format_on_save = {
 					-- These options will be passed to conform.format()
@@ -312,6 +325,29 @@ require("lazy").setup({
 		},
 	},
 })
+
+vim.g.linefly_options = {
+  separator_symbol = "|",
+  progress_symbol = "↓",
+  active_tab_symbol = "▪",
+  git_branch_symbol = "",
+  error_symbol = "E",
+  warning_symbol = "W",
+  information_symbol = "I",
+  ellipsis_symbol = "…",
+  tabline = false,
+  winbar = false,
+  with_file_icon = false,
+  with_git_branch = true,
+  with_git_status = true,
+  with_diagnostic_status = true,
+  with_session_status = true,
+  with_attached_clients = true,
+  with_macro_status = false,
+  with_search_count = false,
+  with_spell_status = false,
+  with_indent_status = false,
+}
 
 vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 
