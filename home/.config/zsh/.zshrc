@@ -89,6 +89,7 @@ alias clear=' clear'
 alias pwd=' pwd'
 alias exit=' exit'
 alias fg=' fg'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
 
 command -v eza >/dev/null && alias ls='eza --group-directories-first'
 command -v eza >/dev/null && alias l='eza -l --group-directories-first'
@@ -132,3 +133,4 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 source ${XDG_DATA_HOME}/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.etc/home/.config/zsh/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:--}/.p10k.zsh ]] || source ${ZDOTDIR:--}/.p10k.zsh
+
