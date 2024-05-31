@@ -23,6 +23,7 @@ export NNN_FCOLORS='c1e20402006006f701d6ab05'
 export NNN_PLUG='p:-!less -iR "$nnn"*;g:-!git diff -- "$nnn"*'
 export NNN_USE_EDITOR=1
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 
 fpath=($ZDOTDIR/fpath $fpath)
 
