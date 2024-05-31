@@ -22,12 +22,12 @@ vim.opt.listchars =
 	{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
 vim.opt.list = false
 vim.opt.wildignore:append({ "*/dist/*", "*/min/*", "*/vendor/*", "*/node_modules/*", "*/bower_components/*" })
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
--- }}}
+vim.opt.scrolloff = 999
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
+-- }}}
 -- {{{ Mappings
 vim.keymap.set({ "n", "v" }, "<Space>", ":", { noremap = true })
 vim.keymap.set("n", "U", "", { noremap = true, silent = true })
@@ -40,11 +40,24 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P')
+vim.keymap.set({ "n", "v" }, "<leader>c", '"_c"', { noremap = true, silent = true })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+vim.keymap.set("v", "y", "mqy`q")
+vim.keymap.set("n", "<Tab>", "<cmd>bn<cr>")
+vim.keymap.set("n", "<s+Tab>", "<cmd>bp<cr>")
+vim.keymap.set("n", "<Right>", "l")
+vim.keymap.set("n", "<Left>", "h")
+vim.keymap.set("n", "<Down>", "j")
+vim.keymap.set("n", "<Up>", "k")
+vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "L", "$")
+vim.keymap.set("n", "<BS>", "")
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 -- Handled by mini.bracketed
 -- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>") --
 -- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
@@ -58,8 +71,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- these will be buffer-local keybindings
 		-- because they only work if you have an active language server
 
-		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
 		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
 		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
@@ -96,10 +109,8 @@ require("mini.deps").setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(function()
+	require("mini.git").setup()
 	require("mini.statusline").setup()
-end)
-
-now(function()
 	add("nvim-tree/nvim-web-devicons")
 	require("nvim-web-devicons").setup()
 end)
@@ -113,10 +124,47 @@ now(function()
 
 	require("mason").setup()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "tsserver", "lua_ls", "eslint-lsp" },
+		ensure_installed = { "tsserver", "lua_ls", "eslint" },
 		handlers = {
 			function(server_name)
 				require("lspconfig")[server_name].setup({})
+			end,
+
+			lua_ls = function()
+				require("lspconfig").lua_ls.setup({
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = {
+								enable = false,
+							},
+						},
+					},
+				})
+			end,
+
+			tsserver = function()
+				require("lspconfig").tsserver.setup({
+					settings = {
+						completions = {
+							completeFunctionCalls = true,
+						},
+					},
+					init_options = {
+						preferences = {
+							includeCompletionsWithSnippetText = true,
+							includeCompletionsForImportStatements = true,
+						},
+					},
+				})
 			end,
 
 			typst_lsp = function()
@@ -154,28 +202,16 @@ end)
 
 later(function()
 	require("mini.surround").setup()
-end)
-later(function()
 	require("mini.bufremove").setup()
-end)
-later(function()
 	require("mini.comment").setup()
+	require("mini.jump").setup()
+	require("mini.pairs").setup()
+	require("mini.completion").setup()
+	require("mini.bracketed").setup()
 end)
 later(function()
 	require("mini.files").setup()
 	vim.keymap.set({ "n" }, "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>", { noremap = true })
-end)
-later(function()
-	require("mini.jump").setup()
-end)
-later(function()
-	require("mini.pairs").setup()
-end)
-later(function()
-	require("mini.completion").setup()
-end)
-later(function()
-	require("mini.bracketed").setup()
 end)
 later(function()
 	require("mini.pick").setup()
@@ -183,8 +219,9 @@ later(function()
 	vim.keymap.set({ "n" }, "<Leader>g", "<cmd>Pick grep<cr>", { noremap = true })
 	vim.keymap.set({ "n" }, "gb", "<cmd>Pick buffers<cr>", { noremap = true })
 end)
+
 later(function()
-	add("tpope/vim-fugitive")
+	-- add("tpope/vim-fugitive")
 end)
 
 later(function()
@@ -207,6 +244,110 @@ later(function()
 	})
 end)
 
+later(function()
+	add({ source = "kevinhwang91/nvim-ufo", depends = { "kevinhwang91/promise-async" } })
+
+	vim.o.foldcolumn = "1" -- '0' is not bad
+	vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+	vim.o.foldlevelstart = 99
+	vim.o.foldenable = true
+
+	-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+	vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+	vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+	require("ufo").setup({
+		provider_selector = function()
+			return { "treesitter", "indent" }
+		end,
+	})
+end)
+
+-- {{{ LSP
+now(function()
+	add({
+		source = "neovim/nvim-lspconfig",
+		depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+	})
+
+	require("mason").setup()
+	require("mason-lspconfig").setup({
+		ensure_installed = { "tsserver", "lua_ls", "eslint" },
+		handlers = {
+			function(server_name)
+				require("lspconfig")[server_name].setup({})
+			end,
+
+			lua_ls = function()
+				require("lspconfig").lua_ls.setup({
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = {
+								enable = false,
+							},
+						},
+					},
+				})
+			end,
+
+			tsserver = function()
+				require("lspconfig").tsserver.setup({
+					settings = {
+						completions = {
+							completeFunctionCalls = true,
+						},
+					},
+					init_options = {
+						preferences = {
+							includeCompletionsWithSnippetText = true,
+							includeCompletionsForImportStatements = true,
+						},
+					},
+				})
+			end,
+
+			typst_lsp = function()
+				require("lspconfig").typst_lsp.setup({
+					settings = {
+						exportPdf = "onSave", -- Choose onType, onSave or never.
+						-- serverPath = "" -- Normally, there is no need to uncomment it.
+					},
+				})
+			end,
+
+			tailwindcss = function()
+				require("lspconfig").tailwindcss.setup({
+					handlers = {
+						["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
+							vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+						end,
+					},
+					settings = {
+						tailwindCSS = {
+							experimental = {
+								classRegex = {
+									{ "cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+								},
+							},
+							validate = true,
+						},
+					},
+				})
+			end,
+		},
+	})
+end)
+-- }}}
+
 -- {{{ Treesitter
 later(function()
 	add({
@@ -227,10 +368,10 @@ later(function()
 		incremental_selection = {
 			enable = true,
 			keymaps = {
-				init_selection = "<c-space>",
-				node_incremental = "<c-space>",
+				init_selection = "<Enter>",
+				node_incremental = "<Enter>",
+				node_decremental = "<BS>",
 				scope_incremental = "<c-s>",
-				node_decremental = "<M-space>",
 			},
 		},
 		textobjects = {
@@ -305,31 +446,16 @@ end)
 -- }}}
 
 -- {{{ Colorschemes
-now(function()
-	require("mini.hues").setup({ background = "#dddddd", foreground = "#262626" })
-	vim.cmd("colorscheme randomhue")
-end)
 
 later(function()
-	add("nyoom-engineering/oxocarbon.nvim")
-end)
-later(function()
-	add("Mofiqul/adwaita.nvim")
-end)
-later(function()
-	add("shaunsingh/nord.nvim")
-end)
-later(function()
-	add("e-q/okcolors.nvim")
-end)
-later(function()
-	add("fynnfluegge/monet.nvim")
-end)
-later(function()
+	add("sainnhe/everforest")
+	add("sainnhe/sonokai")
+	add("sainnhe/edge")
 	add("projekt0n/github-nvim-theme")
+	add("nyoom-engineering/oxocarbon.nvim")
+	add("shaunsingh/nord.nvim")
+	add("e-q/okcolors.nvim")
+	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
 end)
--- later(function() add({source: "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" }}) end)
--- }}}
--- }}}
 
 -- vim: foldmethod=marker foldlevel=1
