@@ -1,4 +1,4 @@
-import = ["/var/home/federico/.config/alacritty/colors/seoul_light.toml"]
+import = ["/var/home/federico/.config/alacritty/colors/apprentice.toml"]
 
 [bell]
 animation = "EaseOutExpo"
@@ -14,14 +14,16 @@ blinking = "On"
 shape = "Block"
 
 [font]
-size = 18
+size = 16
 
 [font.normal]
-family = "Intel One Mono"
+# family = "Iosevka Term"
+# family = "Rec Mono Casual"
+family = "Iosevka Term Slab"
 
 [font.offset]
 x = 0
-y = 2
+y = 1
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"

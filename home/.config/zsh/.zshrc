@@ -89,7 +89,6 @@ alias clear=' clear'
 alias pwd=' pwd'
 alias exit=' exit'
 alias fg=' fg'
-alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
 
 command -v eza >/dev/null && alias ls='eza --group-directories-first'
 command -v eza >/dev/null && alias l='eza -l --group-directories-first'

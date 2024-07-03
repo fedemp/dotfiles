@@ -1,4 +1,5 @@
 -- {{{ Settings
+vim.opt.title = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -111,8 +112,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 now(function()
 	require("mini.git").setup()
 	require("mini.statusline").setup()
-	add("nvim-tree/nvim-web-devicons")
-	require("nvim-web-devicons").setup()
+	require("mini.icons").setup()
 end)
 
 -- {{{ LSP
@@ -124,7 +124,7 @@ now(function()
 
 	require("mason").setup()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "tsserver", "lua_ls", "eslint" },
+		ensure_installed = { "lua_ls", "eslint" },
 		handlers = {
 			function(server_name)
 				require("lspconfig")[server_name].setup({})
@@ -151,21 +151,21 @@ now(function()
 				})
 			end,
 
-			tsserver = function()
-				require("lspconfig").tsserver.setup({
-					settings = {
-						completions = {
-							completeFunctionCalls = true,
-						},
-					},
-					init_options = {
-						preferences = {
-							includeCompletionsWithSnippetText = true,
-							includeCompletionsForImportStatements = true,
-						},
-					},
-				})
-			end,
+			-- tsserver = function()
+			-- 	require("lspconfig").tsserver.setup({
+			-- 		settings = {
+			-- 			completions = {
+			-- 				completeFunctionCalls = true,
+			-- 			},
+			-- 		},
+			-- 		init_options = {
+			-- 			preferences = {
+			-- 				includeCompletionsWithSnippetText = true,
+			-- 				includeCompletionsForImportStatements = true,
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
 
 			typst_lsp = function()
 				require("lspconfig").typst_lsp.setup({
@@ -204,8 +204,7 @@ later(function()
 	require("mini.surround").setup()
 	require("mini.bufremove").setup()
 	require("mini.comment").setup()
-	require("mini.jump").setup()
-	require("mini.pairs").setup()
+	-- require("mini.jump").setup()
 	require("mini.completion").setup()
 	require("mini.bracketed").setup()
 end)
@@ -222,6 +221,8 @@ end)
 
 later(function()
 	-- add("tpope/vim-fugitive")
+	add({ source = "NeogitOrg/neogit", depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
+	require("neogit").setup()
 end)
 
 later(function()
@@ -262,91 +263,6 @@ later(function()
 		end,
 	})
 end)
-
--- {{{ LSP
-now(function()
-	add({
-		source = "neovim/nvim-lspconfig",
-		depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
-	})
-
-	require("mason").setup()
-	require("mason-lspconfig").setup({
-		ensure_installed = { "tsserver", "lua_ls", "eslint" },
-		handlers = {
-			function(server_name)
-				require("lspconfig")[server_name].setup({})
-			end,
-
-			lua_ls = function()
-				require("lspconfig").lua_ls.setup({
-					settings = {
-						Lua = {
-							runtime = {
-								version = "LuaJIT",
-							},
-							diagnostics = {
-								globals = { "vim" },
-							},
-							workspace = {
-								library = vim.api.nvim_get_runtime_file("", true),
-							},
-							telemetry = {
-								enable = false,
-							},
-						},
-					},
-				})
-			end,
-
-			tsserver = function()
-				require("lspconfig").tsserver.setup({
-					settings = {
-						completions = {
-							completeFunctionCalls = true,
-						},
-					},
-					init_options = {
-						preferences = {
-							includeCompletionsWithSnippetText = true,
-							includeCompletionsForImportStatements = true,
-						},
-					},
-				})
-			end,
-
-			typst_lsp = function()
-				require("lspconfig").typst_lsp.setup({
-					settings = {
-						exportPdf = "onSave", -- Choose onType, onSave or never.
-						-- serverPath = "" -- Normally, there is no need to uncomment it.
-					},
-				})
-			end,
-
-			tailwindcss = function()
-				require("lspconfig").tailwindcss.setup({
-					handlers = {
-						["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
-							vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
-						end,
-					},
-					settings = {
-						tailwindCSS = {
-							experimental = {
-								classRegex = {
-									{ "cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
-								},
-							},
-							validate = true,
-						},
-					},
-				})
-			end,
-		},
-	})
-end)
--- }}}
 
 -- {{{ Treesitter
 later(function()
@@ -434,6 +350,7 @@ later(function()
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
 			graphql = { { "prettierd", "prettier" } },
+			scss = { { "prettierd", "prettier" } },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
@@ -448,13 +365,10 @@ end)
 -- {{{ Colorschemes
 
 later(function()
-	add("sainnhe/everforest")
-	add("sainnhe/sonokai")
-	add("sainnhe/edge")
 	add("projekt0n/github-nvim-theme")
 	add("nyoom-engineering/oxocarbon.nvim")
 	add("shaunsingh/nord.nvim")
-	add("e-q/okcolors.nvim")
+	add("e-q/okcolors.nvim") -- No support for mini.pick
 	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
 end)
 
