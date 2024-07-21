@@ -213,14 +213,22 @@ later(function()
 	vim.keymap.set({ "n" }, "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>", { noremap = true })
 end)
 later(function()
-	require("mini.pick").setup()
+	local choose_all = function()
+		local mappings = MiniPick.get_picker_opts().mappings
+		vim.api.nvim_input(mappings.mark_all .. mappings.choose_marked)
+	end
+	require("mini.pick").setup({
+		mappings = {
+			choose_all = { char = "<C-q>", func = choose_all },
+		},
+	})
 	vim.keymap.set({ "n" }, "<Leader><Leader>", "<cmd>Pick files<cr>", { noremap = true })
 	vim.keymap.set({ "n" }, "<Leader>g", "<cmd>Pick grep<cr>", { noremap = true })
 	vim.keymap.set({ "n" }, "gb", "<cmd>Pick buffers<cr>", { noremap = true })
 end)
 
 later(function()
-	-- add("tpope/vim-fugitive")
+	add("tpope/vim-fugitive")
 	add({ source = "NeogitOrg/neogit", depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
 	require("neogit").setup()
 end)
@@ -370,6 +378,15 @@ later(function()
 	add("shaunsingh/nord.nvim")
 	add("e-q/okcolors.nvim") -- No support for mini.pick
 	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
+	add("sainnhe/gruvbox-material")
 end)
+
+--- }}}
+
+--- {{{ Terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+	command = [[setlocal nonumber norelativenumber]],
+})
+--- }}}
 
 -- vim: foldmethod=marker foldlevel=1
