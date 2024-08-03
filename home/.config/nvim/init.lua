@@ -124,7 +124,7 @@ now(function()
 
 	require("mason").setup()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "eslint" },
+		ensure_installed = { "lua_ls", "eslint@4.8.0", "vtsls" },
 		handlers = {
 			function(server_name)
 				require("lspconfig")[server_name].setup({})
@@ -352,7 +352,7 @@ later(function()
 	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = {  "prettierd", "prettier", stop_after_first = true  },
+			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 			html = { "prettierd", "prettier", stop_after_first = true },
