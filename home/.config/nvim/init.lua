@@ -352,18 +352,18 @@ later(function()
 	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { { "prettierd", "prettier" } },
-			typescript = { { "prettierd", "prettier" } },
-			typescriptreact = { { "prettierd", "prettier" } },
-			html = { { "prettierd", "prettier" } },
-			json = { { "prettierd", "prettier" } },
-			graphql = { { "prettierd", "prettier" } },
-			scss = { { "prettierd", "prettier" } },
+			javascript = {  "prettierd", "prettier", stop_after_first = true  },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
+			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+			html = { "prettierd", "prettier", stop_after_first = true },
+			json = { "prettierd", "prettier", stop_after_first = true },
+			graphql = { "prettierd", "prettier", stop_after_first = true },
+			scss = { "prettierd", "prettier", stop_after_first = true },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
 			timeout_ms = 500,
-			lsp_fallback = true,
+			lsp_format = "fallback",
 		},
 	})
 	vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
