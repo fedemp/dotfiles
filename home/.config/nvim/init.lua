@@ -118,16 +118,36 @@ end)
 -- {{{ LSP
 now(function()
 	add({
+		source = "creativenull/efmls-configs-nvim",
+		checkout = "v1.7.0",
+		monitor = "main",
+	})
+
+	add({
 		source = "neovim/nvim-lspconfig",
 		depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
 	})
 
 	require("mason").setup()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "eslint@4.8.0", "vtsls" },
+		ensure_installed = { "lua_ls", "vtsls", "efm" },
 		handlers = {
 			function(server_name)
 				require("lspconfig")[server_name].setup({})
+			end,
+
+			efm = function()
+				require("lspconfig").efm.setup({
+					init_options = { documentFormatting = true },
+					settings = {
+						rootMarkers = { ".git/" },
+						languages = {
+							typescript = { require("efmls-configs.linters.eslint_d") },
+							typescriptreact = { require("efmls-configs.linters.eslint_d") },
+							javascript = { require("efmls-configs.linters.eslint_d") },
+						},
+					},
+				})
 			end,
 
 			lua_ls = function()
@@ -167,15 +187,6 @@ now(function()
 			-- 	})
 			-- end,
 
-			typst_lsp = function()
-				require("lspconfig").typst_lsp.setup({
-					settings = {
-						exportPdf = "onSave", -- Choose onType, onSave or never.
-						-- serverPath = "" -- Normally, there is no need to uncomment it.
-					},
-				})
-			end,
-
 			tailwindcss = function()
 				require("lspconfig").tailwindcss.setup({
 					handlers = {
@@ -195,6 +206,29 @@ now(function()
 					},
 				})
 			end,
+
+			typst_lsp = function()
+				require("lspconfig").typst_lsp.setup({
+					settings = {
+						exportPdf = "onSave", -- Choose onType, onSave or never.
+						-- serverPath = "" -- Normally, there is no need to uncomment it.
+					},
+				})
+			end,
+
+			vtsls = function()
+				require("lspconfig").vtsls.setup({
+					settings = {
+						vtsls = {
+							experimental = {
+								completion = {
+									enableServerSideFuzzyMatch = true,
+								},
+							},
+						},
+					},
+				})
+			end,
 		},
 	})
 end)
@@ -204,7 +238,7 @@ later(function()
 	require("mini.surround").setup()
 	require("mini.bufremove").setup()
 	require("mini.comment").setup()
-	-- require("mini.jump").setup()
+	require("mini.jump").setup()
 	require("mini.completion").setup()
 	require("mini.bracketed").setup()
 end)
@@ -277,7 +311,6 @@ later(function()
 	add({
 		source = "nvim-treesitter/nvim-treesitter",
 		checkout = "master",
-		monitor = "main",
 		hooks = {
 			post_checkout = function()
 				vim.cmd("TSUpdate")
@@ -379,6 +412,7 @@ later(function()
 	add("e-q/okcolors.nvim") -- No support for mini.pick
 	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
 	add("sainnhe/gruvbox-material")
+	add("EdenEast/nightfox.nvim")
 end)
 
 --- }}}
