@@ -1,4 +1,4 @@
-import = ["/var/home/federico/.config/alacritty/colors/apprentice.toml"]
+import = ["/var/home/federico/.config/alacritty/colors/dayfox.toml"]
 
 [bell]
 animation = "EaseOutExpo"
@@ -14,16 +14,17 @@ blinking = "On"
 shape = "Block"
 
 [font]
-size = 16
+size = 14
 
 [font.normal]
 # family = "Iosevka Term"
 # family = "Rec Mono Casual"
-family = "Iosevka Term Slab"
+# family = "Iosevka Term Slab"
+family = "Fira Code"
 
 [font.offset]
 x = 0
-y = 1
+y = 0
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"
@@ -45,6 +46,10 @@ mods = "None"
 action = "SpawnNewInstance"
 key = "N"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
 
 [mouse]
 hide_when_typing = true
