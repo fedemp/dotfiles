@@ -20,7 +20,8 @@ size = 14
 # family = "Iosevka Term"
 # family = "Rec Mono Casual"
 # family = "Iosevka Term Slab"
-family = "Fira Code"
+# family = "Fira Code"
+family = "Hack"
 
 [font.offset]
 x = 0
