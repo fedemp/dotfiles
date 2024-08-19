@@ -24,6 +24,7 @@ export NNN_PLUG='p:-!less -iR "$nnn"*;g:-!git diff -- "$nnn"*'
 export NNN_USE_EDITOR=1
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
 fpath=($ZDOTDIR/fpath $fpath)
 

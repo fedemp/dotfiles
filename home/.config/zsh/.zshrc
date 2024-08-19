@@ -119,13 +119,8 @@ bindkey '^[[B' down-line-or-beginning-search
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 autoload rg
-autoload fzf-key-bindings
 
-command -v fzf > /dev/null && [ -f /usr/share/fzf/shell/key-bindings.zsh ] && . /usr/share/fzf/shell/key-bindings.zsh || true
-command -v fzf > /dev/null && [ -f /etc/zsh_completion.d/fzf-key-bindings ] && . /etc/zsh_completion.d/fzf-key-bindings || true
-command -v fzf > /dev/null && [ -f /usr/share/fzf/key-bindings.zsh ] && . /usr/share/fzf/key-bindings.zsh || true
-
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+source <(fzf --zsh)
 
 # export PATH="/var/home/federico/.local/share/fnm:$PATH"
 # eval "`fnm env`"
