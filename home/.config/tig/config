@@ -7,5 +7,5 @@ bind generic X !git difftool --tool=fugitive --no-prompt %(commit)
 bind status D !@?rm %(file)
 set line-graphics = utf-8 # Enum: ascii, default, utf-8
 # color cursor color15 magenta bold
-color cursor black blue 
-color title-focus black blue 
+# color cursor default blue bold
+# color title-focus default blue 
