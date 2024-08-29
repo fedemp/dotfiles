@@ -1,0 +1,2 @@
+# Respect default shortcuts.
+$include /etc/inputrc
