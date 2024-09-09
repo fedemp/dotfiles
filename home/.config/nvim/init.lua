@@ -128,16 +128,53 @@ now(function()
 		depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
 	})
 
+	add("hrsh7th/cmp-nvim-lsp")
+	add("hrsh7th/cmp-buffer")
+	add("hrsh7th/cmp-path")
+	add("hrsh7th/cmp-cmdline")
+	add("hrsh7th/nvim-cmp")
+
+	local cmp = require("cmp")
+
+	cmp.setup({
+		snippet = {
+			expand = function(args)
+				vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+			end,
+		},
+		window = {
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		},
+		mapping = cmp.mapping.preset.insert({
+			["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping.complete(),
+			["<C-e>"] = cmp.mapping.abort(),
+			["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		}),
+		sources = cmp.config.sources({
+			{ name = "nvim_lsp" },
+		}, {
+			{ name = "buffer" },
+		}),
+	})
+
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 	require("mason").setup()
 	require("mason-lspconfig").setup({
 		ensure_installed = { "lua_ls", "vtsls", "efm" },
 		handlers = {
 			function(server_name)
-				require("lspconfig")[server_name].setup({})
+				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
+				})
 			end,
 
 			efm = function()
 				require("lspconfig").efm.setup({
+					capabilities = capabilities,
 					init_options = { documentFormatting = true },
 					settings = {
 						rootMarkers = { ".git/" },
@@ -152,6 +189,7 @@ now(function()
 
 			lua_ls = function()
 				require("lspconfig").lua_ls.setup({
+					capabilities = capabilities,
 					settings = {
 						Lua = {
 							runtime = {
@@ -189,6 +227,7 @@ now(function()
 
 			tailwindcss = function()
 				require("lspconfig").tailwindcss.setup({
+					capabilities = capabilities,
 					handlers = {
 						["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
 							vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
@@ -209,6 +248,7 @@ now(function()
 
 			typst_lsp = function()
 				require("lspconfig").typst_lsp.setup({
+					capabilities = capabilities,
 					settings = {
 						exportPdf = "onSave", -- Choose onType, onSave or never.
 						-- serverPath = "" -- Normally, there is no need to uncomment it.
@@ -218,6 +258,7 @@ now(function()
 
 			vtsls = function()
 				require("lspconfig").vtsls.setup({
+					capabilities = capabilities,
 					settings = {
 						vtsls = {
 							experimental = {
@@ -239,7 +280,7 @@ later(function()
 	require("mini.bufremove").setup()
 	require("mini.comment").setup()
 	require("mini.jump").setup()
-	require("mini.completion").setup()
+	-- require("mini.completion").setup()
 	require("mini.bracketed").setup()
 	require("mini.misc").setup()
 	MiniMisc.setup_termbg_sync()
@@ -275,7 +316,7 @@ later(function()
 	add({ source = "stevearc/dressing.nvim", depends = { "MunifTanjim/nui.nvim" } })
 	require("dressing").setup({
 		select = {
-			backend = { "nui" },
+			backend = { "builtin" },
 		},
 	})
 end)
