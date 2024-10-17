@@ -18,9 +18,9 @@ vim.opt.backup = false
 vim.opt.hlsearch = false
 vim.opt.scrolloff = 8
 vim.opt.diffopt =
-	{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
+{ "filler", "iwhiteall", "vertical", "hiddenoff", "closeoff", "hiddenoff", "algorithm:histogram", "linematch:60" }
 vim.opt.listchars =
-	{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
+{ eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
 vim.opt.list = false
 vim.opt.wildignore:append({ "*/dist/*", "*/min/*", "*/vendor/*", "*/node_modules/*", "*/bower_components/*" })
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -235,9 +235,17 @@ now(function()
 					},
 					settings = {
 						tailwindCSS = {
+							classAttributes = {
+								"class",
+								"className",
+								"ngClass",
+								".*ClassNames.*"
+							},
 							experimental = {
 								classRegex = {
-									{ "cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+									{ "cx\\(([^)]*)\\)",    "[\"'`]([^\"'`]*)[\"'`]" },
+									{ "cx\\(([^)]*)\\)",    "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+									{ "cx\\(.*?\\)(?!\\])", "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)" }
 								},
 							},
 							validate = true,
@@ -308,8 +316,6 @@ end)
 
 later(function()
 	add("tpope/vim-fugitive")
-	add({ source = "NeogitOrg/neogit", depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
-	require("neogit").setup()
 end)
 
 later(function()
@@ -430,17 +436,18 @@ later(function()
 	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
-			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-			html = { "prettierd", "prettier", stop_after_first = true },
-			json = { "prettierd", "prettier", stop_after_first = true },
-			graphql = { "prettierd", "prettier", stop_after_first = true },
-			scss = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettier", stop_after_first = true },
+			typescript = { "prettier", stop_after_first = true },
+			typescriptreact = { "prettier", stop_after_first = true },
+			html = { "prettier", stop_after_first = true },
+			json = { "prettier", stop_after_first = true },
+			graphql = { "prettier", stop_after_first = true },
+			scss = { "prettier", stop_after_first = true },
+			css = { "prettier", stop_after_first = true },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
-			timeout_ms = 500,
+			timeout_ms = 5000,
 			lsp_format = "fallback",
 		},
 	})
@@ -450,19 +457,16 @@ end)
 
 -- {{{ Colorschemes
 
+now(function()
+	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
+	vim.cmd.colorscheme("zenbones")
+end)
+
 later(function()
-	add("projekt0n/github-nvim-theme")
 	add("nyoom-engineering/oxocarbon.nvim")
 	add("shaunsingh/nord.nvim")
 	add("e-q/okcolors.nvim") -- No support for mini.pick
-	add({ source = "mcchrish/zenbones.nvim", name = "zenbones", depends = { "rktjmp/lush.nvim" } })
 	add("sainnhe/gruvbox-material")
-	add("EdenEast/nightfox.nvim")
-	add("yorickpeterse/nvim-grey")
-	add("miikanissi/modus-themes.nvim")
-	add("ramojus/mellifluous.nvim")
-	add("yorik1984/newpaper.nvim")
-	add("cvigilv/patana.nvim")
 end)
 
 --- }}}
@@ -472,5 +476,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	command = [[setlocal nonumber norelativenumber]],
 })
 --- }}}
+
 
 -- vim: foldmethod=marker foldlevel=1
