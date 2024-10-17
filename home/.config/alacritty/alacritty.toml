@@ -1,4 +1,3 @@
-import = ["/var/home/federico/.config/alacritty/colors/dayfox.toml"]
 
 [bell]
 animation = "EaseOutExpo"
@@ -59,3 +58,6 @@ hide_when_typing = true
 decorations = "full"
 dynamic_padding = true
 dynamic_title = true
+
+[general]
+import = ["/var/home/federico/.config/alacritty/colors/dayfox.toml"]
