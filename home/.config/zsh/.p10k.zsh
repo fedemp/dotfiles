@@ -1534,7 +1534,7 @@
   # Don't display the name of the toolbox if it matches fedora-toolbox-*.
   typeset -g POWERLEVEL9K_TOOLBOX_CONTENT_EXPANSION='${P9K_TOOLBOX_NAME:#my-distrobox}'
   # Custom icon.
-  typeset -g POWERLEVEL9K_TOOLBOX_VISUAL_IDENTIFIER_EXPANSION='🛠'
+  typeset -g POWERLEVEL9K_TOOLBOX_VISUAL_IDENTIFIER_EXPANSION='🛠 '
   # Custom prefix.
   # typeset -g POWERLEVEL9K_TOOLBOX_PREFIX='%fin '
 

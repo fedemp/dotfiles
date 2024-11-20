@@ -16,11 +16,48 @@ shape = "Block"
 size = 14
 
 [font.normal]
-# family = "Iosevka Term"
+# family = "0xProto"
+# family = "Anonymous Pro"
+# family = "Cascadia Code PL"
+# family = "CaskaydiaCove Nerd Font"
+# family = "CaskaydiaCove Nerd Font Mono"
+# family = "CommitMono"
+# family = "Courier Prime"
+# family = "Drafting* Mono"
+# family = "Geist Mono"
+# family = "Hack"
+family = "IBM Plex Mono"
+# family = "Inconsolata"
+# family = "Input Mono"
+# family = "Input Mono Compressed"
+# family = "Input Mono Condensed"
+# family = "Input Mono Narrow"
+# family = "Intel One Mono"
+# family = "JuliaMono"
+# family = "Liberation Mono"
+# family = "M PLUS Code Latin"
+# family = "MesloLGL Nerd Font Mono"
+# family = "MesloLGLDZ Nerd Font Mono"
+# family = "MesloLGM Nerd Font Mono"
+# family = "MesloLGMDZ Nerd Font Mono"
+# family = "MesloLGS Nerd Font Mono"
+# family = "MesloLGSDZ Nerd Font Mono"
+# family = "Monaspace Argon"
+# family = "Monaspace Krypton"
+# family = "Monaspace Neon"
+# family = "Monaspace Radon"
+# family = "Monaspace Xenon"
+# family = "Mononoki Nerd Font Mono"
+# family = "Nimbus Mono PS"
+# family = "Noto Color Emoji"
 # family = "Rec Mono Casual"
-# family = "Iosevka Term Slab"
-# family = "Fira Code"
-family = "Hack"
+# family = "Rec Mono Duotone"
+# family = "Rec Mono Linear"
+# family = "Rec Mono Semicasual"
+# family = "Server Mono"
+# family = "Source Code Pro"
+# family = "Ubuntu Mono"
+# family = "Victor Mono "
 
 [font.offset]
 x = 0
@@ -60,4 +97,4 @@ dynamic_padding = true
 dynamic_title = true
 
 [general]
-import = ["/var/home/federico/.config/alacritty/colors/dayfox.toml"]
+import = ["/var/home/federico/.config/alacritty/colors/zenbones.toml"]

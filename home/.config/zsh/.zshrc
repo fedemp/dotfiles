@@ -121,6 +121,7 @@ WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 autoload rg
 
 source <(fzf --zsh)
+source <(jj util completion zsh)
 
 # export PATH="/var/home/federico/.local/share/fnm:$PATH"
 # eval "`fnm env`"
