@@ -5,3 +5,7 @@ default-command = "log"
 sign-all = true
 backend = "ssh"
 key = "~/.ssh/id_ed25519.pub"
+
+[user]
+name = "Federico Panico"
+email = "federicopanico@gmail.com"

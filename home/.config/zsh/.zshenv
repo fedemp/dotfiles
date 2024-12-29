@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
-export XDG_RUNTIME_DIR=${TMPDIR:-/tmp/runtime-$USER}
+# export XDG_RUNTIME_DIR=${TMPDIR:-/tmp/runtime-$USER}
 
 export EDITOR=nvim
 export PAGER=less
@@ -26,6 +26,9 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+
 fpath=($ZDOTDIR/fpath $fpath)
 
 setopt EXTENDED_GLOB
@@ -35,6 +38,7 @@ setopt EXTENDED_GLOB
 path=(
 	$HOME/.local/bin
 	$XDG_DATA_HOME/npm/bin
+	$BUN_INSTALL/bin
 	$path
 )
 

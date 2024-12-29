@@ -13,7 +13,7 @@ blinking = "On"
 shape = "Block"
 
 [font]
-size = 14
+size = 15
 
 [font.normal]
 # family = "0xProto"
@@ -24,9 +24,10 @@ size = 14
 # family = "CommitMono"
 # family = "Courier Prime"
 # family = "Drafting* Mono"
+# family = "Fira Code"
 # family = "Geist Mono"
 # family = "Hack"
-family = "IBM Plex Mono"
+# family = "IBM Plex Mono"
 # family = "Inconsolata"
 # family = "Input Mono"
 # family = "Input Mono Compressed"
@@ -42,7 +43,7 @@ family = "IBM Plex Mono"
 # family = "MesloLGMDZ Nerd Font Mono"
 # family = "MesloLGS Nerd Font Mono"
 # family = "MesloLGSDZ Nerd Font Mono"
-# family = "Monaspace Argon"
+family = "Monaspace Argon"
 # family = "Monaspace Krypton"
 # family = "Monaspace Neon"
 # family = "Monaspace Radon"
