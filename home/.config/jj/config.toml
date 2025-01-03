@@ -7,5 +7,20 @@ backend = "ssh"
 key = "~/.ssh/id_ed25519.pub"
 
 [user]
-name = "Federico Panico"
-email = "federicopanico@gmail.com"
+name = "Federico"
+email = "735314+fedemp@users.noreply.github.com"
+
+[template-aliases]
+commit_description_verbose = '''
+concat(
+  description,
+  "\n",
+  "JJ: This commit contains the following changes:\n",
+  indent("JJ:    ", diff.stat(72)),
+  "JJ: ignore-rest\n",
+  diff.git(),
+)
+'''
+
+[aliases]
+dv = ["--config=templates.draft_commit_description=commit_description_verbose", "describe"]
