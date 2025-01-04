@@ -1,0 +1,7 @@
+function rg() {
+	if [ -t 1 ]; then
+		/usr/bin/rg -p "$@" | less
+	else
+		/usr/bin/rg "$@"
+	fi
+}
