@@ -1,4 +1,3 @@
-
 [bell]
 animation = "EaseOutExpo"
 
@@ -34,6 +33,7 @@ size = 15
 # family = "Input Mono Condensed"
 # family = "Input Mono Narrow"
 # family = "Intel One Mono"
+family = "Iosevka Term SS14"
 # family = "JuliaMono"
 # family = "Liberation Mono"
 # family = "M PLUS Code Latin"
@@ -43,7 +43,7 @@ size = 15
 # family = "MesloLGMDZ Nerd Font Mono"
 # family = "MesloLGS Nerd Font Mono"
 # family = "MesloLGSDZ Nerd Font Mono"
-family = "Monaspace Argon"
+# family = "Monaspace Argon"
 # family = "Monaspace Krypton"
 # family = "Monaspace Neon"
 # family = "Monaspace Radon"
