@@ -16,6 +16,6 @@ return {
 	keys = {
 		{ "<Leader><Leader>", "<cmd>Pick files<cr>" },
 		{ "<Leader>g", "<cmd>Pick grep<cr>" },
-		{ "gb", "<cmd>Pick buffers<cr>" },
+		{ "<Leader>b", "<cmd>Pick buffers<cr>" },
 	},
 }

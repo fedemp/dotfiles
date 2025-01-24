@@ -17,8 +17,8 @@ opt.undofile = true -- Enable persistent undo
 opt.breakindent = true -- Indent wrapped lines to match line start
 opt.ruler = false -- Don't show cursor position in command line
 opt.showmode = false -- Don't show mode in command line
-opt.completeopt   = 'menuone,noinsert,noselect' -- Customize completions
-opt.formatoptions = 'qjl1' -- Don't autoformat comments
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.formatoptions = "qjl1" -- Don't autoformat comments
 
 -- Unused opts. Reenable if needed.
 
@@ -31,4 +31,3 @@ opt.formatoptions = 'qjl1' -- Don't autoformat comments
 -- { eol = "↵", tab = "¬ ", lead = "·", trail = "·", extends = "◣", precedes = "◢", nbsp = "␣" }
 -- vim.opt.list = false
 -- vim.opt.wildignore:append({ "*/dist/*", "*/min/*", "*/vendor/*", "*/node_modules/*", "*/bower_components/*" })
--- vim.opt.completeopt = { "menu", "menuone", "noselect" }

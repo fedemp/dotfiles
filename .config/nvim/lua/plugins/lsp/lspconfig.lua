@@ -49,6 +49,17 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+			["eslint"] = function()
+				lspconfig["eslint"].setup({
+					capabilities = capabilities,
+					on_attach = function(client, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
+				})
+			end,
 			["graphql"] = function()
 				-- configure graphql language server
 				lspconfig["graphql"].setup({
@@ -57,7 +68,7 @@ return {
 				})
 			end,
 			["lua_ls"] = function()
-				require("lspconfig").lua_ls.setup({
+				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -81,7 +92,7 @@ return {
 				})
 			end,
 			["tailwindcss"] = function()
-				require("lspconfig").tailwindcss.setup({
+				lspconfig["tailwindcss"].setup({
 					capabilities = capabilities,
 					handlers = {
 						["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
@@ -109,7 +120,7 @@ return {
 				})
 			end,
 			["vtsls"] = function()
-				require("lspconfig").vtsls.setup({
+				lspconfig["vtsls"].setup({
 					capabilities = capabilities,
 					settings = {
 						vtsls = {
