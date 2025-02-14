@@ -12,15 +12,15 @@ blinking = "On"
 shape = "Block"
 
 [font]
-size = 15
+size = 16
 
 [font.normal]
-family = "0xProto"
+# family = "72 Mono" # No italic
+# family = "0xProto"
 # family = "Agave"
+# family = "Adwaita Mono"
 # family = "Anonymous Pro"
 # family = "Cascadia Code PL"
-# family = "CaskaydiaCove Nerd Font"
-# family = "CaskaydiaCove Nerd Font Mono"
 # family = "CommitMono"
 # family = "Courier Prime"
 # family = "Drafting* Mono"
@@ -38,9 +38,10 @@ family = "0xProto"
 # family = "Intel One Mono"
 # family = "Iosevka Term SS05"
 # family = "Iosevka Term SS14"
+# family = "Jet Brains Mono"
 # family = "JuliaMono"
 # family = "Liberation Mono"
-# family = "M PLUS Code Latin"
+family = "M PLUS Code Latin"
 # family = "MesloLGL Nerd Font Mono"
 # family = "MesloLGLDZ Nerd Font Mono"
 # family = "MesloLGM Nerd Font Mono"

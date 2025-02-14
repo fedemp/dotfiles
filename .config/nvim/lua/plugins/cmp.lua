@@ -31,26 +31,26 @@ return {
 
 		completion = {
 			accept = { auto_brackets = { enabled = false } },
-			list = { selection = { preselect = true, auto_insert = true } },
+			list = { selection = { preselect = false, auto_insert = true } },
 			documentation = { auto_show = true, auto_show_delay_ms = 500 },
 			ghost_text = { enabled = true },
 			-- signature = { enabled = true },
 		},
 
 		-- menu = {
-		-- 	-- nvim-cmp style menu
-		-- 	draw = {
-		-- 		columns = {
-		-- 			{ "label", "label_description", gap = 1 },
-		-- 			{ "kind_icon", "kind" },
-		-- 		},
+		-- nvim-cmp style menu
+		-- draw = {
+		-- 	columns = {
+		-- 		{ "label", "label_description", gap = 1 },
+		-- 		{ "kind_icon", "kind" },
 		-- 	},
+		-- },
 		-- },
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "buffer" },
 		},
 	},
 	opts_extend = { "sources.default" },

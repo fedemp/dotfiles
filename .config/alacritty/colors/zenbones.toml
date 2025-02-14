@@ -21,3 +21,7 @@ white = '0x2c363c'
 [colors.primary]
 background = '0xf0edec'
 foreground = '0x2c363c'
+
+[colors.cursor]
+cursor = "0x3b8992"
+text = "CellBackground"
