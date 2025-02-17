@@ -30,7 +30,3 @@ export PATH
 
 # Enable man pages
 MANPATH=$XDG_DATA_HOME/man:$MANPATH
-
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-. "/var/home/federico/.local/share/cargo/env"
