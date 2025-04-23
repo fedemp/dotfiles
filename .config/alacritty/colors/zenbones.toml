@@ -1,5 +1,6 @@
 [colors.bright]
-black = '0xcfc1ba'
+# black = '0xcfc1ba'
+black = '0xa89f95'
 red = '0x94253e'
 green = '0x3f5a22'
 yellow = '0x803d1c'
@@ -23,5 +24,5 @@ background = '0xf0edec'
 foreground = '0x2c363c'
 
 [colors.cursor]
-cursor = "0x3b8992"
-text = "CellBackground"
+cursor = "#2C363C"
+text = "#F0EDEC"

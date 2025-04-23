@@ -1,12 +1,12 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-
-later(function()
-	add("williamboman/mason.nvim")
-	require("mason").setup()
-end)
+local add, now = MiniDeps.add, MiniDeps.now
 
 now(function()
+	add("williamboman/mason.nvim")
+	add("williamboman/mason-lspconfig.nvim")
 	add("neovim/nvim-lspconfig")
+
+	require("mason").setup()
+	require("mason-lspconfig").setup()
 
 	local custom_on_attach = function(client, buf_id)
 		-- Set up 'mini.completion' LSP part of completion

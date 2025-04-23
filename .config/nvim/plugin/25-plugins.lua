@@ -67,6 +67,7 @@ later(function()
 			typescriptreact = { "biome", stop_after_first = true },
 			javascript = { "biome", stop_after_first = true },
 			json = { "biome", stop_after_first = true },
+			css = { "biome", stop_after_first = true },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
@@ -139,5 +140,10 @@ end)
 
 later(function()
 	add("rafamadriz/friendly-snippets")
-	require("mini.snippets").setup()
+	local gen_loader = require("mini.snippets").gen_loader
+	require("mini.snippets").setup({
+		snippets = {
+			gen_loader.from_lang(),
+		},
+	})
 end)

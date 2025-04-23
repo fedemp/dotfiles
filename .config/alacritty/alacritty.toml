@@ -1,35 +1,36 @@
 [bell]
 animation = "EaseOutExpo"
+duration = 1000
 
 [colors]
 draw_bold_text_with_bright_colors = false
 
 [cursor]
 unfocused_hollow = true
-
-[cursor.style]
-blinking = "On"
-shape = "Block"
+style = { blinking = "On", shape = "Block" }
 
 [font]
 size = 16
 
 [font.normal]
-# family = "72 Mono" # No italic
+# family = "72 Mono"
 # family = "0xProto"
 # family = "Agave"
 # family = "Adwaita Mono"
 # family = "Anonymous Pro"
-family = "Atkinson Hyperlegible Mono"
+# family = "Atkinson Hyperlegible Mono"
 # family = "Cascadia Code PL"
 # family = "CommitMono"
+# family = "Consolas"
 # family = "Courier Prime"
+family = "Cousine"
 # family = "Drafting* Mono"
 # family = "Fantasque Sans Mono"
 # family = "Fira Code"
 # family = "Geist Mono"
 # family = "Hack"
 # family = "Hermit"
+# family = "iA Writer Mono V"
 # family = "IBM Plex Mono"
 # family = "Inconsolata"
 # family = "Input Mono"
@@ -49,15 +50,18 @@ family = "Atkinson Hyperlegible Mono"
 # family = "MesloLGMDZ Nerd Font Mono"
 # family = "MesloLGS Nerd Font Mono"
 # family = "MesloLGSDZ Nerd Font Mono"
-# family = "Monaspace Argon"
-# family = "Monaspace Krypton"
-# family = "Monaspace Neon"
-# family = "Monaspace Radon"
-# family = "Monaspace Xenon"
+# family = "Monaspace Argon Var"
+# family = "Monaspace Krypton Var"
+# family = "Monaspace Neon Var"
+# family = "Monaspace Radon Var"
+# family = "Monaspace Xenon Var"
 # family = "Monego"
 # family = "Mononoki"
 # family = "Nimbus Mono PS"
-# family = "Noto Color Emoji"
+# family = "Noto Sans Mono"
+# family = "Office Code Pro"
+# family = "Overpass Mono"
+# family = "PT Mono"
 # family = "Rec Mono Casual"
 # family = "Rec Mono Duotone"
 # family = "Rec Mono Linear"
@@ -71,30 +75,28 @@ family = "Atkinson Hyperlegible Mono"
 x = 0
 y = 0
 
-[hints]
-alphabet = "jfkdls;ahgurieowpq"
+# [hints]
+# alphabet = "jfkdls;ahgurieowpq"
+#
+# [[hints.enabled]]
+# command = "xdg-open"
+# post_processing = true
+# regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+# hyperlinks = true
+# binding = {
+# 	key = "U"
+# 	mods = "Control|Shift"
+# }
+#
+# [hints.enabled.mouse]
+# enabled = true
+# mods = "None"
 
-[[hints.enabled]]
-command = "xdg-open"
-post_processing = true
-regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
-
-[hints.enabled.binding]
-key = "U"
-mods = "Control|Shift"
-
-[hints.enabled.mouse]
-enabled = true
-mods = "None"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = "F11"
+[keyboard]
+bindings = [
+	{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+	{ key = "F11", action = "ToggleFullscreen" },
+]
 
 [mouse]
 hide_when_typing = true
