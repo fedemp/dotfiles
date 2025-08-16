@@ -75,4 +75,6 @@ now(function()
 	})
 
 	lspconfig.biome.setup({})
+
+	vim.lsp.enable("jdtls")
 end)

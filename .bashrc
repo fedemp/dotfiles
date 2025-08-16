@@ -23,5 +23,3 @@ if [ -d ~/.config/bash/bashrc.d ]; then
     done
 fi
 unset rc
-
-PS1='$(if [ -e /run/.containerenv -o -e /.dockerenv ]; then echo \[\e[33\;1m\]⬣ \[\e[0m\]; fi)$(VALU=$? ; if [ $VALU != 0 ]; then echo \[\e[31\;1m\]→$VALU \[\e[0m\]; fi)$([ \j -gt 0 ] && echo \[\e[35\;1m\]↓\j \[\e[0m\])\[\e[34m\]\w\[\e[0m\] \$ '

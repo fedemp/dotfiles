@@ -1,0 +1,7 @@
+[colors.selection]
+background = "#859900"
+text = "CellBackground"
+
+[colors.vi_mode_cursor]
+cursor = "#859900"
+text = "CellBackground"

@@ -21,21 +21,6 @@ vim.opt.shortmess = "atToOCF" -- Kind of verbose
 vim.opt.completeopt = { "menuone", "noselect" } -- Always show menu, don't autoselect
 vim.opt.formatoptions = "qjl1" -- Don't autoformat comments
 vim.opt.confirm = true -- Confirm unsaved
-vim.o.fillchars = table.concat(
-	-- Special UI symbols
-	{
-		"eob: ",
-		"fold:╌",
-		"horiz:═",
-		"horizdown:╦",
-		"horizup:╩",
-		"vert:║",
-		"verthoriz:╬",
-		"vertleft:╣",
-		"vertright:╠",
-	},
-	","
-)
 vim.opt.listchars = table.concat({ "extends:…", "nbsp:␣", "precedes:…", "tab:¬ " }, ",") -- Special text symbols
 vim.diagnostic.config({
 	float = { border = "double" },

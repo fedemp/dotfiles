@@ -18,7 +18,6 @@ export LESS="-n -R -i -g -M -x4 -X -F -z-1"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS='--color=16'
 export TZ=/etc/localtime
-fpath=($HOME/.functions $fpath)
 export NNN_FCOLORS='c1e20402006006f701d6ab05'
 export NNN_PLUG='p:-!less -iR "$nnn"*;g:-!git diff -- "$nnn"*'
 export NNN_USE_EDITOR=1
@@ -26,10 +25,7 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-
-fpath=($ZDOTDIR/fpath $fpath)
+fpath=($ZDOTDIR/completions $fpath)
 
 setopt EXTENDED_GLOB
 

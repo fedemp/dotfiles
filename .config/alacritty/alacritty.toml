@@ -10,7 +10,7 @@ unfocused_hollow = true
 style = { blinking = "On", shape = "Block" }
 
 [font]
-size = 16
+size = 18
 
 [font.normal]
 # family = "72 Mono"
@@ -23,7 +23,7 @@ size = 16
 # family = "CommitMono"
 # family = "Consolas"
 # family = "Courier Prime"
-family = "Cousine"
+# family = "Cousine"
 # family = "Drafting* Mono"
 # family = "Fantasque Sans Mono"
 # family = "Fira Code"
@@ -41,8 +41,9 @@ family = "Cousine"
 # family = "Iosevka Term SS05"
 # family = "Iosevka Term SS14"
 # family = "Jet Brains Mono"
-# family = "JuliaMono"
+family = "JuliaMono"
 # family = "Liberation Mono"
+# family = "Maple Mono"
 # family = "M PLUS Code Latin"
 # family = "MesloLGL Nerd Font Mono"
 # family = "MesloLGLDZ Nerd Font Mono"
@@ -75,22 +76,17 @@ family = "Cousine"
 x = 0
 y = 0
 
-# [hints]
+[hints]
 # alphabet = "jfkdls;ahgurieowpq"
-#
-# [[hints.enabled]]
+# enabled = []
+# binding = { key = "u", mods = "Control|Shift" }
 # command = "xdg-open"
-# post_processing = true
-# regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
 # hyperlinks = true
-# binding = {
-# 	key = "U"
-# 	mods = "Control|Shift"
-# }
-#
-# [hints.enabled.mouse]
-# enabled = true
-# mods = "None"
+# mouse.enabled = true
+# mouse.mods = "Control"
+# post_processing = true
+# persist = false
+# regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
 [keyboard]
 bindings = [

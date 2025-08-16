@@ -70,7 +70,7 @@ alias find='noglob find'
 alias touch='nocorrect touch'
 alias mkdir='nocorrect mkdir -pv'
 alias fd='noglob fd'
-
+alias sk='sk --color=16'
 alias cp='nocorrect cp -irv'
 alias mv='mv -iv'
 alias gs='git status'
@@ -118,15 +118,17 @@ bindkey '^[[B' down-line-or-beginning-search
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-autoload rg
-
-source <(fzf --zsh)
+# source <(fzf --zsh)
 source <(jj util completion zsh)
-
-# export PATH="/var/home/federico/.local/share/fnm:$PATH"
-# eval "`fnm env`"
+for file in ${ZDOTDIR:--}/.zsh.d/*.zsh; do
+    [ -e "$file" ] && source "$file"
+done 
 
 source ${XDG_DATA_HOME}/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.etc/home/.config/zsh/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:--}/.p10k.zsh ]] || source ${ZDOTDIR:--}/.p10k.zsh
 
+if [[ ":$FPATH:" != *":/var/home/federico/.local/share/dotfiles/.config/zsh/completions:"* ]]; then export FPATH="/var/home/federico/.local/share/dotfiles/.config/zsh/completions:$FPATH"; fi
+
+autoload -Uz compinit
+compinit
