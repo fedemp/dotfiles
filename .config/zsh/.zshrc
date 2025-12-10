@@ -1,34 +1,35 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+[ -f /etc/zshrc ] && source /etc/zshrc
 
-mkdir -p $XDG_STATE_HOME/zsh/
+# Save history to XDG compliant location
+HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/histfile
 
-# Lines configured by zsh-newuser-install
-HISTFILE="$XDG_STATE_HOME"/zsh/history
-HISTSIZE=1000
 SAVEHIST=1000
-setopt beep nomatch notify
+
+# Emacs keybindings
 bindkey -e
-# End of lines configured by zsh-newuser-install
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '$XDG_STATE_HOME/zsh/history'
+# Error on a redirections which would overwrite an existing file
+setopt NO_CLOBBER
 
-export ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump-$HOST 
-autoload -Uz compinit
-compinit -d ${XDG_CACHE_HOME}/zsh/zcompdump-{$HOST}
-# End of lines added by compinstall
+# Disable multios
+setopt NO_MULTIOS
+
+# Disable flow control
+setopt NO_FLOW_CONTROL
+
+setopt nomatch
 
 # Load color definitions
 autoload -Uz colors
 colors
 
 # Custom colors for ls
-eval $(dircolors ${XDG_CONFIG_HOME}/dircolors/dircolors)
+if command -v dircolors &> /dev/null; then
+	eval $(dircolors ${XDG_CONFIG_HOME}/dircolors/dircolors)
+else
+	export LS_COLORS="di=1;34:ln=1;35:so=31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+	export LSCOLORS=ExFxbxDxCxegedabagacad
+fi
 
 # Options
 setopt ALWAYS_TO_END				# Move cursor to the end of a completed word.
@@ -124,11 +125,9 @@ for file in ${ZDOTDIR:--}/.zsh.d/*.zsh; do
     [ -e "$file" ] && source "$file"
 done 
 
-source ${XDG_DATA_HOME}/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.etc/home/.config/zsh/.p10k.zsh.
-[[ ! -f ${ZDOTDIR:--}/.p10k.zsh ]] || source ${ZDOTDIR:--}/.p10k.zsh
+if [[ ":$FPATH:" != *":$ZDOTDIR/completions:"* ]]; then export FPATH="$ZDOTDIR/completions:$FPATH"; fi
 
-if [[ ":$FPATH:" != *":/var/home/federico/.local/share/dotfiles/.config/zsh/completions:"* ]]; then export FPATH="/var/home/federico/.local/share/dotfiles/.config/zsh/completions:$FPATH"; fi
+PROMPT='%F{green}%(?..%F{red})❯%f '
+RPROMPT='%B%F{blue}%(5~|%-1~/…/%3~|%4~)%b%(1j. %F{red}⏻.)%F{yellow}%(?..%B (%?%)%b)'
 
-autoload -Uz compinit
-compinit
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"

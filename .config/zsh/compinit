@@ -1,29 +1,27 @@
-
 # The following lines were added by compinstall
 
-zstyle ':completion:*' auto-description '[%d]'
+zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' complete-options true 
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' expand prefix
-zstyle ':completion:*' file-sort name
+zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
+zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' ignore-parents parent pwd directory
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' original true
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' insert-tab pending
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' completion-automatically true
 zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle :compinstall filename '$ZDOTDIR/compinit'
+zstyle ':completion:*:*:cd:*' local-directories path-directories directory-stack tag-order
+zstyle :compinstall filename '$ZDOTDIR/comp'
+
+# Optional: nicer completion menu navigation
+bindkey '^I' expand-or-complete-prefix
 
 autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+compinit
 # End of lines added by compinstall
-
-# enable caching
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
