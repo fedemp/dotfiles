@@ -1,5 +1,7 @@
 [ -f /etc/zshrc ] && source /etc/zshrc
 
+export PATH="/opt/homebrew/opt/node@24/bin:$HOME/.local/bin:$PATH"
+
 # Save history to XDG compliant location
 HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/histfile
 
@@ -129,5 +131,3 @@ if [[ ":$FPATH:" != *":$ZDOTDIR/completions:"* ]]; then export FPATH="$ZDOTDIR/c
 
 PROMPT='%F{green}%(?..%F{red})❯%f '
 RPROMPT='%B%F{blue}%(5~|%-1~/…/%3~|%4~)%b%(1j. %F{red}⏻.)%F{yellow}%(?..%B (%?%)%b)'
-
-export PATH="/opt/homebrew/opt/node@24/bin:$PATH"

@@ -8,9 +8,10 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-export EDITOR=vise
+export EDITOR=vis
 export PAGER=less
-export LESS="-n -R -i -g -M -x4 -X -F -z-1"
+export MANROFFOPT='-c'
+export LESS='--use-color -g -R -M -x4 -X -F -Dd+r$Du+b'
 export TZ=/etc/localtime
 
 export FZF_DEFAULT_COMMAND='fd --type f'
