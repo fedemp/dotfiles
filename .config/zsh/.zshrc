@@ -102,6 +102,19 @@ command -v vim >/dev/null && alias vim='vim' # Destroy previous alias to vi.
 command -v nvim >/dev/null && alias vim='nvim'
 command -v cower >/dev/null && alias cower='cower --color=always' # archlinux
 command -v fdfind >/dev/null && alias fd='fdfind' # ubuntu
+# Check if the OS is Linux
+if [[ "$(uname)" == "Linux" ]]; then
+    # Check if running inside a container
+    # 1. Look for .dockerenv file
+    # 2. Check if 'container' env var is set (common in Podman/systemd-nspawn)
+    # 3. Check for 'docker' or 'containerd' in /proc/1/cgroup
+    if [[ -f /.dockerenv ]] || [[ -n "$container" ]] || grep -qiE 'docker|containerd|lxc' /proc/1/cgroup 2>/dev/null; then
+        # Define your container-only aliases here
+        alias podman='flatpak-spawn --host podman'
+        alias ll='ls -lah --color=auto'
+        
+    fi
+fi
 
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
@@ -121,11 +134,8 @@ bindkey '^[[B' down-line-or-beginning-search
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-# source <(fzf --zsh)
+source <(fzf --zsh)
 source <(jj util completion zsh)
-for file in ${ZDOTDIR:--}/.zsh.d/*.zsh; do
-    [ -e "$file" ] && source "$file"
-done 
 
 if [[ ":$FPATH:" != *":$ZDOTDIR/completions:"* ]]; then export FPATH="$ZDOTDIR/completions:$FPATH"; fi
 

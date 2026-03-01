@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#MISE description="Install latest nnn"
+
+set -e
+
+# Define the URL for the latest nnn release
+NNN_URL=$(curl -s https://api.github.com/repos/jarun/nnn/releases/latest | grep "browser_download_url" | grep "nerd" | cut -d '"' -f 4)
+
+# Get latest version number
+LATEST=$( echo $NNN_URL | awk -F '/v' '{print $2}' | cut -d '/' -f1 )
+
+command -v nnn >/dev/null && INSTALLED=$(nnn -V) || INSTALLED=""
+
+if [[ "$LATEST" == "$INSTALLED" ]]; then
+	echo "nnn is up to date"
+	exit 0
+fi
+
+# Define the installation directory
+INSTALL_DIR="$HOME/.local/bin"
+
+# Create the installation directory if it doesn't exist
+mkdir -p "$INSTALL_DIR"
+
+# Download the latest nnn release
+curl -L "$NNN_URL" -o nnn.tar.gz
+
+# Extract the tarball
+tar -xzf nnn.tar.gz -C "$INSTALL_DIR"
+
+# Clean up
+rm nnn.tar.gz
+
+# Rename
+mv "$INSTALL_DIR"/nnn-nerd-static "$INSTALL_DIR"/nnn
+
+echo "nnn has been installed to $INSTALL_DIR"

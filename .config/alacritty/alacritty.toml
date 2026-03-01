@@ -10,7 +10,7 @@ unfocused_hollow = true
 style = { blinking = "On", shape = "Block" }
 
 [font]
-size = 18
+size = 16
 
 [font.normal]
 # family = "72 Mono"
@@ -38,10 +38,12 @@ size = 18
 # family = "Input Mono Condensed"
 # family = "Input Mono Narrow"
 # family = "Intel One Mono"
+# family = "Iosevka Term Slab"
 # family = "Iosevka Term SS05"
+family = "Iosevka Term SS05 Extended"
 # family = "Iosevka Term SS14"
 # family = "Jet Brains Mono"
-family = "JuliaMono"
+# family = "JuliaMono"
 # family = "Liberation Mono"
 # family = "Maple Mono"
 # family = "M PLUS Code Latin"

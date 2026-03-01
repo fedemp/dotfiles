@@ -1,30 +1,27 @@
 --------------
 -- SETTINGS --
 --------------
-vim.o.title = true          -- Update window title.
-vim.o.colorcolumn = "+1"    -- Visible column
-vim.o.cursorline = true     -- Enable highlighting of the current line
-vim.o.inccommand = "split"  -- Show global changes when doing search and replace
-vim.o.number = true         -- Show line numbers
-vim.o.shiftwidth = 4        -- Indent width
-vim.o.tabstop = 4           -- Tab width
-vim.o.ignorecase = true     -- Ignore case
-vim.o.smartcase = true      -- Better ignorecase
-vim.o.infercase = true      -- Better completion
-vim.o.swapfile = false      -- Turn off swapfile
-vim.o.scrolloff = 8         -- Always show 8 lines before cursor touches top or bottom
-vim.o.undofile = true       -- Enable persistent undo
-vim.o.confirm = true        -- Confirm unsaved
-vim.o.mouse = ""            -- No mouse
+vim.o.title = true -- Update window title.
+vim.o.colorcolumn = "+1" -- Visible column
+vim.o.cursorline = true -- Enable highlighting of the current line
+vim.o.inccommand = "split" -- Show global changes when doing search and replace
+vim.o.number = true -- Show line numbers
+vim.o.shiftwidth = 4 -- Indent width
+vim.o.tabstop = 4 -- Tab width
+vim.o.ignorecase = true -- Ignore case
+vim.o.smartcase = true -- Better ignorecase
+vim.o.infercase = true -- Better completion
+vim.o.swapfile = false -- Turn off swapfile
+vim.o.scrolloff = 8 -- Always show 8 lines before cursor touches top or bottom
+vim.o.undofile = true -- Enable persistent undo
+vim.o.confirm = true -- Confirm unsaved
+vim.o.mouse = "" -- No mouse
 vim.o.winborder = "rounded" -- Rounded floats
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
 vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" } -- Always show menu, don't autoselect
-vim.opt.cursorlineopt = { "screenline",
-
-
-	"number" } -- Highligth current screen line only
+vim.opt.cursorlineopt = { "screenline", "number" } -- Highligth current screen line only
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -85,13 +82,6 @@ require("nvim-treesitter").install({
 	"vimdoc",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
-	callback = function()
-		vim.treesitter.start()
-	end,
-})
-
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.wo.foldmethod = "expr"
@@ -101,14 +91,14 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 ---------
 -- LSP --
 ---------
-vim.pack.add({ "https://github.com/williamboman/mason.nvim" })
-vim.pack.add({ "https://github.com/williamboman/mason-lspconfig.nvim" })
-vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
+vim.pack.add({
+	"https://github.com/williamboman/mason.nvim",
+	"https://github.com/williamboman/mason-lspconfig.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+})
 
 require("mason").setup()
 require("mason-lspconfig").setup()
-
-vim.lsp.enable({ "tsgo", "tailwindcss", "lua_ls", "biome" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("my.lsp", {}),
@@ -120,15 +110,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
 		end
 
-		if not client:supports_method('textDocument/willSaveWaitUntil')
-			and client:supports_method('textDocument/formatting') then
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+		if
+			not client:supports_method("textDocument/willSaveWaitUntil")
+			and client:supports_method("textDocument/formatting")
+		then
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
 				buffer = args.buf,
 				callback = function()
 					vim.lsp.buf.format({
 						timeout_ms = 1000,
-						filter = function(client) return client.name ~= "tsgo" end
+						filter = function(client)
+							return client.name ~= "tsgo"
+						end,
 					})
 				end,
 			})
@@ -141,14 +135,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+vim.lsp.enable({ "ruby_lsp", "biome", "tsgo" })
+
 -------------
 -- PLUGINS --
 -------------
 vim.pack.add({ { src = "https://github.com/nvim-mini/mini.nvim", version = "main" } })
-require("mini.notify").setup({
-	window = { config = { border = "double" } },
-})
-vim.notify = MiniNotify.make_notify()
+-- require("mini.notify").setup({
+-- 	window = { config = { border = "double" } },
+-- })
+-- vim.notify = MiniNotify.make_notify()
 
 require("mini.icons").setup()
 MiniIcons.tweak_lsp_kind()
@@ -182,11 +178,11 @@ vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<
 -- 		json = { "biome", stop_after_first = true },
 -- 		css = { "biome", stop_after_first = true },
 -- 	},
--- 	format_on_save = {
--- 		-- These options will be passed to conform.format()
--- 		timeout_ms = 5000,
--- 		lsp_format = "fallback",
--- 	},
+-- format_on_save = {
+-- 	-- These options will be passed to conform.format()
+-- 	timeout_ms = 5000,
+-- 	lsp_format = "fallback",
+-- },
 -- })
 -- vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 
@@ -198,7 +194,7 @@ vim.keymap.set("n", "<Leader>b", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
 
 require("mini.surround").setup()
 
-require("mini.animate").setup();
+require("mini.animate").setup()
 
 require("mini.completion").setup()
 vim.o.pumborder = "rounded"
@@ -215,14 +211,9 @@ vim.o.pumborder = "rounded"
 -- COLORSCHEMES --
 ------------------
 vim.pack.add({
-	"https://github.com/pebeto/dookie.nvim", -- Acme clone
 	"https://github.com/e-q/okcolors.nvim",
-	"https://github.com/yorik1984/newpaper.nvim",
-	"https://github.com/xeind/nightingale.nvim",
 	"https://github.com/ramojus/mellifluous.nvim",
 	"https://github.com/miikanissi/modus-themes.nvim",
-	"https://github.com/EdenEast/nightfox.nvim",
-	"https://github.com/rebelot/kanagawa.nvim",
 })
 
 vim.cmd.colorscheme("minisummer")

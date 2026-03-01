@@ -1,0 +1,5 @@
+[tools]
+"aqua:skim-rs/skim" = "latest"
+eza = "latest"
+jj = "latest"
+neovim = "nightly"
