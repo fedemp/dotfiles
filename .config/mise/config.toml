@@ -1,5 +1,8 @@
 [tools]
 "aqua:skim-rs/skim" = "latest"
 eza = "latest"
+fd = "latest"
 jj = "latest"
 neovim = "nightly"
+node = "lts"
+ripgrep = "latest"

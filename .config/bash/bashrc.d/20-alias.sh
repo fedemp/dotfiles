@@ -12,7 +12,7 @@ alias pwd=' pwd'
 alias exit=' exit'
 alias fg=' fg'
 
-command -v eza >/dev/null && alias ls='eza --group-directories-first'
+command -v eza >/dev/null && alias ls='eza --group-directories-first --icons=auto'
 command -v nvim >/dev/null && alias vim='nvim'
 command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 

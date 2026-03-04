@@ -13,7 +13,8 @@ export XDG_STATE_HOME=$HOME/.local/state
 # User specific environment and startup programs
 export EDITOR=nvim
 export PAGER=less
-export LESS="-n -R -i -g -M -x4 -X -F -z-1"
+export MANROFFOPT='-c'
+export LESS='--use-color -g -R -M -x4 -X -F -Dd+r$Du+b'
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS='--color=16'
 export SKIM_DEFAULT_COMMAND='fd --type f'
