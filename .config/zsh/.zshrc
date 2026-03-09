@@ -1,6 +1,9 @@
 [ -f /etc/zshrc ] && source /etc/zshrc
 
-export PATH="/opt/homebrew/opt/node@24/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+if [[ ":$FPATH:" != *":$ZDOTDIR/fpath:"* ]]; then export FPATH="$ZDOTDIR/fpath:$FPATH"; fi
+
+eval "$(mise activate zsh)"
 
 # Save history to XDG compliant location
 HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/histfile
@@ -93,7 +96,7 @@ alias pwd=' pwd'
 alias exit=' exit'
 alias fg=' fg'
 
-command -v eza >/dev/null && alias ls='eza --group-directories-first'
+command -v eza >/dev/null && alias ls='eza --group-directories-first --icons=auto'
 command -v eza >/dev/null && alias l='eza -l --group-directories-first'
 command -pv nnn >/dev/null && alias nnn='LESS="-n -R -i -g -M -x4 -z-1" nnn'
 command -v nnn >/dev/null || alias nnn='tree -C | less'
@@ -134,10 +137,6 @@ bindkey '^[[B' down-line-or-beginning-search
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-source <(fzf --zsh)
-source <(jj util completion zsh)
-
-if [[ ":$FPATH:" != *":$ZDOTDIR/completions:"* ]]; then export FPATH="$ZDOTDIR/completions:$FPATH"; fi
 
 PROMPT='%F{green}%(?..%F{red})❯%f '
 RPROMPT='%B%F{blue}%(5~|%-1~/…/%3~|%4~)%b%(1j. %F{red}⏻.)%F{yellow}%(?..%B (%?%)%b)'

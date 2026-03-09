@@ -48,21 +48,28 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 theme = Zenbones
-# theme = Dawnfox
-# theme = Gruvbox Light Hard
-# theme = Flexoki Light
+
 # font-family = JetBrains Mono Regular
 # font-family = Menlo
 # font-family = JuliaMono
+font-family = Atkinson Hyperlegible Mono
+# font-family = Adwaita Mono
+
 font-size = 17
-# font-family = Atkinson Hyperlegible Mono
-font-family = Adwaita Mono
-maximize = true
-quit-after-last-window-closed = true
-cursor-style = block
-shell-integration-features = no-cursor
-cursor-style-blink = false
+
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
+
+maximize = true
+quit-after-last-window-closed = true
+
 mouse-hide-while-typing = true
+
+link-previews = false
+maximize = true
+quit-after-last-window-closed = true
+cursor-color = #659B9B
+font-thicken = true
+adjust-cursor-thickness = 4
+macos-titlebar-style = tabs

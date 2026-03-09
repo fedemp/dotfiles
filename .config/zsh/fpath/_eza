@@ -1,4 +1,29 @@
-#compdef eza
+blocksize}"[List each file's size of allocated file system blocks.]" \
+        {-t,--time}="[Which time field to show]:(time field):(accessed changed created modified)" \
+        --time-style="[How to format timestamps]:(time style):(default iso long-iso full-iso relative +FORMAT)" \
+        --total-size"[Show recursive directory size (unix only)]" \
+        --no-permissions"[Suppress the permissions field]" \
+        {-o,--octal-permissions}"[List each file's permission in octal format]" \
+        --no-filesize"[Suppress the filesize field]" \
+        --no-user"[Suppress the user field]" \
+        --no-time"[Suppress the time field]" \
+        {-u,--accessed}"[Use the accessed timestamp field]" \
+        {-U,--created}"[Use the created timestamp field]" \
+        --git"[List each file's Git status, if tracked]" \
+        --no-git"[Suppress Git status]" \
+        --git-repos"[List each git-repos status and branch name]" \
+        --git-repos-no-status"[List each git-repos branch name (much faster)]" \
+        {-@,--extended}"[List each file's extended attributes and sizes]" \
+        {-Z,--context}"[List each file's security context]" \
+        {-M,--mounts}"[Show mount details (long mode only)]" \
+        '*:filename:_files' \
+        --smart-group"[Only show group if it has a different name from owner]" \
+        --stdin"[When piping to eza. Read file names from stdin]"
+}
+
+__eza
+,--numeric}"[List numeric user and group IDs.]" \
+        {-S,--#compdef eza
 
 # Save this file as _eza in /usr/local/share/zsh/site-functions or in any
 # other folder in $fpath.  E.g. save it in a folder called ~/.zfunc and add a
@@ -33,7 +58,7 @@ __eza() {
         --git-ignore"[Ignore files mentioned in '.gitignore']" \
         {-a,--all}"[Show hidden and 'dot' files. Use this twice to also show the '.' and '..' directories]" \
         {-A,--almost-all}"[Equivalent to --all; included for compatibility with \'ls -A\']" \
-        {-d,--list-dirs}"[List directories like regular files]" \
+        {-d,--treat-dirs-as-files}"[List directories like regular files]" \
         {-D,--only-dirs}"[List only directories]" \
         --no-symlinks"[Do not show symbolic links]" \
         --show-symlinks"[Explictly show symbolic links: for use with '--only-dirs'| '--only-files']" \
@@ -51,28 +76,4 @@ __eza() {
         {-H,--links}"[List each file's number of hard links]" \
         {-i,--inode}"[List each file's inode number]" \
         {-m,--modified}"[Use the modified timestamp field]" \
-        {-n,--numeric}"[List numeric user and group IDs.]" \
-        {-S,--blocksize}"[List each file's size of allocated file system blocks.]" \
-        {-t,--time}="[Which time field to show]:(time field):(accessed changed created modified)" \
-        --time-style="[How to format timestamps]:(time style):(default iso long-iso full-iso relative +FORMAT)" \
-        --total-size"[Show recursive directory size (unix only)]" \
-        --no-permissions"[Suppress the permissions field]" \
-        {-o,--octal-permissions}"[List each file's permission in octal format]" \
-        --no-filesize"[Suppress the filesize field]" \
-        --no-user"[Suppress the user field]" \
-        --no-time"[Suppress the time field]" \
-        {-u,--accessed}"[Use the accessed timestamp field]" \
-        {-U,--created}"[Use the created timestamp field]" \
-        --git"[List each file's Git status, if tracked]" \
-        --no-git"[Suppress Git status]" \
-        --git-repos"[List each git-repos status and branch name]" \
-        --git-repos-no-status"[List each git-repos branch name (much faster)]" \
-        {-@,--extended}"[List each file's extended attributes and sizes]" \
-        {-Z,--context}"[List each file's security context]" \
-        {-M,--mounts}"[Show mount details (long mode only)]" \
-        '*:filename:_files' \
-        --smart-group"[Only show group if it has a different name from owner]" \
-        --stdin"[When piping to eza. Read file names from stdin]"
-}
-
-__eza
+        {-n
