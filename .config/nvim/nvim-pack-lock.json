@@ -1,5 +1,21 @@
 {
   "plugins": {
+    "conform.nvim": {
+      "rev": "8314f4c9e205e7f30b62147069729f9a1227d8bf",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "devcontainers.nvim": {
+      "rev": "ed0ca6ce345f62b3553312028db8e9bbf578fcbc",
+      "src": "https://github.com/jedrzejboczar/devcontainers.nvim"
+    },
+    "dookie.nvim": {
+      "rev": "17c3a456fdd404770311b6c38689a984c3e24c74",
+      "src": "https://github.com/pebeto/dookie.nvim"
+    },
+    "kanagawa.nvim": {
+      "rev": "aef7f5cec0a40dbe7f3304214850c472e2264b10",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "a324581a3c83fdacdb9804b79de1cbe00ce18550",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
@@ -20,6 +36,18 @@
     "modus-themes.nvim": {
       "rev": "c57c2c56c9f0af04f3b609d11caa840880074784",
       "src": "https://github.com/miikanissi/modus-themes.nvim"
+    },
+    "newpaper.nvim": {
+      "rev": "a800b4a35c08c7520443be7b0aa538e3bf4350cb",
+      "src": "https://github.com/yorik1984/newpaper.nvim"
+    },
+    "nightfox.nvim": {
+      "rev": "ba47d4b4c5ec308718641ba7402c143836f35aa9",
+      "src": "https://github.com/EdenEast/nightfox.nvim"
+    },
+    "nightingale.nvim": {
+      "rev": "8021b182328ad25596a7388e735c0254d0869337",
+      "src": "https://github.com/xeind/nightingale.nvim"
     },
     "nvim-lspconfig": {
       "rev": "2163c54bb6cfec53e3e555665ada945b8c8331b9",

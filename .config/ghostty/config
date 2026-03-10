@@ -47,13 +47,78 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
-theme = Zenbones
+# theme = Zenbones
+theme = Gruvbox Dark
 
-# font-family = JetBrains Mono Regular
-# font-family = Menlo
-# font-family = JuliaMono
-font-family = Atkinson Hyperlegible Mono
+
+# font-family = 0xProto
 # font-family = Adwaita Mono
+# font-family = Agave
+# font-family = Atkinson Hyperlegible Mono
+# font-family = Aurulent Sans Mono
+# font-family = CamingoCode
+# font-family = Cascadia Mono
+# font-family = Chivo Mono
+# font-family = Code New Roman
+# font-family = CommitMono
+# font-family = Cousine
+# font-family = Fantasque Sans Mono
+# font-family = Fira Code
+# font-family = Fragment Mono
+# font-family = Go Mono
+# font-family = Google Sans Code
+# font-family = Hermit
+# font-family = iA Writer Mono V
+# font-family = IBM Plex Mono
+# font-family = Inconsolata
+# font-family = Input Mono
+# font-family = Input Mono Compressed
+# font-family = Input Mono Condensed
+# font-family = Input Mono Narrow
+# font-family = Intel One Mono
+# font-family = Iosevka Term
+# font-family = Iosevka Term Curly Slab
+# font-family = Iosevka Term Curly
+# font-family = Iosevka Term Slab
+# font-family = Iosevka Term SS01
+# font-family = Iosevka Term SS02
+# font-family = Iosevka Term SS03
+# font-family = Iosevka Term SS04
+# font-family = Iosevka Term SS05
+# font-family = Iosevka Term SS06
+# font-family = Iosevka Term SS07
+# font-family = Iosevka Term SS08
+# font-family = Iosevka Term SS09
+# font-family = Iosevka Term SS10
+# font-family = Iosevka Term SS11
+# font-family = Iosevka Term SS12
+# font-family = Iosevka Term SS13
+# font-family = Iosevka Term SS14
+font-family = Iosevka Term SS15
+# font-family = Iosevka Term SS16
+# font-family = Iosevka Term SS17
+# font-family = Iosevka Term SS18
+# font-family = JetBrains Mono
+# font-family = JuliaMono
+# font-family = Liberation Mono
+# font-family = M Plus 1 Code
+# font-family = Maple Mono Normal NL
+# font-family = Meslo LG L
+# font-family = Meslo LG M
+# font-family = Meslo LG S
+# font-family = Monoid
+# font-family = Myna
+# font-family = Nimbus Mono PS
+# font-family = Noto Sans Mono
+# font-family = Overpass Mono
+# font-family = Paper Mono
+# font-family = Reddit Mono
+# font-family = Red Hat Mono VF
+# font-family = Roboto Mono
+# font-family = Source Code Pro
+# font-family = SourceCodeVF
+# font-family = Ubuntu Sans Mono
+# font-family = Victor Mono
 
 font-size = 17
 
@@ -73,3 +138,9 @@ cursor-color = #659B9B
 font-thicken = true
 adjust-cursor-thickness = 4
 macos-titlebar-style = tabs
+
+gtk-titlebar-style = tabs
+
+tab-inherit-working-directory = true
+
+window-padding-balance = true
