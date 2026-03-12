@@ -3,8 +3,8 @@
 theme = Violet Light
 # theme = Alabaster
 # theme = Zenbones
-# theme = Gruvbox Light
-theme = Catppuccin Frappe
+ theme = Gruvbox Material Dark
+# theme = Catppuccin Frappe
 
 # font-family = 0xProto
 # font-family = Adwaita Mono
@@ -49,8 +49,7 @@ theme = Catppuccin Frappe
 # font-family = Iosevka Term SS12
 # font-family = Iosevka Term SS13
 # font-family = Iosevka Term SS14
-font-family = Iosevka Fixed SS15
-# font-family = Iosevka SS15
+font-family = Iosevka Term SS15
 # font-family = Iosevka Term SS16
 # font-family = Iosevka Term SS17
 # font-family = Iosevka Term SS18
@@ -62,6 +61,11 @@ font-family = Iosevka Fixed SS15
 # font-family = Meslo LG L
 # font-family = Meslo LG M
 # font-family = Meslo LG S
+font-family = Monaspace Argon Var
+# font-family = Monaspace Krypton Var
+# font-family = Monaspace Neon Var
+# font-family = Monaspace Radon Var
+# font-family = Monaspace Xenon Var
 # font-family = Monoid
 # # font-family = Myna
 # font-family = Nimbus Mono PS
@@ -78,9 +82,9 @@ font-family = Iosevka Fixed SS15
 
 font-size = 15
 
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+# font-feature = -calt
+# font-feature = -liga
+# font-feature = -dlig
 
 maximize = true
 quit-after-last-window-closed = true

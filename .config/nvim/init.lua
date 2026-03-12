@@ -47,10 +47,6 @@ vim.keymap.set({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true, 
 vim.keymap.set("n", "U", "", { noremap = true, silent = true, desc = "Redo" }) -- u undoes, U redoes
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Restore position after joining lines" })
--- vim.keymap.set("v", "y", "mqy`q", { desc = "Restore position after yanking" })
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor line after jumping" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor line after jumping" })
 
 vim.keymap.set("n", "<BS>", "", { desc = "Go to alternate buffer" })
 
@@ -141,10 +137,10 @@ vim.lsp.enable({ "ruby_lsp", "biome", "tsgo" })
 -- PLUGINS --
 -------------
 vim.pack.add({ { src = "https://github.com/nvim-mini/mini.nvim", version = "main" } })
--- require("mini.notify").setup({
--- 	window = { config = { border = "double" } },
--- })
--- vim.notify = MiniNotify.make_notify()
+require("mini.notify").setup({
+	window = { config = { border = "single" } },
+})
+vim.notify = MiniNotify.make_notify()
 
 require("mini.icons").setup()
 MiniIcons.tweak_lsp_kind()
@@ -166,7 +162,11 @@ require("mini.comment").setup({
 	},
 })
 
-require("mini.files").setup()
+require("mini.files").setup({
+	windows = {
+		preview = true
+	}
+})
 vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>", { desc = "File directory" })
 
 -- vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
@@ -213,6 +213,9 @@ vim.o.pumborder = "rounded"
 vim.pack.add({
 	"https://github.com/e-q/okcolors.nvim",
 	"https://github.com/miikanissi/modus-themes.nvim",
+	"https://github.com/webhooked/kanso.nvim",
+	"https://github.com/WTFox/jellybeans.nvim",
+	"https://github.com/projekt0n/github-nvim-theme",
 })
 
 vim.cmd.colorscheme("minisummer")
