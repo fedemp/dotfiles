@@ -8,7 +8,9 @@ TAB: menu-complete
 
 set menu-complete-display-prefix on
 set show-all-if-ambiguous on
+set show-all-if-unmodified on
 set completion-query-items 0
+set colored-completion-prefix on
 
 # Move cursor to end of word after completion
 set skip-completed-text on
@@ -17,8 +19,3 @@ set enable-bracketed-paste on
 
 # Display completion matches in colors based on LS_COLORS
 set colored-stats on
-
-
-# Customize the colors for the menu and selected items
-"\e[31m": "\e[37m"  # Set the background color to red and foreground color to white
-"\e[37m": "\e[31m"  # Set the background color to white and foreground color to red

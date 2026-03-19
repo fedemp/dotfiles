@@ -121,7 +121,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					vim.lsp.buf.format({
 						timeout_ms = 1000,
 						filter = function(client)
-							return client.name ~= "tsgo"
+							return client.name ~= "tsgo" and client.name ~= "cssls"
 						end,
 					})
 				end,
@@ -212,7 +212,6 @@ vim.o.pumborder = "rounded"
 ------------------
 vim.pack.add({
 	"https://github.com/e-q/okcolors.nvim",
-	"https://github.com/ramojus/mellifluous.nvim",
 	"https://github.com/miikanissi/modus-themes.nvim",
 })
 
