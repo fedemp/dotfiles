@@ -23,3 +23,7 @@ set colored-stats on
 
 # (Optional) Highlight the common part of the names being completed
 set colored-completion-prefix on
+
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
