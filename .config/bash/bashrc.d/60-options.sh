@@ -13,6 +13,9 @@ shopt -s interactive_comments
 # No need for cd to change directories
 shopt -s autocd
 
+# Require confirmation when expanding !!
+shopt -s histverify
+
 # Dont spawn new instances
 auto_resume=exact
 
