@@ -19,9 +19,6 @@ export MANROFFOPT='-c'
 export LESS='--use-color -g -R -M -x4 -X -F -Dd+r$Du+b'
 export TZ=/etc/localtime
 
-# Save history to XDG compliant location
-HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/histfile
-
 if [[ ":$FPATH:" != *":$ZDOTDIR/fpath:"* ]]; then export FPATH="$ZDOTDIR/fpath:$FPATH"; fi
 
 typeset -U path PATH

@@ -1,3 +1,6 @@
+# Save history to XDG compliant location
+export HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/histfile
+
 eval "$(mise activate zsh)"
 
 # Emacs keybindings even if EDITOR is vi
