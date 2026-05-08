@@ -12,6 +12,7 @@ export EDITOR='nvim --clean'
 # export FZF_DEFAULT_OPTS='--color=16'
 export SKIM_DEFAULT_OPTIONS="--color=16"
 export SKIM_DEFAULT_COMMAND='fd --type f'
+export SKIM_CTRL_T_COMMAND='fd --type f'
 export NNN_FCOLORS='c1e20402006006f701d6ab05'
 export NNN_PLUG='p:-!less -iR "$nnn"*;g:-!git diff -- "$nnn"*'
 export NNN_USE_EDITOR=1

@@ -1,27 +1,45 @@
 --------------
 -- SETTINGS --
 --------------
-vim.o.title = true -- Update window title.
-vim.o.colorcolumn = "+1" -- Visible column
-vim.o.cursorline = true -- Enable highlighting of the current line
+vim.o.title = true         -- Update window title.
+vim.o.colorcolumn = "+1"   -- Visible column
+vim.o.cursorline = true    -- Enable highlighting of the current line
 vim.o.inccommand = "split" -- Show global changes when doing search and replace
-vim.o.number = true -- Show line numbers
-vim.o.shiftwidth = 4 -- Indent width
-vim.o.tabstop = 4 -- Tab width
-vim.o.ignorecase = true -- Ignore case
-vim.o.smartcase = true -- Better ignorecase
-vim.o.infercase = true -- Better completion
-vim.o.swapfile = false -- Turn off swapfile
-vim.o.scrolloff = 8 -- Always show 8 lines before cursor touches top or bottom
-vim.o.undofile = true -- Enable persistent undo
-vim.o.confirm = true -- Confirm unsaved
-vim.o.mouse = "" -- No mouse
-vim.o.winborder = "rounded" -- Rounded floats
+vim.o.number = true        -- Show line numbers
+vim.o.shiftwidth = 4       -- Indent width
+vim.o.tabstop = 4          -- Tab width
+vim.o.ignorecase = true    -- Ignore case
+vim.o.smartcase = true     -- Better ignorecase
+vim.o.infercase = true     -- Better completion
+vim.o.swapfile = false     -- Turn off swapfile
+-- vim.o.scrolloff = 8 -- Always show 8 lines before cursor touches top or bottom
+vim.o.undofile = true      -- Enable persistent undo
+vim.o.confirm = true       -- Confirm unsaved
+vim.o.mouse = ""           -- No mouse
+vim.o.winborder = "single" -- Rounded floats
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣', extends = '›', precedes = '‹' }
+vim.opt.fillchars:append({
+	diff = '░',
+	eob = ' ',
+	fold = '─',
+	foldopen = '▼',
+	foldclose = '▶',
+	foldsep = '│',
+	msgsep = '━',
+})
+vim.o.guicursor = table.concat({
+	'n-v-c-sm:block-Cursor', -- Normal, Visual, Command, Showmatch: block cursor
+	'i-ci-ve:ver25-Cursor', -- Insert, Command-insert, Visual-exclusive: vertical bar (25% width)
+	'r-cr-o:hor20-Cursor', -- Replace, Command-replace, Operator-pending: horizontal bar (20% height)
+	'a:blinkwait500-blinkoff500-blinkon500',
+}, ',')
+vim.o.signcolumn = 'auto:1'
+vim.o.smoothscroll = true
 
 vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" } -- Always show menu, don't autoselect
-vim.opt.cursorlineopt = { "screenline", "number" } -- Highligth current screen line only
+vim.opt.cursorlineopt = { "screenline", "number" }                 -- Highligth current screen line only
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -88,13 +106,8 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- LSP --
 ---------
 vim.pack.add({
-	"https://github.com/williamboman/mason.nvim",
-	"https://github.com/williamboman/mason-lspconfig.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
 })
-
-require("mason").setup()
-require("mason-lspconfig").setup()
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("my.lsp", {}),
@@ -136,6 +149,10 @@ vim.lsp.enable({ "ruby_lsp", "biome", "tsgo" })
 -------------
 -- PLUGINS --
 -------------
+vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+require("oil").setup()
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 vim.pack.add({ { src = "https://github.com/nvim-mini/mini.nvim", version = "main" } })
 require("mini.notify").setup({
 	window = { config = { border = "single" } },
@@ -162,12 +179,8 @@ require("mini.comment").setup({
 	},
 })
 
-require("mini.files").setup({
-	windows = {
-		preview = true
-	}
-})
-vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>", { desc = "File directory" })
+-- require("mini.files").setup()
+-- vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>", { desc = "File directory" })
 
 -- vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 -- require("conform").setup({
@@ -199,6 +212,10 @@ require("mini.animate").setup()
 require("mini.completion").setup()
 vim.o.pumborder = "rounded"
 
+-- require("mini.statusline").setup({
+-- 	use_icons = true
+-- })
+
 -- vim.pack.add({ "https://github.com/akinsho/toggleterm.nvim" })
 -- require("toggleterm").setup({
 -- 	open_mapping = [[<c-\>]],
@@ -214,8 +231,8 @@ vim.pack.add({
 	"https://github.com/e-q/okcolors.nvim",
 	"https://github.com/miikanissi/modus-themes.nvim",
 	"https://github.com/webhooked/kanso.nvim",
-	"https://github.com/WTFox/jellybeans.nvim",
-	"https://github.com/projekt0n/github-nvim-theme",
+	-- "https://github.com/WTFox/jellybeans.nvim",
+	-- "https://github.com/projekt0n/github-nvim-theme",
 })
 
 vim.cmd.colorscheme("minisummer")
