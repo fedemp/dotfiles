@@ -3,7 +3,10 @@
 "aqua:skim-rs/skim" = "latest"
 eza = "latest"
 fd = "latest"
+"github:jarun/nnn" = {version = "latest", "bin" = "nnn", "asset_pattern" = "nnn-nerd-static*"}
 jj = "latest"
 node = "lts"
+"npm:npm" = "latest"
+"npm:tree-sitter-cli" = "latest"
 ripgrep = "latest"
 sd = "latest"

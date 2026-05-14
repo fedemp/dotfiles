@@ -207,8 +207,6 @@ vim.keymap.set("n", "<Leader>b", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
 
 require("mini.surround").setup()
 
-require("mini.animate").setup()
-
 require("mini.completion").setup()
 vim.o.pumborder = "rounded"
 
